@@ -3,7 +3,8 @@
 :root {
   --ink: #232019;
   --ink-soft: #57534a;
-  --paper: #fbf9f5;
+  --page-bg: #eeebe3;
+  --paper: #fffdfa;
   --panel: #f2efe7;
   --rule: #ded7c8;
   --accent: #8a3b2f;
@@ -17,7 +18,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--paper);
+  background: var(--page-bg);
 }
 
 body {
@@ -27,42 +28,66 @@ body {
   line-height: 1.7;
 }
 
+/* contenedor general: sidebar de TOC + columna de contenido */
+
 #quarto-content {
-  max-width: 760px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 0 1.5rem 4rem;
-  display: block;
+  padding: 3rem 2.5rem 5rem;
+  display: grid;
+  grid-template-columns: 250px minmax(0, 720px);
+  gap: 4rem;
+  align-items: start;
+  justify-content: center;
 }
 
-/* la barra lateral vacía de Quarto no se usa en este documento */
 #quarto-margin-sidebar {
   display: none;
 }
 
 #quarto-sidebar-toc-left {
-  width: 100%;
+  position: sticky;
+  top: 2rem;
+  align-self: start;
 }
 
 main.content {
-  max-width: 100%;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 3rem 3.5rem 3.5rem;
+}
+
+@media (max-width: 900px) {
+  #quarto-content {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1.2rem 3rem;
+    gap: 1.5rem;
+  }
+  #quarto-sidebar-toc-left {
+    position: static;
+  }
+  main.content {
+    padding: 1.8rem 1.5rem 2.2rem;
+  }
 }
 
 /* encabezado */
 
 header#title-block-header {
-  padding: 3rem 0 2rem 0;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid var(--rule);
+  padding: 0 0 2rem 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent);
 }
 
 #title-block-header .title {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 700;
-  font-size: 2.3rem;
+  font-size: 2.4rem;
   color: var(--ink);
   letter-spacing: -0.01em;
   line-height: 1.15;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.6rem;
 }
 
 #title-block-header .subtitle {
@@ -70,8 +95,8 @@ header#title-block-header {
   font-style: italic;
   color: var(--ink-soft);
   font-weight: 400;
-  font-size: 1.15rem;
-  margin: 0 0 1.2rem;
+  font-size: 1.2rem;
+  margin: 0 0 1.4rem;
 }
 
 .quarto-title-meta {
@@ -92,14 +117,16 @@ header#title-block-header {
   margin: 0;
 }
 
-/* tabla de contenidos */
+/* tabla de contenidos — barra lateral fija */
 
 nav#TOC {
-  background: var(--panel);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  padding: 1.1rem 1.4rem;
-  margin: 2rem 0 3rem;
+  background: transparent;
+  border: none;
+  border-left: 2px solid var(--rule);
+  padding: 0 0 0 1.1rem;
+  margin: 0;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
 }
 
 nav#TOC h2 {
@@ -109,7 +136,7 @@ nav#TOC h2 {
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--ink-soft);
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.9rem;
   border: none;
   padding: 0;
 }
@@ -121,8 +148,9 @@ nav#TOC ul {
 }
 
 nav#TOC li {
-  margin-bottom: 0.4rem;
-  font-size: 0.93rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.88rem;
+  line-height: 1.35;
 }
 
 nav#TOC a {
@@ -130,7 +158,8 @@ nav#TOC a {
   border-bottom: none;
 }
 
-nav#TOC a:hover {
+nav#TOC a:hover,
+nav#TOC a.active {
   color: var(--accent);
 }
 
@@ -147,6 +176,10 @@ h2 {
   margin-top: 3rem;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--rule);
+}
+
+h2:first-of-type {
+  margin-top: 0;
 }
 
 h3 {
