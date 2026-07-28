@@ -742,6 +742,41 @@ border: none;
 border-top: 1px solid var(--rule);
 margin: 2.5rem 0;
 }
+
+.exercise {
+background: var(--panel);
+border-left: 3px solid var(--accent);
+border-radius: 0 6px 6px 0;
+padding: 1.2rem 1.4rem 1.3rem;
+margin: 1.8rem 0 2.4rem;
+}
+.exercise > p:first-child {
+margin: 0 0 0.7rem;
+font-family: Georgia, "Times New Roman", serif;
+font-size: 1.02rem;
+color: var(--accent);
+}
+.exercise ul.task-list {
+list-style: none;
+padding-left: 0;
+margin: 0;
+}
+.exercise ul.task-list li {
+margin-bottom: 0.5rem;
+font-size: 0.95rem;
+}
+.exercise input[type="checkbox"] {
+margin-right: 0.5rem;
+width: 15px;
+height: 15px;
+vertical-align: -2px;
+accent-color: var(--accent);
+cursor: pointer;
+}
+.exercise ul.task-list li:has(input:checked) {
+color: var(--ink-soft);
+text-decoration: line-through;
+}
 </style>
 </head>
 
@@ -794,6 +829,14 @@ margin: 2.5rem 0;
 <blockquote>
 <p>El token equivale a una contraseña con permisos acotados: no debe compartirse por canales de mensajería ni incluirse en ningún archivo del repositorio. Si se expone por error, debe revocarse de inmediato desde la misma página de <em>Personal access tokens</em> y generarse uno nuevo.</p>
 </blockquote>
+<div class="exercise">
+<p><strong>Ejercicio 1 — Generar el token</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Generar el token siguiendo los siete pasos anteriores.</label></li>
+<li><label><input type="checkbox">Copiarlo a un lugar temporal y seguro (no a un archivo del repositorio ni a un canal de mensajería).</label></li>
+<li><label><input type="checkbox">Tenerlo a mano para el ejercicio siguiente, donde Positron lo va a solicitar como contraseña.</label></li>
+</ul>
+</div>
 <h2 id="el-modelo-de-tres-estados" class="anchored">El modelo de tres estados</h2>
 <p>Un archivo pasa por tres estados antes de quedar registrado en la historia del proyecto:</p>
 <pre><code>edición              marcado                      registro
@@ -815,6 +858,16 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;docs: agrega nota de práctica de Roberto&quot;</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ambos métodos son equivalentes; el panel de Positron ofrece una interfaz gráfica sobre estos mismos comandos.</p>
+<div class="exercise">
+<p><strong>Ejercicio 2 — Pull, editar, commit, push</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sincronizar el repositorio (Pull) antes de editar cualquier archivo.</label></li>
+<li><label><input type="checkbox">Abrir <code>practica/notas.md</code> y agregar una línea con nombre y fecha.</label></li>
+<li><label><input type="checkbox">Revisar el diff en el panel de Source Control antes de continuar.</label></li>
+<li><label><input type="checkbox">Marcar el archivo (stage) y confirmar el commit con un mensaje descriptivo.</label></li>
+<li><label><input type="checkbox">Ejecutar push y verificar en GitHub.com que el commit aparece en el historial.</label></li>
+</ul>
+</div>
 <h2 id="conflictos-dos-personas-un-mismo-archivo" class="anchored">Conflictos: dos personas, un mismo archivo</h2>
 <p>Ejecutar <code>pull</code> antes de trabajar evita la mayoría de los conflictos, aunque no todos. Si dos personas modifican la misma línea de un archivo en un intervalo breve, se produce un conflicto — un resultado esperado del funcionamiento de Git, no un error.</p>
 <p>Para observarlo en la práctica: en parejas, ambas personas parten del mismo commit en <code>practica/ejemplo_analisis.R</code> y modifican la misma línea de la función <code>diversidad_dominios()</code> sin ejecutar <code>pull</code> entre ambas ediciones. La primera persona en hacer <code>push</code> no encuentra problemas; la segunda recibe un rechazo, y al ejecutar <code>pull</code>, Git marca el archivo de la siguiente manera:</p>
@@ -830,10 +883,30 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Positron presenta este mismo bloque con opciones — <em>Accept Current</em>, <em>Accept Incoming</em>, <em>Accept Both</em> — para seleccionar la versión que corresponde, o combinar ambas manualmente. Una vez resuelto el conflicto, se eliminan las marcas (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>), se guarda el archivo, se ejecuta <code>add</code> y <code>commit</code> para cerrar el conflicto, y finalmente <code>push</code>.</p>
 <p>La frecuencia de estos conflictos se reduce mediante hábitos de trabajo, no mediante herramientas: trabajar en una rama propia en lugar de directamente sobre <code>main</code>; notificar al equipo antes de modificar un script utilizado por varias personas; y realizar commits pequeños y frecuentes en lugar de uno extenso al final de la jornada. Una regla sin excepciones: no debe ejecutarse <code>push --force</code> sobre una rama utilizada por otras personas, ya que reescribe la historia y puede eliminar commits ajenos sin advertencia.</p>
+<div class="exercise">
+<p><strong>Ejercicio 3 — Provocar y resolver un conflicto (en parejas)</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Ambas personas hacen <code>pull</code> para partir del mismo commit en <code>practica/ejemplo_analisis.R</code>.</label></li>
+<li><label><input type="checkbox">Cada persona modifica la misma línea de la función <code>diversidad_dominios()</code>, sin volver a hacer <code>pull</code>.</label></li>
+<li><label><input type="checkbox">La primera persona hace <code>push</code> — debería completarse sin problemas.</label></li>
+<li><label><input type="checkbox">La segunda persona hace <code>push</code>, recibe el rechazo, y luego <code>pull</code> para traer el conflicto al editor.</label></li>
+<li><label><input type="checkbox">Resolver el conflicto en Positron (Accept Current / Incoming / Both), guardar, hacer commit y <code>push</code>.</label></li>
+</ul>
+</div>
 <h2 id="ramas-y-pull-requests" class="anchored">Ramas y pull requests</h2>
 <p>Una rama es una copia paralela del proyecto que permite experimentar sin afectar <code>main</code>. Se crea con <code>git checkout -b nombre-de-la-rama</code>, y el ciclo de commit y push se ejecuta de manera idéntica al descrito anteriormente; la diferencia es que los cambios permanecen aislados hasta que se decide integrarlos.</p>
 <p>Esa integración se solicita mediante un <em>pull request</em>: una propuesta formal de incorporar los cambios de una rama a <code>main</code>, sujeta a revisión previa. En GitHub, tras publicar la rama desde Positron (la primera vez se ofrece el botón “Publish Branch”), se abre un PR desde la página del repositorio. Allí se visualiza el diff completo, se pueden agregar comentarios línea por línea, y solo tras la aprobación correspondiente se ejecuta el merge. Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en <code>main</code>.</p>
 <p>En un repositorio de investigación compartido, el pull request cumple una función específica: permite que otra persona revise el cambio antes de que se integre al análisis principal, lo que permite detectar errores no evidentes — una columna mal nombrada, un filtro aplicado de manera incorrecta — antes de que afecten un resultado.</p>
+<div class="exercise">
+<p><strong>Ejercicio 4 — Crear una rama y abrir un pull request</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Crear una rama: <code>git checkout -b practica/tu-nombre</code>.</label></li>
+<li><label><input type="checkbox">Editar <code>practica/notas.md</code> y hacer un commit en esa rama.</label></li>
+<li><label><input type="checkbox">Publicar la rama (push) — Positron ofrece el botón “Publish Branch” la primera vez.</label></li>
+<li><label><input type="checkbox">En GitHub.com, abrir un pull request desde esa rama hacia <code>main</code>.</label></li>
+<li><label><input type="checkbox">Revisar el diff del PR y, con otra persona del grupo, aprobarlo y hacer merge.</label></li>
+</ul>
+</div>
 <h2 id="el-asistente-de-ia-en-positron" class="anchored">El asistente de IA en Positron</h2>
 <p>Positron incorpora un panel de asistencia (se accede mediante <em>View: Show Posit Assistant</em> desde la paleta de comandos, <code>Cmd/Ctrl+Shift+P</code>) que opera sobre el contexto del proyecto abierto: puede explicar una función existente, proponer una nueva, o ayudar a depurar un error a partir del mensaje de la consola. El panel no está limitado a un modelo único — se conecta mediante la clave de API que cada persona configure, ya sea de OpenAI, Anthropic, GitHub Copilot u otros proveedores, y permite establecer preferencias de modelo según el tipo de tarea.</p>
 <p>Sobre <code>practica/ejemplo_analisis.R</code>, dos solicitudes de prueba:</p>
@@ -844,6 +917,15 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <p>Escribe una función que reciba un data.frame con columnas <code>id</code>, <code>dominio</code> y <code>fecha</code>, y devuelva el conteo de dominios distintos por <code>id</code> y por mes.</p>
 </blockquote>
 <p>El código generado por el asistente sigue el mismo procedimiento que cualquier otra modificación: se revisa el diff, se ejecuta para confirmar que cumple lo esperado, y si se integra a un repositorio compartido, se somete a revisión mediante pull request. El asistente acelera la escritura del código; no sustituye la comprensión de su funcionamiento.</p>
+<div class="exercise">
+<p><strong>Ejercicio 5 — Usar el asistente sobre código real</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Abrir el panel de asistencia (<em>View: Show Posit Assistant</em>) con <code>practica/ejemplo_analisis.R</code> activo.</label></li>
+<li><label><input type="checkbox">Pedir la explicación de <code>diversidad_dominios()</code> y el caso de valores <code>NA</code> en <code>dominio</code>.</label></li>
+<li><label><input type="checkbox">Pedir la función que agrupa por <code>id</code> y por mes.</label></li>
+<li><label><input type="checkbox">Revisar el diff de lo generado y ejecutarlo antes de hacer commit.</label></li>
+</ul>
+</div>
 <h2 id="resolución-de-problemas-frecuentes" class="anchored">Resolución de problemas frecuentes</h2>
 <p>La siguiente tabla reúne los mensajes de error más habituales en este tipo de flujo de trabajo.</p>
 <table class="caption-top">
@@ -1313,6 +1395,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+});
+</script>
+<script>
+document.querySelectorAll('.task-list input[type="checkbox"]').forEach(function (cb) {
+  cb.disabled = false;
 });
 </script>
 

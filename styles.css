@@ -242,3 +242,45 @@ hr {
   border-top: 1px solid var(--rule);
   margin: 2.5rem 0;
 }
+
+/* bloques de ejercicio */
+
+.exercise {
+  background: var(--panel);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 1.2rem 1.4rem 1.3rem;
+  margin: 1.8rem 0 2.4rem;
+}
+
+.exercise > p:first-child {
+  margin: 0 0 0.7rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.02rem;
+  color: var(--accent);
+}
+
+.exercise ul.task-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.exercise ul.task-list li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.exercise input[type="checkbox"] {
+  margin-right: 0.5rem;
+  width: 15px;
+  height: 15px;
+  vertical-align: -2px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.exercise ul.task-list li:has(input:checked) {
+  color: var(--ink-soft);
+  text-decoration: line-through;
+}

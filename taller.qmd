@@ -16,6 +16,13 @@ format:
     highlight-style: tango
     embed-resources: true
     fig-align: center
+    include-after-body:
+      text: |
+        <script>
+        document.querySelectorAll('.task-list input[type="checkbox"]').forEach(function (cb) {
+          cb.disabled = false;
+        });
+        </script>
 execute:
   echo: false
   eval: false
@@ -51,6 +58,14 @@ Con el token disponible, la primera vez que Positron o `git push` soliciten cred
 Tras el primer uso, el sistema operativo almacena la credencial (Keychain en macOS, Credential Manager en Windows, o el *credential helper* configurado en Linux), y no vuelve a solicitarse hasta que el token expire.
 
 > El token equivale a una contraseña con permisos acotados: no debe compartirse por canales de mensajería ni incluirse en ningún archivo del repositorio. Si se expone por error, debe revocarse de inmediato desde la misma página de *Personal access tokens* y generarse uno nuevo.
+
+::: {.exercise}
+**Ejercicio 1 — Generar el token**
+
+- [ ] Generar el token siguiendo los siete pasos anteriores.
+- [ ] Copiarlo a un lugar temporal y seguro (no a un archivo del repositorio ni a un canal de mensajería).
+- [ ] Tenerlo a mano para el ejercicio siguiente, donde Positron lo va a solicitar como contraseña.
+:::
 
 ## El modelo de tres estados
 
@@ -95,6 +110,16 @@ git push
 
 Ambos métodos son equivalentes; el panel de Positron ofrece una interfaz gráfica sobre estos mismos comandos.
 
+::: {.exercise}
+**Ejercicio 2 — Pull, editar, commit, push**
+
+- [ ] Sincronizar el repositorio (Pull) antes de editar cualquier archivo.
+- [ ] Abrir `practica/notas.md` y agregar una línea con nombre y fecha.
+- [ ] Revisar el diff en el panel de Source Control antes de continuar.
+- [ ] Marcar el archivo (stage) y confirmar el commit con un mensaje descriptivo.
+- [ ] Ejecutar push y verificar en GitHub.com que el commit aparece en el historial.
+:::
+
 ## Conflictos: dos personas, un mismo archivo
 
 Ejecutar `pull` antes de trabajar evita la mayoría de los conflictos, aunque no todos. Si dos personas modifican la misma línea de un archivo en un intervalo breve, se produce un conflicto — un resultado esperado del funcionamiento de Git, no un error.
@@ -118,6 +143,16 @@ Positron presenta este mismo bloque con opciones — *Accept Current*, *Accept I
 
 La frecuencia de estos conflictos se reduce mediante hábitos de trabajo, no mediante herramientas: trabajar en una rama propia en lugar de directamente sobre `main`; notificar al equipo antes de modificar un script utilizado por varias personas; y realizar commits pequeños y frecuentes en lugar de uno extenso al final de la jornada. Una regla sin excepciones: no debe ejecutarse `push --force` sobre una rama utilizada por otras personas, ya que reescribe la historia y puede eliminar commits ajenos sin advertencia.
 
+::: {.exercise}
+**Ejercicio 3 — Provocar y resolver un conflicto (en parejas)**
+
+- [ ] Ambas personas hacen `pull` para partir del mismo commit en `practica/ejemplo_analisis.R`.
+- [ ] Cada persona modifica la misma línea de la función `diversidad_dominios()`, sin volver a hacer `pull`.
+- [ ] La primera persona hace `push` — debería completarse sin problemas.
+- [ ] La segunda persona hace `push`, recibe el rechazo, y luego `pull` para traer el conflicto al editor.
+- [ ] Resolver el conflicto en Positron (Accept Current / Incoming / Both), guardar, hacer commit y `push`.
+:::
+
 ## Ramas y pull requests
 
 Una rama es una copia paralela del proyecto que permite experimentar sin afectar `main`. Se crea con `git checkout -b nombre-de-la-rama`, y el ciclo de commit y push se ejecuta de manera idéntica al descrito anteriormente; la diferencia es que los cambios permanecen aislados hasta que se decide integrarlos.
@@ -125,6 +160,16 @@ Una rama es una copia paralela del proyecto que permite experimentar sin afectar
 Esa integración se solicita mediante un *pull request*: una propuesta formal de incorporar los cambios de una rama a `main`, sujeta a revisión previa. En GitHub, tras publicar la rama desde Positron (la primera vez se ofrece el botón "Publish Branch"), se abre un PR desde la página del repositorio. Allí se visualiza el diff completo, se pueden agregar comentarios línea por línea, y solo tras la aprobación correspondiente se ejecuta el merge. Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en `main`.
 
 En un repositorio de investigación compartido, el pull request cumple una función específica: permite que otra persona revise el cambio antes de que se integre al análisis principal, lo que permite detectar errores no evidentes — una columna mal nombrada, un filtro aplicado de manera incorrecta — antes de que afecten un resultado.
+
+::: {.exercise}
+**Ejercicio 4 — Crear una rama y abrir un pull request**
+
+- [ ] Crear una rama: `git checkout -b practica/tu-nombre`.
+- [ ] Editar `practica/notas.md` y hacer un commit en esa rama.
+- [ ] Publicar la rama (push) — Positron ofrece el botón "Publish Branch" la primera vez.
+- [ ] En GitHub.com, abrir un pull request desde esa rama hacia `main`.
+- [ ] Revisar el diff del PR y, con otra persona del grupo, aprobarlo y hacer merge.
+:::
 
 ## El asistente de IA en Positron
 
@@ -137,6 +182,15 @@ Sobre `practica/ejemplo_analisis.R`, dos solicitudes de prueba:
 > Escribe una función que reciba un data.frame con columnas `id`, `dominio` y `fecha`, y devuelva el conteo de dominios distintos por `id` y por mes.
 
 El código generado por el asistente sigue el mismo procedimiento que cualquier otra modificación: se revisa el diff, se ejecuta para confirmar que cumple lo esperado, y si se integra a un repositorio compartido, se somete a revisión mediante pull request. El asistente acelera la escritura del código; no sustituye la comprensión de su funcionamiento.
+
+::: {.exercise}
+**Ejercicio 5 — Usar el asistente sobre código real**
+
+- [ ] Abrir el panel de asistencia (*View: Show Posit Assistant*) con `practica/ejemplo_analisis.R` activo.
+- [ ] Pedir la explicación de `diversidad_dominios()` y el caso de valores `NA` en `dominio`.
+- [ ] Pedir la función que agrupa por `id` y por mes.
+- [ ] Revisar el diff de lo generado y ejecutarlo antes de hacer commit.
+:::
 
 ## Resolución de problemas frecuentes
 
