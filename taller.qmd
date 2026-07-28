@@ -202,13 +202,32 @@ A partir de este taller, el siguiente procedimiento queda establecido como está
 3. Se abre una rama nueva por cada tarea o análisis distinto, no una única rama personal que se reutiliza indefinidamente — evita que una rama acumule cambios de temas no relacionados y facilita la revisión.
 4. La integración a `main` se hace exclusivamente mediante pull request, con revisión de al menos otra persona del grupo antes del merge.
 
-**Desde Positron (recomendado):** el nombre de la rama actual aparece en la esquina inferior izquierda de la ventana. Al hacer clic ahí, Positron ofrece la opción de crear una rama nueva a partir de un nombre. El ciclo de edición, commit y push se ejecuta después de manera idéntica al descrito en el ejercicio anterior; la única diferencia es que los cambios quedan aislados en esa rama.
+**Desde Positron (recomendado):** el nombre de la rama actual aparece en la esquina inferior izquierda de la ventana. Al hacer clic ahí, Positron despliega un listado con la opción "Create new branch..." y las ramas existentes; al escribir el nombre siguiendo la convención (`tu-nombre/descripción-corta`) y confirmar, Positron cambia automáticamente a esa rama nueva:
+
+![Crear una rama personal desde Positron: clic en el nombre de rama de la barra de estado, "Create new branch...", y el nombre escrito según la convención del grupo.](practica/crear-rama-positron.svg)
+
+El ciclo de edición, commit y push se ejecuta después de manera idéntica al descrito en el ejercicio anterior; la única diferencia es que los cambios quedan aislados en esa rama.
 
 **Alternativa: terminal.**
 
 ```bash
 git checkout -b tu-nombre/practica-taller
 ```
+
+### Mínimo del grupo: proteger `main` en GitHub
+
+La convención anterior depende de que cada persona la respete por su cuenta. GitHub permite además reforzarla técnicamente a nivel de repositorio, para que sea imposible saltársela por error. Esta configuración se hace una sola vez por repositorio, idealmente por quien lo administra:
+
+1. En el repositorio, ir a **Settings → Branches**.
+2. En **Branch protection rules**, **Add branch protection rule** (o **Add rule**).
+3. En **Branch name pattern**, escribir `main`.
+4. Marcar como mínimo **Require a pull request before merging** — con esto, GitHub rechaza cualquier intento de `push` directo a `main` y exige que el cambio llegue por PR.
+5. Opcionalmente, **Require conversation resolution before merging**, para que ningún comentario de revisión quede sin responder antes del merge.
+6. Guardar (**Create** / **Save changes**).
+
+::: {.callout-important}
+En un repositorio privado dentro de una organización de GitHub en el plan gratuito, esta regla queda configurada pero GitHub advierte que no se aplica técnicamente hasta actualizar la organización a **GitHub Team o Enterprise** — la página de configuración lo indica explícitamente. Mientras eso no ocurra, la regla funciona como una política declarada y visible para todo el grupo, pero el cumplimiento real sigue dependiendo de la convención acordada en esta sección, no de un bloqueo técnico.
+:::
 
 Esa integración se solicita mediante un *pull request*: una propuesta formal de incorporar los cambios de una rama a `main`, sujeta a revisión previa. En GitHub, tras publicar la rama desde Positron (la primera vez se ofrece el botón "Publish Branch"), se abre un PR desde la página del repositorio. Allí se visualiza el diff completo, se pueden agregar comentarios línea por línea, y solo tras la aprobación correspondiente se ejecuta el merge. Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en `main`.
 
