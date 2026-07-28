@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,7 @@
 
 <title>Git y GitHub desde Positron</title>
 <style>
+
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -22,8 +23,9 @@ margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -48,42 +50,13 @@ border: none; display: inline-block;
 -khtml-user-select: none; -moz-user-select: none;
 -ms-user-select: none; user-select: none;
 padding: 0 4px; width: 4em;
-color: #aaaaaa;
 }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
 div.sourceCode
-{ background-color: #f8f8f8; }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ef2929; } 
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.at { color: #204a87; } 
-code span.bn { color: #0000cf; } 
-code span.cf { color: #204a87; font-weight: bold; } 
-code span.ch { color: #4e9a06; } 
-code span.cn { color: #8f5902; } 
-code span.co { color: #8f5902; font-style: italic; } 
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.dt { color: #204a87; } 
-code span.dv { color: #0000cf; } 
-code span.er { color: #a40000; font-weight: bold; } 
-code span.ex { } 
-code span.fl { color: #0000cf; } 
-code span.fu { color: #204a87; font-weight: bold; } 
-code span.im { } 
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.kw { color: #204a87; font-weight: bold; } 
-code span.op { color: #ce5c00; font-weight: bold; } 
-code span.ot { color: #8f5902; } 
-code span.pp { color: #8f5902; font-style: italic; } 
-code span.sc { color: #ce5c00; font-weight: bold; } 
-code span.ss { color: #4e9a06; } 
-code span.st { color: #4e9a06; } 
-code span.va { color: #000000; } 
-code span.vs { color: #4e9a06; } 
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } 
 </style>
 
 
@@ -534,8 +507,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; }
 // @license-end</script>
 <style type="text/css">.tippy-box[data-animation=fade][data-state=hidden]{opacity:0}[data-tippy-root]{max-width:calc(100vw - 10px)}.tippy-box{position:relative;background-color:#333;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;white-space:normal;outline:0;transition-property:transform,visibility,opacity}.tippy-box[data-placement^=top]>.tippy-arrow{bottom:0}.tippy-box[data-placement^=top]>.tippy-arrow:before{bottom:-7px;left:0;border-width:8px 8px 0;border-top-color:initial;transform-origin:center top}.tippy-box[data-placement^=bottom]>.tippy-arrow{top:0}.tippy-box[data-placement^=bottom]>.tippy-arrow:before{top:-7px;left:0;border-width:0 8px 8px;border-bottom-color:initial;transform-origin:center bottom}.tippy-box[data-placement^=left]>.tippy-arrow{right:0}.tippy-box[data-placement^=left]>.tippy-arrow:before{border-width:8px 0 8px 8px;border-left-color:initial;right:-7px;transform-origin:center left}.tippy-box[data-placement^=right]>.tippy-arrow{left:0}.tippy-box[data-placement^=right]>.tippy-arrow:before{left:-7px;border-width:8px 8px 8px 0;border-right-color:initial;transform-origin:center right}.tippy-box[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{width:16px;height:16px;color:#333}.tippy-arrow:before{content:"";position:absolute;border-color:transparent;border-style:solid}.tippy-content{position:relative;padding:5px 9px;z-index:1}</style>
 <style type="text/css">.tippy-box[data-theme~=light-border]{background-color:#fff;background-clip:padding-box;border:1px solid rgba(0,8,16,.15);color:#333;box-shadow:0 4px 14px -2px rgba(0,8,16,.08)}.tippy-box[data-theme~=light-border]>.tippy-backdrop{background-color:#fff}.tippy-box[data-theme~=light-border]>.tippy-arrow:after,.tippy-box[data-theme~=light-border]>.tippy-svg-arrow:after{content:"";position:absolute;z-index:-1}.tippy-box[data-theme~=light-border]>.tippy-arrow:after{border-color:transparent;border-style:solid}.tippy-box[data-theme~=light-border][data-placement^=top]>.tippy-arrow:before{border-top-color:#fff}.tippy-box[data-theme~=light-border][data-placement^=top]>.tippy-arrow:after{border-top-color:rgba(0,8,16,.2);border-width:7px 7px 0;top:17px;left:1px}.tippy-box[data-theme~=light-border][data-placement^=top]>.tippy-svg-arrow>svg{top:16px}.tippy-box[data-theme~=light-border][data-placement^=top]>.tippy-svg-arrow:after{top:17px}.tippy-box[data-theme~=light-border][data-placement^=bottom]>.tippy-arrow:before{border-bottom-color:#fff;bottom:16px}.tippy-box[data-theme~=light-border][data-placement^=bottom]>.tippy-arrow:after{border-bottom-color:rgba(0,8,16,.2);border-width:0 7px 7px;bottom:17px;left:1px}.tippy-box[data-theme~=light-border][data-placement^=bottom]>.tippy-svg-arrow>svg{bottom:16px}.tippy-box[data-theme~=light-border][data-placement^=bottom]>.tippy-svg-arrow:after{bottom:17px}.tippy-box[data-theme~=light-border][data-placement^=left]>.tippy-arrow:before{border-left-color:#fff}.tippy-box[data-theme~=light-border][data-placement^=left]>.tippy-arrow:after{border-left-color:rgba(0,8,16,.2);border-width:7px 0 7px 7px;left:17px;top:1px}.tippy-box[data-theme~=light-border][data-placement^=left]>.tippy-svg-arrow>svg{left:11px}.tippy-box[data-theme~=light-border][data-placement^=left]>.tippy-svg-arrow:after{left:12px}.tippy-box[data-theme~=light-border][data-placement^=right]>.tippy-arrow:before{border-right-color:#fff;right:16px}.tippy-box[data-theme~=light-border][data-placement^=right]>.tippy-arrow:after{border-width:7px 7px 7px 0;right:17px;top:1px;border-right-color:rgba(0,8,16,.2)}.tippy-box[data-theme~=light-border][data-placement^=right]>.tippy-svg-arrow>svg{right:11px}.tippy-box[data-theme~=light-border][data-placement^=right]>.tippy-svg-arrow:after{right:12px}.tippy-box[data-theme~=light-border]>.tippy-svg-arrow{fill:#fff}.tippy-box[data-theme~=light-border]>.tippy-svg-arrow:after{background-image:url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMCA2czEuNzk2LS4wMTMgNC42Ny0zLjYxNUM1Ljg1MS45IDYuOTMuMDA2IDggMGMxLjA3LS4wMDYgMi4xNDguODg3IDMuMzQzIDIuMzg1QzE0LjIzMyA2LjAwNSAxNiA2IDE2IDZIMHoiIGZpbGw9InJnYmEoMCwgOCwgMTYsIDAuMikiLz48L3N2Zz4=);background-size:16px 6px;width:16px;height:6px}</style>
-<link href="data:text/css,%2Etop%2Dright%7Bposition%3Aabsolute%3Btop%3A1em%3Bright%3A1em%7D%2Evisually%2Dhidden%7Bborder%3A0%3Bclip%3Arect%280%200%200%200%29%3Bheight%3Aauto%3Bmargin%3A0%3Boverflow%3Ahidden%3Bpadding%3A0%3Bposition%3Aabsolute%3Bwidth%3A1px%3Bwhite%2Dspace%3Anowrap%7D%2Ehidden%7Bdisplay%3Anone%20%21important%7D%2Ezindex%2Dbottom%7Bz%2Dindex%3A%2D1%20%21important%7Dfigure%2Efigure%7Bdisplay%3Ablock%7D%2Equarto%2Dlayout%2Dpanel%7Bmargin%2Dbottom%3A1em%7D%2Equarto%2Dlayout%2Dpanel%3Efigure%7Bwidth%3A100%25%7D%2Equarto%2Dlayout%2Dpanel%3Efigure%3Efigcaption%2C%2Equarto%2Dlayout%2Dpanel%3E%2Epanel%2Dcaption%7Bmargin%2Dtop%3A10pt%7D%2Equarto%2Dlayout%2Dpanel%3E%2Etable%2Dcaption%7Bmargin%2Dtop%3A0px%7D%2Etable%2Dcaption%20p%7Bmargin%2Dbottom%3A%2E5em%7D%2Equarto%2Dlayout%2Drow%7Bdisplay%3Aflex%3Bflex%2Ddirection%3Arow%3Balign%2Ditems%3Aflex%2Dstart%7D%2Equarto%2Dlayout%2Dvalign%2Dtop%7Balign%2Ditems%3Aflex%2Dstart%7D%2Equarto%2Dlayout%2Dvalign%2Dbottom%7Balign%2Ditems%3Aflex%2Dend%7D%2Equarto%2Dlayout%2Dvalign%2Dcenter%7Balign%2Ditems%3Acenter%7D%2Equarto%2Dlayout%2Dcell%7Bposition%3Arelative%3Bmargin%2Dright%3A20px%7D%2Equarto%2Dlayout%2Dcell%3Alast%2Dchild%7Bmargin%2Dright%3A0%7D%2Equarto%2Dlayout%2Dcell%20figure%2C%2Equarto%2Dlayout%2Dcell%3Ep%7Bmargin%3A%2E2em%7D%2Equarto%2Dlayout%2Dcell%20img%7Bmax%2Dwidth%3A100%25%7D%2Equarto%2Dlayout%2Dcell%20%2Ehtml%2Dwidget%7Bwidth%3A100%25%20%21important%7D%2Equarto%2Dlayout%2Dcell%20div%20figure%20p%7Bmargin%3A0%7D%2Equarto%2Dlayout%2Dcell%20figure%7Bdisplay%3Ablock%3Bmargin%2Dinline%2Dstart%3A0%3Bmargin%2Dinline%2Dend%3A0%7D%2Equarto%2Dlayout%2Dcell%20table%7Bdisplay%3Ainline%2Dtable%7D%2Equarto%2Dlayout%2Dcell%2Dsubref%20figcaption%2Cfigure%20%2Equarto%2Dlayout%2Drow%20figure%20figcaption%7Btext%2Dalign%3Acenter%3Bfont%2Dstyle%3Aitalic%7D%2Equarto%2Dfigure%7Bposition%3Arelative%3Bmargin%2Dbottom%3A1em%7D%2Equarto%2Dfigure%3Efigure%7Bwidth%3A100%25%3Bmargin%2Dbottom%3A0%7D%2Equarto%2Dfigure%2Dleft%3Efigure%3Ep%2C%2Equarto%2Dfigure%2Dleft%3Efigure%3Ediv%7Btext%2Dalign%3Aleft%7D%2Equarto%2Dfigure%2Dcenter%3Efigure%3Ep%2C%2Equarto%2Dfigure%2Dcenter%3Efigure%3Ediv%7Btext%2Dalign%3Acenter%7D%2Equarto%2Dfigure%2Dright%3Efigure%3Ep%2C%2Equarto%2Dfigure%2Dright%3Efigure%3Ediv%7Btext%2Dalign%3Aright%7D%2Equarto%2Dfigure%3Efigure%3Ediv%2Ecell%2Dannotation%2C%2Equarto%2Dfigure%3Efigure%3Ediv%20code%7Btext%2Dalign%3Aleft%7Dfigure%3Ep%3Aempty%7Bdisplay%3Anone%7Dfigure%3Ep%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A0%7Dfigure%3Efigcaption%2Equarto%2Dfloat%2Dcaption%2Dbottom%7Bmargin%2Dbottom%3A%2E5em%7Dfigure%3Efigcaption%2Equarto%2Dfloat%2Dcaption%2Dtop%7Bmargin%2Dtop%3A%2E5em%7Ddiv%5Bid%5E%3Dtbl%2D%5D%7Bposition%3Arelative%7D%2Equarto%2Dfigure%3E%2Eanchorjs%2Dlink%7Bposition%3Aabsolute%3Btop%3A%2E6em%3Bright%3A%2E5em%7Ddiv%5Bid%5E%3Dtbl%2D%5D%3E%2Eanchorjs%2Dlink%7Bposition%3Aabsolute%3Btop%3A%2E7em%3Bright%3A%2E3em%7D%2Equarto%2Dfigure%3Ahover%3E%2Eanchorjs%2Dlink%2Cdiv%5Bid%5E%3Dtbl%2D%5D%3Ahover%3E%2Eanchorjs%2Dlink%2Ch2%3Ahover%3E%2Eanchorjs%2Dlink%2Ch3%3Ahover%3E%2Eanchorjs%2Dlink%2Ch4%3Ahover%3E%2Eanchorjs%2Dlink%2Ch5%3Ahover%3E%2Eanchorjs%2Dlink%2Ch6%3Ahover%3E%2Eanchorjs%2Dlink%2C%2Ereveal%2Danchorjs%2Dlink%3E%2Eanchorjs%2Dlink%7Bopacity%3A1%7D%23title%2Dblock%2Dheader%7Bmargin%2Dblock%2Dend%3A1rem%3Bposition%3Arelative%3Bmargin%2Dtop%3A%2D1px%7D%23title%2Dblock%2Dheader%20%2Eabstract%7Bmargin%2Dblock%2Dstart%3A1rem%7D%23title%2Dblock%2Dheader%20%2Eabstract%20%2Eabstract%2Dtitle%7Bfont%2Dweight%3A600%7D%23title%2Dblock%2Dheader%20a%7Btext%2Ddecoration%3Anone%7D%23title%2Dblock%2Dheader%20%2Eauthor%2C%23title%2Dblock%2Dheader%20%2Edate%2C%23title%2Dblock%2Dheader%20%2Edoi%7Bmargin%2Dblock%2Dend%3A%2E2rem%7D%23title%2Dblock%2Dheader%20%2Equarto%2Dtitle%2Dblock%3Ediv%7Bdisplay%3Aflex%7D%23title%2Dblock%2Dheader%20%2Equarto%2Dtitle%2Dblock%3Ediv%3Eh1%7Bflex%2Dgrow%3A1%7D%23title%2Dblock%2Dheader%20%2Equarto%2Dtitle%2Dblock%3Ediv%3Ebutton%7Bflex%2Dshrink%3A0%3Bheight%3A2%2E25rem%3Bmargin%2Dtop%3A0%7Dtr%2Eheader%3Eth%3Ep%3Alast%2Dof%2Dtype%7Bmargin%2Dbottom%3A0px%7Dtable%2Ctable%2Etable%7Bmargin%2Dtop%3A%2E5rem%3Bmargin%2Dbottom%3A%2E5rem%7Dcaption%2C%2Etable%2Dcaption%7Bpadding%2Dtop%3A%2E5rem%3Bpadding%2Dbottom%3A%2E5rem%3Btext%2Dalign%3Acenter%7Dfigure%2Equarto%2Dfloat%2Dtbl%20figcaption%2Equarto%2Dfloat%2Dcaption%2Dtop%7Bmargin%2Dtop%3A%2E5rem%3Bmargin%2Dbottom%3A%2E25rem%3Btext%2Dalign%3Acenter%7Dfigure%2Equarto%2Dfloat%2Dtbl%20figcaption%2Equarto%2Dfloat%2Dcaption%2Dbottom%7Bpadding%2Dtop%3A%2E25rem%3Bmargin%2Dbottom%3A%2E5rem%3Btext%2Dalign%3Acenter%7D%2Eutterances%7Bmax%2Dwidth%3Anone%3Bmargin%2Dleft%3A%2D8px%7Diframe%7Bmargin%2Dbottom%3A1em%7Ddetails%7Bmargin%2Dbottom%3A1em%7Ddetails%5Bshow%5D%7Bmargin%2Dbottom%3A0%7Ddetails%3Esummary%7Bcolor%3A%236f6f6f%7Ddetails%3Esummary%3Ep%3Aonly%2Dchild%7Bdisplay%3Ainline%7Dpre%2EsourceCode%2Ccode%2EsourceCode%7Bposition%3Arelative%7Ddd%20code%3Anot%28%2EsourceCode%29%2Cp%20code%3Anot%28%2EsourceCode%29%7Bwhite%2Dspace%3Apre%2Dwrap%7Dcode%7Bwhite%2Dspace%3Apre%7D%40media%20print%7Bcode%7Bwhite%2Dspace%3Apre%2Dwrap%7D%7Dpre%3Ecode%7Bdisplay%3Ablock%7Dpre%3Ecode%2EsourceCode%7Bwhite%2Dspace%3Apre%7Dpre%3Ecode%2EsourceCode%3Espan%3Ea%3Afirst%2Dchild%3A%3Abefore%7Btext%2Ddecoration%3Anone%7Dpre%2Ecode%2Doverflow%2Dwrap%3Ecode%2EsourceCode%7Bwhite%2Dspace%3Apre%2Dwrap%7Dpre%2Ecode%2Doverflow%2Dscroll%3Ecode%2EsourceCode%7Bwhite%2Dspace%3Apre%7Dcode%20a%3Aany%2Dlink%7Bcolor%3Ainherit%3Btext%2Ddecoration%3Anone%7Dcode%20a%3Ahover%7Bcolor%3Ainherit%3Btext%2Ddecoration%3Aunderline%7Dul%2Etask%2Dlist%7Bpadding%2Dleft%3A1em%7D%5Bdata%2Dtippy%2Droot%5D%7Bdisplay%3Ainline%2Dblock%7D%2Etippy%2Dcontent%20%2Efootnote%2Dback%7Bdisplay%3Anone%7D%2Efootnote%2Dback%7Bmargin%2Dleft%3A%2E2em%7D%2Etippy%2Dcontent%7Boverflow%2Dx%3Aauto%7D%2Equarto%2Dembedded%2Dsource%2Dcode%7Bdisplay%3Anone%7D%2Equarto%2Dunresolved%2Dref%7Bfont%2Dweight%3A600%7D%2Equarto%2Dcover%2Dimage%7Bmax%2Dwidth%3A35%25%3Bfloat%3Aright%3Bmargin%2Dleft%3A30px%7D%2Ecell%2Doutput%2Ddisplay%20%2Ewidget%2Dsubarea%7Bmargin%2Dbottom%3A1em%7D%2Ecell%2Doutput%2Ddisplay%3Anot%28%2Eno%2Doverflow%2Dx%29%2C%2Eknitsql%2Dtable%3Anot%28%2Eno%2Doverflow%2Dx%29%7Boverflow%2Dx%3Aauto%7D%2Epanel%2Dinput%7Bmargin%2Dbottom%3A1em%7D%2Epanel%2Dinput%3Ediv%2C%2Epanel%2Dinput%3Ediv%3Ediv%7Bdisplay%3Ainline%2Dblock%3Bvertical%2Dalign%3Atop%3Bpadding%2Dright%3A12px%7D%2Epanel%2Dinput%3Ep%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%7D%2Elayout%2Dsidebar%7Bmargin%2Dbottom%3A1em%7D%2Elayout%2Dsidebar%20%2Etab%2Dcontent%7Bborder%3Anone%7D%2Etab%2Dcontent%3E%2Epage%2Dcolumns%2Eactive%7Bdisplay%3Agrid%7Ddiv%2EsourceCode%3Eiframe%7Bwidth%3A100%25%3Bheight%3A300px%3Bmargin%2Dbottom%3A%2D0%2E5em%7Da%7Btext%2Dunderline%2Doffset%3A3px%7D%2Ecallout%20pre%2EsourceCode%7Bpadding%2Dleft%3A0%7Ddiv%2Eansi%2Descaped%2Doutput%7Bfont%2Dfamily%3Amonospace%3Bdisplay%3Ablock%7D%2Eansi%2Dblack%2Dfg%7Bcolor%3A%233e424d%7D%2Eansi%2Dblack%2Dbg%7Bbackground%2Dcolor%3A%233e424d%7D%2Eansi%2Dblack%2Dintense%2Dblack%2C%2Eansi%2Dbright%2Dblack%2Dfg%7Bcolor%3A%23282c36%7D%2Eansi%2Dblack%2Dintense%2Dblack%2C%2Eansi%2Dbright%2Dblack%2Dbg%7Bbackground%2Dcolor%3A%23282c36%7D%2Eansi%2Dred%2Dfg%7Bcolor%3A%23e75c58%7D%2Eansi%2Dred%2Dbg%7Bbackground%2Dcolor%3A%23e75c58%7D%2Eansi%2Dred%2Dintense%2Dred%2C%2Eansi%2Dbright%2Dred%2Dfg%7Bcolor%3A%23b22b31%7D%2Eansi%2Dred%2Dintense%2Dred%2C%2Eansi%2Dbright%2Dred%2Dbg%7Bbackground%2Dcolor%3A%23b22b31%7D%2Eansi%2Dgreen%2Dfg%7Bcolor%3A%2300a250%7D%2Eansi%2Dgreen%2Dbg%7Bbackground%2Dcolor%3A%2300a250%7D%2Eansi%2Dgreen%2Dintense%2Dgreen%2C%2Eansi%2Dbright%2Dgreen%2Dfg%7Bcolor%3A%23007427%7D%2Eansi%2Dgreen%2Dintense%2Dgreen%2C%2Eansi%2Dbright%2Dgreen%2Dbg%7Bbackground%2Dcolor%3A%23007427%7D%2Eansi%2Dyellow%2Dfg%7Bcolor%3A%23ddb62b%7D%2Eansi%2Dyellow%2Dbg%7Bbackground%2Dcolor%3A%23ddb62b%7D%2Eansi%2Dyellow%2Dintense%2Dyellow%2C%2Eansi%2Dbright%2Dyellow%2Dfg%7Bcolor%3A%23b27d12%7D%2Eansi%2Dyellow%2Dintense%2Dyellow%2C%2Eansi%2Dbright%2Dyellow%2Dbg%7Bbackground%2Dcolor%3A%23b27d12%7D%2Eansi%2Dblue%2Dfg%7Bcolor%3A%23208ffb%7D%2Eansi%2Dblue%2Dbg%7Bbackground%2Dcolor%3A%23208ffb%7D%2Eansi%2Dblue%2Dintense%2Dblue%2C%2Eansi%2Dbright%2Dblue%2Dfg%7Bcolor%3A%230065ca%7D%2Eansi%2Dblue%2Dintense%2Dblue%2C%2Eansi%2Dbright%2Dblue%2Dbg%7Bbackground%2Dcolor%3A%230065ca%7D%2Eansi%2Dmagenta%2Dfg%7Bcolor%3A%23d160c4%7D%2Eansi%2Dmagenta%2Dbg%7Bbackground%2Dcolor%3A%23d160c4%7D%2Eansi%2Dmagenta%2Dintense%2Dmagenta%2C%2Eansi%2Dbright%2Dmagenta%2Dfg%7Bcolor%3A%23a03196%7D%2Eansi%2Dmagenta%2Dintense%2Dmagenta%2C%2Eansi%2Dbright%2Dmagenta%2Dbg%7Bbackground%2Dcolor%3A%23a03196%7D%2Eansi%2Dcyan%2Dfg%7Bcolor%3A%2360c6c8%7D%2Eansi%2Dcyan%2Dbg%7Bbackground%2Dcolor%3A%2360c6c8%7D%2Eansi%2Dcyan%2Dintense%2Dcyan%2C%2Eansi%2Dbright%2Dcyan%2Dfg%7Bcolor%3A%23258f8f%7D%2Eansi%2Dcyan%2Dintense%2Dcyan%2C%2Eansi%2Dbright%2Dcyan%2Dbg%7Bbackground%2Dcolor%3A%23258f8f%7D%2Eansi%2Dwhite%2Dfg%7Bcolor%3A%23c5c1b4%7D%2Eansi%2Dwhite%2Dbg%7Bbackground%2Dcolor%3A%23c5c1b4%7D%2Eansi%2Dwhite%2Dintense%2Dwhite%2C%2Eansi%2Dbright%2Dwhite%2Dfg%7Bcolor%3A%23a1a6b2%7D%2Eansi%2Dwhite%2Dintense%2Dwhite%2C%2Eansi%2Dbright%2Dwhite%2Dbg%7Bbackground%2Dcolor%3A%23a1a6b2%7D%2Eansi%2Ddefault%2Dinverse%2Dfg%7Bcolor%3A%23fff%7D%2Eansi%2Ddefault%2Dinverse%2Dbg%7Bbackground%2Dcolor%3A%23000%7D%2Eansi%2Dbold%7Bfont%2Dweight%3Abold%7D%2Eansi%2Dunderline%7Btext%2Ddecoration%3Aunderline%7D%3Aroot%7B%2D%2Dquarto%2Dbody%2Dbg%3A%20%23fff%3B%2D%2Dquarto%2Dbody%2Dcolor%3A%20%23222%3B%2D%2Dquarto%2Dtext%2Dmuted%3A%20%236f6f6f%3B%2D%2Dquarto%2Dborder%2Dcolor%3A%20%236f6f6f%3B%2D%2Dquarto%2Dborder%2Dwidth%3A%201px%3B%2D%2Dquarto%2Dborder%2Dradius%3A%204px%7Dtable%2Egt%5Ftable%7Bcolor%3Avar%28%2D%2Dquarto%2Dbody%2Dcolor%29%3Bfont%2Dsize%3A1em%3Bwidth%3A100%25%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bborder%2Dtop%2Dwidth%3Ainherit%3Bborder%2Dbottom%2Dwidth%3Ainherit%3Bborder%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%7Dtable%2Egt%5Ftable%20th%2Egt%5Fcolumn%5Fspanner%5Fouter%7Bcolor%3Avar%28%2D%2Dquarto%2Dbody%2Dcolor%29%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bborder%2Dtop%2Dwidth%3Ainherit%3Bborder%2Dbottom%2Dwidth%3Ainherit%3Bborder%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%7Dtable%2Egt%5Ftable%20th%2Egt%5Fcol%5Fheading%7Bcolor%3Avar%28%2D%2Dquarto%2Dbody%2Dcolor%29%3Bfont%2Dweight%3Abold%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%7Dtable%2Egt%5Ftable%20thead%2Egt%5Fcol%5Fheadings%7Bborder%2Dbottom%3A1px%20solid%20currentColor%3Bborder%2Dtop%2Dwidth%3Ainherit%3Bborder%2Dtop%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%7Dtable%2Egt%5Ftable%20thead%2Egt%5Fcol%5Fheadings%3Anot%28%3Afirst%2Dchild%29%7Bborder%2Dtop%2Dwidth%3A1px%3Bborder%2Dtop%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%7Dtable%2Egt%5Ftable%20td%2Egt%5Frow%7Bborder%2Dbottom%2Dwidth%3A1px%3Bborder%2Dbottom%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%3Bborder%2Dtop%2Dwidth%3A0px%7Dtable%2Egt%5Ftable%20tbody%2Egt%5Ftable%5Fbody%7Bborder%2Dtop%2Dwidth%3A1px%3Bborder%2Dbottom%2Dwidth%3A1px%3Bborder%2Dbottom%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%3Bborder%2Dtop%2Dcolor%3AcurrentColor%7Ddiv%2Ecolumns%7Bdisplay%3Ainitial%3Bgap%3Ainitial%7Ddiv%2Ecolumn%7Bdisplay%3Ainline%2Dblock%3Boverflow%2Dx%3Ainitial%3Bvertical%2Dalign%3Atop%3Bwidth%3A50%25%7D%2Ecode%2Dannotation%2Dtip%2Dcontent%7Bword%2Dwrap%3Abreak%2Dword%7D%2Ecode%2Dannotation%2Dcontainer%2Dhidden%7Bdisplay%3Anone%20%21important%7Ddl%2Ecode%2Dannotation%2Dcontainer%2Dgrid%7Bdisplay%3Agrid%3Bgrid%2Dtemplate%2Dcolumns%3Amin%2Dcontent%20auto%7Ddl%2Ecode%2Dannotation%2Dcontainer%2Dgrid%20dt%7Bgrid%2Dcolumn%3A1%7Ddl%2Ecode%2Dannotation%2Dcontainer%2Dgrid%20dd%7Bgrid%2Dcolumn%3A2%7Dpre%2EsourceCode%2Ecode%2Dannotation%2Dcode%7Bpadding%2Dright%3A0%7Dcode%2EsourceCode%20%2Ecode%2Dannotation%2Danchor%7Bz%2Dindex%3A100%3Bposition%3Arelative%3Bfloat%3Aright%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%7Dinput%5Btype%3Dcheckbox%5D%7Bmargin%2Dright%3A%2E5ch%7D%3Aroot%7B%2D%2Dmermaid%2Dbg%2Dcolor%3A%20%23fff%3B%2D%2Dmermaid%2Dedge%2Dcolor%3A%20%23999%3B%2D%2Dmermaid%2Dnode%2Dfg%2Dcolor%3A%20%23222%3B%2D%2Dmermaid%2Dfg%2Dcolor%3A%20%23222%3B%2D%2Dmermaid%2Dfg%2Dcolor%2D%2Dlighter%3A%20%233c3c3c%3B%2D%2Dmermaid%2Dfg%2Dcolor%2D%2Dlightest%3A%20%23555555%3B%2D%2Dmermaid%2Dfont%2Dfamily%3A%20sans%2Dserif%3B%2D%2Dmermaid%2Dlabel%2Dbg%2Dcolor%3A%20%23fff%3B%2D%2Dmermaid%2Dlabel%2Dfg%2Dcolor%3A%20%23468%3B%2D%2Dmermaid%2Dnode%2Dbg%2Dcolor%3A%20rgba%2868%2C%20102%2C%20136%2C%200%2E1%29%3B%2D%2Dmermaid%2Dnode%2Dfg%2Dcolor%3A%20%23222%7D%40media%20print%7B%3Aroot%7Bfont%2Dsize%3A11pt%7D%23quarto%2Dsidebar%2C%23TOC%2C%2Enav%2Dpage%7Bdisplay%3Anone%7D%2Epage%2Dcolumns%20%2Econtent%7Bgrid%2Dcolumn%2Dstart%3Apage%2Dstart%7D%2Efixed%2Dtop%7Bposition%3Arelative%7D%2Epanel%2Dcaption%2C%2Efigure%2Dcaption%2Cfigcaption%7Bcolor%3A%23666%7D%7D%2Ecode%2Dcopy%2Dbutton%7Bposition%3Aabsolute%3Btop%3A0%3Bright%3A0%3Bborder%3A0%3Bmargin%2Dtop%3A5px%3Bmargin%2Dright%3A5px%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bz%2Dindex%3A3%7D%2Ecode%2Dcopy%2Dbutton%3Afocus%7Boutline%3Anone%7D%2Ecode%2Dcopy%2Dbutton%2Dtooltip%7Bfont%2Dsize%3A%2E75em%7D%2Ecode%2Dcopy%2Dbutton%3E%2Ebi%3A%3Abefore%7Bdisplay%3Ainline%2Dblock%3Bheight%3A1rem%3Bwidth%3A1rem%3Bcontent%3A%22%22%3Bvertical%2Dalign%3A%2D0%2E125em%3Bbackground%2Dimage%3Aurl%28%27data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22rgb%28111%2C%20111%2C%20111%29%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4%201%2E5H3a2%202%200%200%200%2D2%202V14a2%202%200%200%200%202%202h10a2%202%200%200%200%202%2D2V3%2E5a2%202%200%200%200%2D2%2D2h%2D1v1h1a1%201%200%200%201%201%201V14a1%201%200%200%201%2D1%201H3a1%201%200%200%201%2D1%2D1V3%2E5a1%201%200%200%201%201%2D1h1v%2D1z%22%2F%3E%3Cpath%20d%3D%22M9%2E5%201a%2E5%2E5%200%200%201%20%2E5%2E5v1a%2E5%2E5%200%200%201%2D%2E5%2E5h%2D3a%2E5%2E5%200%200%201%2D%2E5%2D%2E5v%2D1a%2E5%2E5%200%200%201%20%2E5%2D%2E5h3zm%2D3%2D1A1%2E5%201%2E5%200%200%200%205%201%2E5v1A1%2E5%201%2E5%200%200%200%206%2E5%204h3A1%2E5%201%2E5%200%200%200%2011%202%2E5v%2D1A1%2E5%201%2E5%200%200%200%209%2E5%200h%2D3z%22%2F%3E%3C%2Fsvg%3E%27%29%3Bbackground%2Drepeat%3Ano%2Drepeat%3Bbackground%2Dsize%3A1rem%201rem%7D%2Ecode%2Dcopy%2Dbutton%2Dchecked%3E%2Ebi%3A%3Abefore%7Bbackground%2Dimage%3Aurl%28%27data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22rgb%28111%2C%20111%2C%20111%29%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M13%2E854%203%2E646a%2E5%2E5%200%200%201%200%20%2E708l%2D7%207a%2E5%2E5%200%200%201%2D%2E708%200l%2D3%2E5%2D3%2E5a%2E5%2E5%200%201%201%20%2E708%2D%2E708L6%2E5%2010%2E293l6%2E646%2D6%2E647a%2E5%2E5%200%200%201%20%2E708%200z%22%2F%3E%3C%2Fsvg%3E%27%29%7D%2Ecode%2Dcopy%2Dbutton%3Ahover%3E%2Ebi%3A%3Abefore%7Bbackground%2Dimage%3Aurl%28%27data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22rgb%2813%2C%20110%2C%20253%29%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4%201%2E5H3a2%202%200%200%200%2D2%202V14a2%202%200%200%200%202%202h10a2%202%200%200%200%202%2D2V3%2E5a2%202%200%200%200%2D2%2D2h%2D1v1h1a1%201%200%200%201%201%201V14a1%201%200%200%201%2D1%201H3a1%201%200%200%201%2D1%2D1V3%2E5a1%201%200%200%201%201%2D1h1v%2D1z%22%2F%3E%3Cpath%20d%3D%22M9%2E5%201a%2E5%2E5%200%200%201%20%2E5%2E5v1a%2E5%2E5%200%200%201%2D%2E5%2E5h%2D3a%2E5%2E5%200%200%201%2D%2E5%2D%2E5v%2D1a%2E5%2E5%200%200%201%20%2E5%2D%2E5h3zm%2D3%2D1A1%2E5%201%2E5%200%200%200%205%201%2E5v1A1%2E5%201%2E5%200%200%200%206%2E5%204h3A1%2E5%201%2E5%200%200%200%2011%202%2E5v%2D1A1%2E5%201%2E5%200%200%200%209%2E5%200h%2D3z%22%2F%3E%3C%2Fsvg%3E%27%29%7D%2Ecode%2Dcopy%2Dbutton%2Dchecked%3Ahover%3E%2Ebi%3A%3Abefore%7Bbackground%2Dimage%3Aurl%28%27data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22rgb%2813%2C%20110%2C%20253%29%22%20%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M13%2E854%203%2E646a%2E5%2E5%200%200%201%200%20%2E708l%2D7%207a%2E5%2E5%200%200%201%2D%2E708%200l%2D3%2E5%2D3%2E5a%2E5%2E5%200%201%201%20%2E708%2D%2E708L6%2E5%2010%2E293l6%2E646%2D6%2E647a%2E5%2E5%200%200%201%20%2E708%200z%22%2F%3E%3C%2Fsvg%3E%27%29%7D%2Epanel%2Dtabset%20%5Brole%3Dtablist%5D%7Bborder%2Dbottom%3A1px%20solid%20%23dee2e6%3Blist%2Dstyle%3Anone%3Bmargin%3A0%3Bpadding%3A0%3Bwidth%3A100%25%7D%2Epanel%2Dtabset%20%5Brole%3Dtablist%5D%20%2A%7B%2Dwebkit%2Dbox%2Dsizing%3Aborder%2Dbox%3Bbox%2Dsizing%3Aborder%2Dbox%7D%40media%28min%2Dwidth%3A%2030em%29%7B%2Epanel%2Dtabset%20%5Brole%3Dtablist%5D%20li%7Bdisplay%3Ainline%2Dblock%7D%7D%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%7Bborder%3A1px%20solid%20rgba%280%2C0%2C0%2C0%29%3Bborder%2Dtop%2Dcolor%3A%23dee2e6%3Bdisplay%3Ablock%3Bpadding%3A%2E5em%201em%3Btext%2Ddecoration%3Anone%7D%40media%28min%2Dwidth%3A%2030em%29%7B%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%7Bborder%2Dtop%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bdisplay%3Ainline%2Dblock%3Bmargin%2Dbottom%3A%2D1px%7D%7D%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%5Baria%2Dselected%3Dtrue%5D%7Bbackground%2Dcolor%3A%23dee2e6%7D%40media%28min%2Dwidth%3A%2030em%29%7B%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%5Baria%2Dselected%3Dtrue%5D%7Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bborder%3A1px%20solid%20%23dee2e6%3Bborder%2Dbottom%2Dcolor%3A%23fff%7D%7D%40media%28min%2Dwidth%3A%2030em%29%7B%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%3Ahover%3Anot%28%5Baria%2Dselected%3Dtrue%5D%29%7Bborder%3A1px%20solid%20%23dee2e6%7D%7D%2Eimg%2Dfluid%7Bmax%2Dwidth%3A100%25%3Bheight%3Aauto%7D%3Aroot%7B%2D%2Dquarto%2Dscss%2Dexport%2Dbody%2Dbg%3A%20%23fff%3B%2D%2Dquarto%2Dscss%2Dexport%2Dbody%2Dcolor%3A%20%23222%3B%2D%2Dquarto%2Dscss%2Dexport%2Dtext%2Dmuted%3A%20%236f6f6f%3B%2D%2Dquarto%2Dscss%2Dexport%2Dborder%2Dcolor%3A%20%236f6f6f%3B%2D%2Dquarto%2Dscss%2Dexport%2Dtable%2Dborder%2Dcolor%3A%20%236f6f6f%3B%2D%2Dquarto%2Dscss%2Dexport%2Dbtn%2Dcode%2Dcopy%2Dcolor%3A%20%236f6f6f%3B%2D%2Dquarto%2Dscss%2Dexport%2Dbtn%2Dcode%2Dcopy%2Dcolor%2Dactive%3A%20%230d6efd%3B%2D%2Dquarto%2Dscss%2Dexport%2Dprimary%3A%20%23468%3B%2D%2Dquarto%2Dscss%2Dexport%2Dsecondary%3A%20%23999%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dbg%2Dcolor%3A%20%23fff%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dedge%2Dcolor%3A%20%23999%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dnode%2Dfg%2Dcolor%3A%20%23222%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dfg%2Dcolor%3A%20%23222%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dfg%2Dcolor%2D%2Dlighter%3A%20%233c3c3c%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dfg%2Dcolor%2D%2Dlightest%3A%20%23555555%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dlabel%2Dbg%2Dcolor%3A%20%23fff%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dlabel%2Dfg%2Dcolor%3A%20%23468%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dnode%2Dbg%2Dcolor%3A%20rgba%2868%2C%20102%2C%20136%2C%200%2E1%29%3B%2D%2Dquarto%2Dscss%2Dexport%2Dtabset%2Dborder%2Dcolor%3A%20rgb%28222%2C%20226%2C%20230%29%7D" rel="stylesheet" append-hash="true" data-mode="light">
-<link href="data:text/css,%0A%3Aroot%20%7B%0A%2D%2Dquarto%2Dhl%2Dal%2Dcolor%3A%20%23ef2929%3B%0A%2D%2Dquarto%2Dhl%2Dan%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dat%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Dbn%2Dcolor%3A%20%230000cf%3B%0A%2D%2Dquarto%2Dhl%2Dch%2Dcolor%3A%20%234e9a06%3B%0A%2D%2Dquarto%2Dhl%2Dco%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dcv%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dcn%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dcf%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Ddt%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Ddv%2Dcolor%3A%20%230000cf%3B%0A%2D%2Dquarto%2Dhl%2Ddo%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Der%2Dcolor%3A%20%23a40000%3B%0A%2D%2Dquarto%2Dhl%2Dex%2Dcolor%3A%20inherit%3B%0A%2D%2Dquarto%2Dhl%2Dfl%2Dcolor%3A%20%230000cf%3B%0A%2D%2Dquarto%2Dhl%2Dfu%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Dim%2Dcolor%3A%20inherit%3B%0A%2D%2Dquarto%2Dhl%2Din%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dkw%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Dop%2Dcolor%3A%20%23ce5c00%3B%0A%2D%2Dquarto%2Dhl%2Dot%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dpp%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dsc%2Dcolor%3A%20%23ce5c00%3B%0A%2D%2Dquarto%2Dhl%2Dss%2Dcolor%3A%20%234e9a06%3B%0A%2D%2Dquarto%2Dhl%2Dst%2Dcolor%3A%20%234e9a06%3B%0A%2D%2Dquarto%2Dhl%2Dva%2Dcolor%3A%20%23000000%3B%0A%2D%2Dquarto%2Dhl%2Dvs%2Dcolor%3A%20%234e9a06%3B%0A%2D%2Dquarto%2Dhl%2Dwa%2Dcolor%3A%20%238f5902%3B%0A%7D%0A%0A%3Aroot%20%7B%0A%2D%2Dquarto%2Dfont%2Dmonospace%3A%20SFMono%2DRegular%2C%20Menlo%2C%20Monaco%2C%20Consolas%2C%20%22Liberation%20Mono%22%2C%20%22Courier%20New%22%2C%20monospace%3B%0A%7D%0Acode%20span%2Eal%20%7B%0Acolor%3A%20%23ef2929%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Ean%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0Acode%20span%2Eat%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Ebn%20%7B%0Acolor%3A%20%230000cf%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Ech%20%7B%0Acolor%3A%20%234e9a06%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Eco%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0Acode%20span%2Ecv%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0Acode%20span%2Ecn%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Ecf%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Edt%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Edv%20%7B%0Acolor%3A%20%230000cf%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Edo%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0Acode%20span%2Eer%20%7B%0Acolor%3A%20%23a40000%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Eex%20%7B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Efl%20%7B%0Acolor%3A%20%230000cf%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Efu%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Eim%20%7B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Ein%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0Acode%20span%2Ekw%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Eop%20%7B%0Acolor%3A%20%23ce5c00%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Eot%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Epp%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0Acode%20span%2Esc%20%7B%0Acolor%3A%20%23ce5c00%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Ess%20%7B%0Acolor%3A%20%234e9a06%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Est%20%7B%0Acolor%3A%20%234e9a06%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Eva%20%7B%0Acolor%3A%20%23000000%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Evs%20%7B%0Acolor%3A%20%234e9a06%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0Acode%20span%2Ewa%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%2Eprevent%2Dinlining%20%7B%0Acontent%3A%20%22%3C%2F%22%3B%0A%7D%0A%0A" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="data:text/css,%2Etop%2Dright%7Bposition%3Aabsolute%3Btop%3A1em%3Bright%3A1em%7D%2Evisually%2Dhidden%7Bborder%3A0%3Bclip%3Arect%280%200%200%200%29%3Bheight%3Aauto%3Bmargin%3A0%3Boverflow%3Ahidden%3Bpadding%3A0%3Bposition%3Aabsolute%3Bwidth%3A1px%3Bwhite%2Dspace%3Anowrap%7D%2Ehidden%7Bdisplay%3Anone%20%21important%7D%2Ezindex%2Dbottom%7Bz%2Dindex%3A%2D1%20%21important%7Dfigure%2Efigure%7Bdisplay%3Ablock%7D%2Equarto%2Dlayout%2Dpanel%7Bmargin%2Dbottom%3A1em%7D%2Equarto%2Dlayout%2Dpanel%3Efigure%7Bwidth%3A100%25%7D%2Equarto%2Dlayout%2Dpanel%3Efigure%3Efigcaption%2C%2Equarto%2Dlayout%2Dpanel%3E%2Epanel%2Dcaption%7Bmargin%2Dtop%3A10pt%7D%2Equarto%2Dlayout%2Dpanel%3E%2Etable%2Dcaption%7Bmargin%2Dtop%3A0px%7D%2Etable%2Dcaption%20p%7Bmargin%2Dbottom%3A%2E5em%7D%2Equarto%2Dlayout%2Drow%7Bdisplay%3Aflex%3Bflex%2Ddirection%3Arow%3Balign%2Ditems%3Aflex%2Dstart%7D%2Equarto%2Dlayout%2Dvalign%2Dtop%7Balign%2Ditems%3Aflex%2Dstart%7D%2Equarto%2Dlayout%2Dvalign%2Dbottom%7Balign%2Ditems%3Aflex%2Dend%7D%2Equarto%2Dlayout%2Dvalign%2Dcenter%7Balign%2Ditems%3Acenter%7D%2Equarto%2Dlayout%2Dcell%7Bposition%3Arelative%3Bmargin%2Dright%3A20px%7D%2Equarto%2Dlayout%2Dcell%3Alast%2Dchild%7Bmargin%2Dright%3A0%7D%2Equarto%2Dlayout%2Dcell%20figure%2C%2Equarto%2Dlayout%2Dcell%3Ep%7Bmargin%3A%2E2em%7D%2Equarto%2Dlayout%2Dcell%20img%7Bmax%2Dwidth%3A100%25%7D%2Equarto%2Dlayout%2Dcell%20%2Ehtml%2Dwidget%7Bwidth%3A100%25%20%21important%7D%2Equarto%2Dlayout%2Dcell%20div%20figure%20p%7Bmargin%3A0%7D%2Equarto%2Dlayout%2Dcell%20figure%7Bdisplay%3Ablock%3Bmargin%2Dinline%2Dstart%3A0%3Bmargin%2Dinline%2Dend%3A0%7D%2Equarto%2Dlayout%2Dcell%20table%7Bdisplay%3Ainline%2Dtable%7D%2Equarto%2Dlayout%2Dcell%2Dsubref%20figcaption%2Cfigure%20%2Equarto%2Dlayout%2Drow%20figure%20figcaption%7Btext%2Dalign%3Acenter%3Bfont%2Dstyle%3Aitalic%7D%2Equarto%2Dfigure%7Bposition%3Arelative%3Bmargin%2Dbottom%3A1em%7D%2Equarto%2Dfigure%3Efigure%7Bwidth%3A100%25%3Bmargin%2Dbottom%3A0%7D%2Equarto%2Dfigure%2Dleft%3Efigure%3Ep%2C%2Equarto%2Dfigure%2Dleft%3Efigure%3Ediv%7Btext%2Dalign%3Aleft%7D%2Equarto%2Dfigure%2Dcenter%3Efigure%3Ep%2C%2Equarto%2Dfigure%2Dcenter%3Efigure%3Ediv%7Btext%2Dalign%3Acenter%7D%2Equarto%2Dfigure%2Dright%3Efigure%3Ep%2C%2Equarto%2Dfigure%2Dright%3Efigure%3Ediv%7Btext%2Dalign%3Aright%7D%2Equarto%2Dfigure%3Efigure%3Ediv%2Ecell%2Dannotation%2C%2Equarto%2Dfigure%3Efigure%3Ediv%20code%7Btext%2Dalign%3Aleft%7Dfigure%3Ep%3Aempty%7Bdisplay%3Anone%7Dfigure%3Ep%3Afirst%2Dchild%7Bmargin%2Dtop%3A0%3Bmargin%2Dbottom%3A0%7Dfigure%3Efigcaption%2Equarto%2Dfloat%2Dcaption%2Dbottom%7Bmargin%2Dbottom%3A%2E5em%7Dfigure%3Efigcaption%2Equarto%2Dfloat%2Dcaption%2Dtop%7Bmargin%2Dtop%3A%2E5em%7Ddiv%5Bid%5E%3Dtbl%2D%5D%7Bposition%3Arelative%7D%2Equarto%2Dfigure%3E%2Eanchorjs%2Dlink%7Bposition%3Aabsolute%3Btop%3A%2E6em%3Bright%3A%2E5em%7Ddiv%5Bid%5E%3Dtbl%2D%5D%3E%2Eanchorjs%2Dlink%7Bposition%3Aabsolute%3Btop%3A%2E7em%3Bright%3A%2E3em%7D%2Equarto%2Dfigure%3Ahover%3E%2Eanchorjs%2Dlink%2Cdiv%5Bid%5E%3Dtbl%2D%5D%3Ahover%3E%2Eanchorjs%2Dlink%2Ch2%3Ahover%3E%2Eanchorjs%2Dlink%2Ch3%3Ahover%3E%2Eanchorjs%2Dlink%2Ch4%3Ahover%3E%2Eanchorjs%2Dlink%2Ch5%3Ahover%3E%2Eanchorjs%2Dlink%2Ch6%3Ahover%3E%2Eanchorjs%2Dlink%2C%2Ereveal%2Danchorjs%2Dlink%3E%2Eanchorjs%2Dlink%7Bopacity%3A1%7D%23title%2Dblock%2Dheader%7Bmargin%2Dblock%2Dend%3A1rem%3Bposition%3Arelative%3Bmargin%2Dtop%3A%2D1px%7D%23title%2Dblock%2Dheader%20%2Eabstract%7Bmargin%2Dblock%2Dstart%3A1rem%7D%23title%2Dblock%2Dheader%20%2Eabstract%20%2Eabstract%2Dtitle%7Bfont%2Dweight%3A600%7D%23title%2Dblock%2Dheader%20a%7Btext%2Ddecoration%3Anone%7D%23title%2Dblock%2Dheader%20%2Eauthor%2C%23title%2Dblock%2Dheader%20%2Edate%2C%23title%2Dblock%2Dheader%20%2Edoi%7Bmargin%2Dblock%2Dend%3A%2E2rem%7D%23title%2Dblock%2Dheader%20%2Equarto%2Dtitle%2Dblock%3Ediv%7Bdisplay%3Aflex%7D%23title%2Dblock%2Dheader%20%2Equarto%2Dtitle%2Dblock%3Ediv%3Eh1%7Bflex%2Dgrow%3A1%7D%23title%2Dblock%2Dheader%20%2Equarto%2Dtitle%2Dblock%3Ediv%3Ebutton%7Bflex%2Dshrink%3A0%3Bheight%3A2%2E25rem%3Bmargin%2Dtop%3A0%7Dtr%2Eheader%3Eth%3Ep%3Alast%2Dof%2Dtype%7Bmargin%2Dbottom%3A0px%7Dtable%2Ctable%2Etable%7Bmargin%2Dtop%3A%2E5rem%3Bmargin%2Dbottom%3A%2E5rem%7Dcaption%2C%2Etable%2Dcaption%7Bpadding%2Dtop%3A%2E5rem%3Bpadding%2Dbottom%3A%2E5rem%3Btext%2Dalign%3Acenter%7Dfigure%2Equarto%2Dfloat%2Dtbl%20figcaption%2Equarto%2Dfloat%2Dcaption%2Dtop%7Bmargin%2Dtop%3A%2E5rem%3Bmargin%2Dbottom%3A%2E25rem%3Btext%2Dalign%3Acenter%7Dfigure%2Equarto%2Dfloat%2Dtbl%20figcaption%2Equarto%2Dfloat%2Dcaption%2Dbottom%7Bpadding%2Dtop%3A%2E25rem%3Bmargin%2Dbottom%3A%2E5rem%3Btext%2Dalign%3Acenter%7D%2Eutterances%7Bmax%2Dwidth%3Anone%3Bmargin%2Dleft%3A%2D8px%7Diframe%7Bmargin%2Dbottom%3A1em%7Ddetails%7Bmargin%2Dbottom%3A1em%7Ddetails%5Bshow%5D%7Bmargin%2Dbottom%3A0%7Ddetails%3Esummary%7Bcolor%3Argb%28110%2E5%2C110%2E5%2C110%2E5%29%7Ddetails%3Esummary%3Ep%3Aonly%2Dchild%7Bdisplay%3Ainline%7Ddiv%2Ecode%2Dcopy%2Douter%2Dscaffold%7Bposition%3Arelative%7Ddd%20code%3Anot%28%2EsourceCode%29%2Cp%20code%3Anot%28%2EsourceCode%29%7Bwhite%2Dspace%3Apre%2Dwrap%7Dcode%7Bwhite%2Dspace%3Apre%7D%40media%20print%7Bcode%7Bwhite%2Dspace%3Apre%2Dwrap%7D%7Dpre%3Ecode%7Bdisplay%3Ablock%7Dpre%3Ecode%2EsourceCode%7Bwhite%2Dspace%3Apre%7Dpre%3Ecode%2EsourceCode%3Espan%3Ea%3Afirst%2Dchild%3A%3Abefore%7Btext%2Ddecoration%3Anone%7Dpre%2Ecode%2Doverflow%2Dwrap%3Ecode%2EsourceCode%7Bwhite%2Dspace%3Apre%2Dwrap%7Dpre%2Ecode%2Doverflow%2Dscroll%3Ecode%2EsourceCode%7Bwhite%2Dspace%3Apre%7Dcode%20a%3Aany%2Dlink%7Bcolor%3Ainherit%3Btext%2Ddecoration%3Anone%7Dcode%20a%3Ahover%7Bcolor%3Ainherit%3Btext%2Ddecoration%3Aunderline%7Dul%2Etask%2Dlist%7Bpadding%2Dleft%3A1em%7D%5Bdata%2Dtippy%2Droot%5D%7Bdisplay%3Ainline%2Dblock%7D%2Etippy%2Dcontent%20%2Efootnote%2Dback%7Bdisplay%3Anone%7D%2Efootnote%2Dback%7Bmargin%2Dleft%3A%2E2em%7D%2Etippy%2Dcontent%7Boverflow%2Dx%3Aauto%7D%2Equarto%2Dembedded%2Dsource%2Dcode%7Bdisplay%3Anone%7D%2Equarto%2Dunresolved%2Dref%7Bfont%2Dweight%3A600%7D%2Equarto%2Dcover%2Dimage%7Bmax%2Dwidth%3A35%25%3Bfloat%3Aright%3Bmargin%2Dleft%3A30px%7D%2Ecell%2Doutput%2Ddisplay%20%2Ewidget%2Dsubarea%7Bmargin%2Dbottom%3A1em%7D%2Ecell%2Doutput%2Ddisplay%3Anot%28%2Eno%2Doverflow%2Dx%29%2C%2Eknitsql%2Dtable%3Anot%28%2Eno%2Doverflow%2Dx%29%7Boverflow%2Dx%3Aauto%7D%2Epanel%2Dinput%7Bmargin%2Dbottom%3A1em%7D%2Epanel%2Dinput%3Ediv%2C%2Epanel%2Dinput%3Ediv%3Ediv%7Bdisplay%3Ainline%2Dblock%3Bvertical%2Dalign%3Atop%3Bpadding%2Dright%3A12px%7D%2Epanel%2Dinput%3Ep%3Alast%2Dchild%7Bmargin%2Dbottom%3A0%7D%2Elayout%2Dsidebar%7Bmargin%2Dbottom%3A1em%7D%2Elayout%2Dsidebar%20%2Etab%2Dcontent%7Bborder%3Anone%7D%2Etab%2Dcontent%3E%2Epage%2Dcolumns%2Eactive%7Bdisplay%3Agrid%7Ddiv%2EsourceCode%3Eiframe%7Bwidth%3A100%25%3Bheight%3A300px%3Bmargin%2Dbottom%3A%2D0%2E5em%7Da%7Btext%2Dunderline%2Doffset%3A3px%7D%2Ecallout%20pre%2EsourceCode%7Bpadding%2Dleft%3A0%7Ddiv%2Eansi%2Descaped%2Doutput%7Bfont%2Dfamily%3Amonospace%3Bdisplay%3Ablock%7D%2Eansi%2Dblack%2Dfg%7Bcolor%3A%233e424d%7D%2Eansi%2Dblack%2Dbg%7Bbackground%2Dcolor%3A%233e424d%7D%2Eansi%2Dblack%2Dintense%2Dblack%2C%2Eansi%2Dbright%2Dblack%2Dfg%7Bcolor%3A%23282c36%7D%2Eansi%2Dblack%2Dintense%2Dblack%2C%2Eansi%2Dbright%2Dblack%2Dbg%7Bbackground%2Dcolor%3A%23282c36%7D%2Eansi%2Dred%2Dfg%7Bcolor%3A%23e75c58%7D%2Eansi%2Dred%2Dbg%7Bbackground%2Dcolor%3A%23e75c58%7D%2Eansi%2Dred%2Dintense%2Dred%2C%2Eansi%2Dbright%2Dred%2Dfg%7Bcolor%3A%23b22b31%7D%2Eansi%2Dred%2Dintense%2Dred%2C%2Eansi%2Dbright%2Dred%2Dbg%7Bbackground%2Dcolor%3A%23b22b31%7D%2Eansi%2Dgreen%2Dfg%7Bcolor%3A%2300a250%7D%2Eansi%2Dgreen%2Dbg%7Bbackground%2Dcolor%3A%2300a250%7D%2Eansi%2Dgreen%2Dintense%2Dgreen%2C%2Eansi%2Dbright%2Dgreen%2Dfg%7Bcolor%3A%23007427%7D%2Eansi%2Dgreen%2Dintense%2Dgreen%2C%2Eansi%2Dbright%2Dgreen%2Dbg%7Bbackground%2Dcolor%3A%23007427%7D%2Eansi%2Dyellow%2Dfg%7Bcolor%3A%23ddb62b%7D%2Eansi%2Dyellow%2Dbg%7Bbackground%2Dcolor%3A%23ddb62b%7D%2Eansi%2Dyellow%2Dintense%2Dyellow%2C%2Eansi%2Dbright%2Dyellow%2Dfg%7Bcolor%3A%23b27d12%7D%2Eansi%2Dyellow%2Dintense%2Dyellow%2C%2Eansi%2Dbright%2Dyellow%2Dbg%7Bbackground%2Dcolor%3A%23b27d12%7D%2Eansi%2Dblue%2Dfg%7Bcolor%3A%23208ffb%7D%2Eansi%2Dblue%2Dbg%7Bbackground%2Dcolor%3A%23208ffb%7D%2Eansi%2Dblue%2Dintense%2Dblue%2C%2Eansi%2Dbright%2Dblue%2Dfg%7Bcolor%3A%230065ca%7D%2Eansi%2Dblue%2Dintense%2Dblue%2C%2Eansi%2Dbright%2Dblue%2Dbg%7Bbackground%2Dcolor%3A%230065ca%7D%2Eansi%2Dmagenta%2Dfg%7Bcolor%3A%23d160c4%7D%2Eansi%2Dmagenta%2Dbg%7Bbackground%2Dcolor%3A%23d160c4%7D%2Eansi%2Dmagenta%2Dintense%2Dmagenta%2C%2Eansi%2Dbright%2Dmagenta%2Dfg%7Bcolor%3A%23a03196%7D%2Eansi%2Dmagenta%2Dintense%2Dmagenta%2C%2Eansi%2Dbright%2Dmagenta%2Dbg%7Bbackground%2Dcolor%3A%23a03196%7D%2Eansi%2Dcyan%2Dfg%7Bcolor%3A%2360c6c8%7D%2Eansi%2Dcyan%2Dbg%7Bbackground%2Dcolor%3A%2360c6c8%7D%2Eansi%2Dcyan%2Dintense%2Dcyan%2C%2Eansi%2Dbright%2Dcyan%2Dfg%7Bcolor%3A%23258f8f%7D%2Eansi%2Dcyan%2Dintense%2Dcyan%2C%2Eansi%2Dbright%2Dcyan%2Dbg%7Bbackground%2Dcolor%3A%23258f8f%7D%2Eansi%2Dwhite%2Dfg%7Bcolor%3A%23c5c1b4%7D%2Eansi%2Dwhite%2Dbg%7Bbackground%2Dcolor%3A%23c5c1b4%7D%2Eansi%2Dwhite%2Dintense%2Dwhite%2C%2Eansi%2Dbright%2Dwhite%2Dfg%7Bcolor%3A%23a1a6b2%7D%2Eansi%2Dwhite%2Dintense%2Dwhite%2C%2Eansi%2Dbright%2Dwhite%2Dbg%7Bbackground%2Dcolor%3A%23a1a6b2%7D%2Eansi%2Ddefault%2Dinverse%2Dfg%7Bcolor%3A%23fff%7D%2Eansi%2Ddefault%2Dinverse%2Dbg%7Bbackground%2Dcolor%3A%23000%7D%2Eansi%2Dbold%7Bfont%2Dweight%3Abold%7D%2Eansi%2Dunderline%7Btext%2Ddecoration%3Aunderline%7D%3Aroot%7B%2D%2Dquarto%2Dbody%2Dbg%3A%20%23fff%3B%2D%2Dquarto%2Dbody%2Dcolor%3A%20%23222%3B%2D%2Dquarto%2Dtext%2Dmuted%3A%20rgb%28110%2E5%2C%20110%2E5%2C%20110%2E5%29%3B%2D%2Dquarto%2Dborder%2Dcolor%3A%20rgb%28110%2E5%2C%20110%2E5%2C%20110%2E5%29%3B%2D%2Dquarto%2Dborder%2Dwidth%3A%201px%3B%2D%2Dquarto%2Dborder%2Dradius%3A%204px%7Dtable%2Egt%5Ftable%7Bcolor%3Avar%28%2D%2Dquarto%2Dbody%2Dcolor%29%3Bfont%2Dsize%3A1em%3Bwidth%3A100%25%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bborder%2Dtop%2Dwidth%3Ainherit%3Bborder%2Dbottom%2Dwidth%3Ainherit%3Bborder%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%7Dtable%2Egt%5Ftable%20th%2Egt%5Fcolumn%5Fspanner%5Fouter%7Bcolor%3Avar%28%2D%2Dquarto%2Dbody%2Dcolor%29%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bborder%2Dtop%2Dwidth%3Ainherit%3Bborder%2Dbottom%2Dwidth%3Ainherit%3Bborder%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%7Dtable%2Egt%5Ftable%20th%2Egt%5Fcol%5Fheading%7Bcolor%3Avar%28%2D%2Dquarto%2Dbody%2Dcolor%29%3Bfont%2Dweight%3Abold%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%7Dtable%2Egt%5Ftable%20thead%2Egt%5Fcol%5Fheadings%7Bborder%2Dbottom%3A1px%20solid%20currentColor%3Bborder%2Dtop%2Dwidth%3Ainherit%3Bborder%2Dtop%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%7Dtable%2Egt%5Ftable%20thead%2Egt%5Fcol%5Fheadings%3Anot%28%3Afirst%2Dchild%29%7Bborder%2Dtop%2Dwidth%3A1px%3Bborder%2Dtop%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%7Dtable%2Egt%5Ftable%20td%2Egt%5Frow%7Bborder%2Dbottom%2Dwidth%3A1px%3Bborder%2Dbottom%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%3Bborder%2Dtop%2Dwidth%3A0px%7Dtable%2Egt%5Ftable%20tbody%2Egt%5Ftable%5Fbody%7Bborder%2Dtop%2Dwidth%3A1px%3Bborder%2Dbottom%2Dwidth%3A1px%3Bborder%2Dbottom%2Dcolor%3Avar%28%2D%2Dquarto%2Dborder%2Dcolor%29%3Bborder%2Dtop%2Dcolor%3AcurrentColor%7Ddiv%2Ecolumns%7Bdisplay%3Ainitial%3Bgap%3Ainitial%7Ddiv%2Ecolumn%7Bdisplay%3Ainline%2Dblock%3Boverflow%2Dx%3Ainitial%3Bvertical%2Dalign%3Atop%3Bwidth%3A50%25%7D%2Ecode%2Dannotation%2Dtip%2Dcontent%7Bword%2Dwrap%3Abreak%2Dword%7D%2Ecode%2Dannotation%2Dcontainer%2Dhidden%7Bdisplay%3Anone%20%21important%7Ddl%2Ecode%2Dannotation%2Dcontainer%2Dgrid%7Bdisplay%3Agrid%3Bgrid%2Dtemplate%2Dcolumns%3Amin%2Dcontent%20auto%7Ddl%2Ecode%2Dannotation%2Dcontainer%2Dgrid%20dt%7Bgrid%2Dcolumn%3A1%7Ddl%2Ecode%2Dannotation%2Dcontainer%2Dgrid%20dd%7Bgrid%2Dcolumn%3A2%7Dpre%2EsourceCode%2Ecode%2Dannotation%2Dcode%7Bpadding%2Dright%3A0%7Dcode%2EsourceCode%20%2Ecode%2Dannotation%2Danchor%7Bz%2Dindex%3A100%3Bposition%3Arelative%3Bfloat%3Aright%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%7Dinput%5Btype%3Dcheckbox%5D%7Bmargin%2Dright%3A%2E5ch%7D%3Aroot%7B%2D%2Dmermaid%2Dbg%2Dcolor%3A%20%23fff%3B%2D%2Dmermaid%2Dedge%2Dcolor%3A%20%23999%3B%2D%2Dmermaid%2Dnode%2Dfg%2Dcolor%3A%20%23222%3B%2D%2Dmermaid%2Dfg%2Dcolor%3A%20%23222%3B%2D%2Dmermaid%2Dfg%2Dcolor%2D%2Dlighter%3A%20rgb%2859%2E5%2C%2059%2E5%2C%2059%2E5%29%3B%2D%2Dmermaid%2Dfg%2Dcolor%2D%2Dlightest%3A%20%23555555%3B%2D%2Dmermaid%2Dfont%2Dfamily%3A%20sans%2Dserif%3B%2D%2Dmermaid%2Dlabel%2Dbg%2Dcolor%3A%20%23fff%3B%2D%2Dmermaid%2Dlabel%2Dfg%2Dcolor%3A%20%23468%3B%2D%2Dmermaid%2Dnode%2Dbg%2Dcolor%3A%20rgba%2868%2C%20102%2C%20136%2C%200%2E1%29%3B%2D%2Dmermaid%2Dnode%2Dfg%2Dcolor%3A%20%23222%7D%40media%20print%7B%3Aroot%7Bfont%2Dsize%3A11pt%7D%23quarto%2Dsidebar%2C%23TOC%2C%2Enav%2Dpage%7Bdisplay%3Anone%7D%2Epage%2Dcolumns%20%2Econtent%7Bgrid%2Dcolumn%2Dstart%3Apage%2Dstart%7D%2Efixed%2Dtop%7Bposition%3Arelative%7D%2Epanel%2Dcaption%2C%2Efigure%2Dcaption%2Cfigcaption%7Bcolor%3A%23666%7D%7Dbody%2Equarto%2Dlight%20%2Edark%2Dcontent%7Bdisplay%3Anone%20%21important%7Dbody%2Equarto%2Ddark%20%2Elight%2Dcontent%7Bdisplay%3Anone%20%21important%7D%2Ecode%2Dcopy%2Dbutton%7Bposition%3Aabsolute%3Btop%3A0%3Bright%3A0%3Bborder%3A0%3Bmargin%2Dtop%3A5px%3Bmargin%2Dright%3A5px%3Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bz%2Dindex%3A3%7D%2Ecode%2Dcopy%2Dbutton%2Dtooltip%7Bfont%2Dsize%3A%2E75em%7D%2Ecode%2Dcopy%2Dbutton%3E%2Ebi%3A%3Abefore%7Bdisplay%3Ainline%2Dblock%3Bheight%3A1rem%3Bwidth%3A1rem%3Bcontent%3A%22%22%3Bvertical%2Dalign%3A%2D0%2E125em%3Bbackground%2Dimage%3Aurl%28%27data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22rgb%28111%2C%20111%2C%20111%29%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4%201%2E5H3a2%202%200%200%200%2D2%202V14a2%202%200%200%200%202%202h10a2%202%200%200%200%202%2D2V3%2E5a2%202%200%200%200%2D2%2D2h%2D1v1h1a1%201%200%200%201%201%201V14a1%201%200%200%201%2D1%201H3a1%201%200%200%201%2D1%2D1V3%2E5a1%201%200%200%201%201%2D1h1v%2D1z%22%2F%3E%3Cpath%20d%3D%22M9%2E5%201a%2E5%2E5%200%200%201%20%2E5%2E5v1a%2E5%2E5%200%200%201%2D%2E5%2E5h%2D3a%2E5%2E5%200%200%201%2D%2E5%2D%2E5v%2D1a%2E5%2E5%200%200%201%20%2E5%2D%2E5h3zm%2D3%2D1A1%2E5%201%2E5%200%200%200%205%201%2E5v1A1%2E5%201%2E5%200%200%200%206%2E5%204h3A1%2E5%201%2E5%200%200%200%2011%202%2E5v%2D1A1%2E5%201%2E5%200%200%200%209%2E5%200h%2D3z%22%2F%3E%3C%2Fsvg%3E%27%29%3Bbackground%2Drepeat%3Ano%2Drepeat%3Bbackground%2Dsize%3A1rem%201rem%7D%2Ecode%2Dcopy%2Dbutton%2Dchecked%3E%2Ebi%3A%3Abefore%7Bbackground%2Dimage%3Aurl%28%27data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22rgb%28111%2C%20111%2C%20111%29%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M13%2E854%203%2E646a%2E5%2E5%200%200%201%200%20%2E708l%2D7%207a%2E5%2E5%200%200%201%2D%2E708%200l%2D3%2E5%2D3%2E5a%2E5%2E5%200%201%201%20%2E708%2D%2E708L6%2E5%2010%2E293l6%2E646%2D6%2E647a%2E5%2E5%200%200%201%20%2E708%200z%22%2F%3E%3C%2Fsvg%3E%27%29%7D%2Ecode%2Dcopy%2Dbutton%3Ahover%3E%2Ebi%3A%3Abefore%7Bbackground%2Dimage%3Aurl%28%27data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22rgb%2813%2C%20110%2C%20253%29%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4%201%2E5H3a2%202%200%200%200%2D2%202V14a2%202%200%200%200%202%202h10a2%202%200%200%200%202%2D2V3%2E5a2%202%200%200%200%2D2%2D2h%2D1v1h1a1%201%200%200%201%201%201V14a1%201%200%200%201%2D1%201H3a1%201%200%200%201%2D1%2D1V3%2E5a1%201%200%200%201%201%2D1h1v%2D1z%22%2F%3E%3Cpath%20d%3D%22M9%2E5%201a%2E5%2E5%200%200%201%20%2E5%2E5v1a%2E5%2E5%200%200%201%2D%2E5%2E5h%2D3a%2E5%2E5%200%200%201%2D%2E5%2D%2E5v%2D1a%2E5%2E5%200%200%201%20%2E5%2D%2E5h3zm%2D3%2D1A1%2E5%201%2E5%200%200%200%205%201%2E5v1A1%2E5%201%2E5%200%200%200%206%2E5%204h3A1%2E5%201%2E5%200%200%200%2011%202%2E5v%2D1A1%2E5%201%2E5%200%200%200%209%2E5%200h%2D3z%22%2F%3E%3C%2Fsvg%3E%27%29%7D%2Ecode%2Dcopy%2Dbutton%2Dchecked%3Ahover%3E%2Ebi%3A%3Abefore%7Bbackground%2Dimage%3Aurl%28%27data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22rgb%2813%2C%20110%2C%20253%29%22%20%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M13%2E854%203%2E646a%2E5%2E5%200%200%201%200%20%2E708l%2D7%207a%2E5%2E5%200%200%201%2D%2E708%200l%2D3%2E5%2D3%2E5a%2E5%2E5%200%201%201%20%2E708%2D%2E708L6%2E5%2010%2E293l6%2E646%2D6%2E647a%2E5%2E5%200%200%201%20%2E708%200z%22%2F%3E%3C%2Fsvg%3E%27%29%7D%2Epanel%2Dtabset%20%5Brole%3Dtablist%5D%7Bborder%2Dbottom%3A1px%20solid%20%23dee2e6%3Blist%2Dstyle%3Anone%3Bmargin%3A0%3Bpadding%3A0%3Bwidth%3A100%25%7D%2Epanel%2Dtabset%20%5Brole%3Dtablist%5D%20%2A%7B%2Dwebkit%2Dbox%2Dsizing%3Aborder%2Dbox%3Bbox%2Dsizing%3Aborder%2Dbox%7D%40media%28min%2Dwidth%3A%2030em%29%7B%2Epanel%2Dtabset%20%5Brole%3Dtablist%5D%20li%7Bdisplay%3Ainline%2Dblock%7D%7D%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%7Bborder%3A1px%20solid%20rgba%280%2C0%2C0%2C0%29%3Bborder%2Dtop%2Dcolor%3A%23dee2e6%3Bdisplay%3Ablock%3Bpadding%3A%2E5em%201em%3Btext%2Ddecoration%3Anone%7D%40media%28min%2Dwidth%3A%2030em%29%7B%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%7Bborder%2Dtop%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bdisplay%3Ainline%2Dblock%3Bmargin%2Dbottom%3A%2D1px%7D%7D%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%5Baria%2Dselected%3Dtrue%5D%7Bbackground%2Dcolor%3A%23dee2e6%7D%40media%28min%2Dwidth%3A%2030em%29%7B%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%5Baria%2Dselected%3Dtrue%5D%7Bbackground%2Dcolor%3Argba%280%2C0%2C0%2C0%29%3Bborder%3A1px%20solid%20%23dee2e6%3Bborder%2Dbottom%2Dcolor%3A%23fff%7D%7D%40media%28min%2Dwidth%3A%2030em%29%7B%2Epanel%2Dtabset%20%5Brole%3Dtab%5D%3Ahover%3Anot%28%5Baria%2Dselected%3Dtrue%5D%29%7Bborder%3A1px%20solid%20%23dee2e6%7D%7D%2Eimg%2Dfluid%7Bmax%2Dwidth%3A100%25%3Bheight%3Aauto%7D%3Aroot%7B%2D%2Dquarto%2Dscss%2Dexport%2Dbody%2Dbg%3A%20%23fff%3B%2D%2Dquarto%2Dscss%2Dexport%2Dbody%2Dcolor%3A%20%23222%3B%2D%2Dquarto%2Dscss%2Dexport%2Dtext%2Dmuted%3A%20rgb%28110%2E5%2C%20110%2E5%2C%20110%2E5%29%3B%2D%2Dquarto%2Dscss%2Dexport%2Dborder%2Dcolor%3A%20rgb%28110%2E5%2C%20110%2E5%2C%20110%2E5%29%3B%2D%2Dquarto%2Dscss%2Dexport%2Dtable%2Dborder%2Dcolor%3A%20rgb%28110%2E5%2C%20110%2E5%2C%20110%2E5%29%3B%2D%2Dquarto%2Dscss%2Dexport%2Dbtn%2Dcode%2Dcopy%2Dcolor%3A%20rgb%28110%2E5%2C%20110%2E5%2C%20110%2E5%29%3B%2D%2Dquarto%2Dscss%2Dexport%2Dbtn%2Dcode%2Dcopy%2Dcolor%2Dactive%3A%20%230d6efd%3B%2D%2Dquarto%2Dscss%2Dexport%2Dprimary%3A%20%23468%3B%2D%2Dquarto%2Dscss%2Dexport%2Dsecondary%3A%20%23999%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dbg%2Dcolor%3A%20%23fff%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dedge%2Dcolor%3A%20%23999%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dnode%2Dfg%2Dcolor%3A%20%23222%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dfg%2Dcolor%3A%20%23222%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dfg%2Dcolor%2D%2Dlighter%3A%20rgb%2859%2E5%2C%2059%2E5%2C%2059%2E5%29%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dfg%2Dcolor%2D%2Dlightest%3A%20%23555555%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dlabel%2Dbg%2Dcolor%3A%20%23fff%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dlabel%2Dfg%2Dcolor%3A%20%23468%3B%2D%2Dquarto%2Dscss%2Dexport%2Dmermaid%2Dnode%2Dbg%2Dcolor%3A%20rgba%2868%2C%20102%2C%20136%2C%200%2E1%29%3B%2D%2Dquarto%2Dscss%2Dexport%2Dtabset%2Dborder%2Dcolor%3A%20rgb%28222%2C%20226%2C%20230%29%7D" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="data:text/css,%0A%3Aroot%20%7B%0A%2D%2Dquarto%2Dhl%2Dal%2Dcolor%3A%20%23ef2929%3B%0A%2D%2Dquarto%2Dhl%2Dan%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dat%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Dbn%2Dcolor%3A%20%230000cf%3B%0A%2D%2Dquarto%2Dhl%2Dch%2Dcolor%3A%20%234e9a06%3B%0A%2D%2Dquarto%2Dhl%2Dco%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dcv%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dcn%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dcf%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Ddt%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Ddv%2Dcolor%3A%20%230000cf%3B%0A%2D%2Dquarto%2Dhl%2Ddo%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Der%2Dcolor%3A%20%23a40000%3B%0A%2D%2Dquarto%2Dhl%2Dex%2Dcolor%3A%20inherit%3B%0A%2D%2Dquarto%2Dhl%2Dfl%2Dcolor%3A%20%230000cf%3B%0A%2D%2Dquarto%2Dhl%2Dfu%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Dim%2Dcolor%3A%20inherit%3B%0A%2D%2Dquarto%2Dhl%2Din%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dkw%2Dcolor%3A%20%23204a87%3B%0A%2D%2Dquarto%2Dhl%2Dop%2Dcolor%3A%20%23ce5c00%3B%0A%2D%2Dquarto%2Dhl%2Dot%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dpp%2Dcolor%3A%20%238f5902%3B%0A%2D%2Dquarto%2Dhl%2Dsc%2Dcolor%3A%20%23ce5c00%3B%0A%2D%2Dquarto%2Dhl%2Dss%2Dcolor%3A%20%234e9a06%3B%0A%2D%2Dquarto%2Dhl%2Dst%2Dcolor%3A%20%234e9a06%3B%0A%2D%2Dquarto%2Dhl%2Dva%2Dcolor%3A%20%23000000%3B%0A%2D%2Dquarto%2Dhl%2Dvs%2Dcolor%3A%20%234e9a06%3B%0A%2D%2Dquarto%2Dhl%2Dwa%2Dcolor%3A%20%238f5902%3B%0A%7D%0A%0A%3Aroot%20%7B%0A%2D%2Dquarto%2Dfont%2Dmonospace%3A%20SFMono%2DRegular%2C%20Menlo%2C%20Monaco%2C%20Consolas%2C%20%22Liberation%20Mono%22%2C%20%22Courier%20New%22%2C%20monospace%3B%0A%7D%0A%0A%0Acode%20span%2Eal%20%7B%0Acolor%3A%20%23ef2929%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Ean%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Acode%20span%2Eat%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Ebn%20%7B%0Acolor%3A%20%230000cf%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Ecf%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Ech%20%7B%0Acolor%3A%20%234e9a06%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Ecn%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Eco%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Acode%20span%2Ecv%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Acode%20span%2Edo%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Acode%20span%2Edt%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Edv%20%7B%0Acolor%3A%20%230000cf%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Eer%20%7B%0Acolor%3A%20%23a40000%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Eex%20%7B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Efl%20%7B%0Acolor%3A%20%230000cf%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Efu%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Eim%20%7B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Ein%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Acode%20span%2Ekw%20%7B%0Acolor%3A%20%23204a87%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Eop%20%7B%0Acolor%3A%20%23ce5c00%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Eot%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Epp%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%0Acode%20span%2Esc%20%7B%0Acolor%3A%20%23ce5c00%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Ess%20%7B%0Acolor%3A%20%234e9a06%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Est%20%7B%0Acolor%3A%20%234e9a06%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Eva%20%7B%0Acolor%3A%20%23000000%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Evs%20%7B%0Acolor%3A%20%234e9a06%3B%0Afont%2Dstyle%3A%20inherit%3B%0A%7D%0A%0Acode%20span%2Ewa%20%7B%0Acolor%3A%20%238f5902%3B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%2Eprevent%2Dinlining%20%7B%0Acontent%3A%20%22%3C%2F%22%3B%0A%7D%0A%0A" rel="stylesheet" id="quarto-text-highlighting-styles">
 
 
 <style type="text/css">
@@ -883,10 +856,10 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <p><strong>Paso 4.</strong> Marcar el archivo (equivalente a <code>git add</code>) y confirmar el commit con un mensaje descriptivo — por ejemplo, <code>docs: agrega nota de práctica de Roberto</code>, no <code>cambios</code> o <code>fix</code>. El commit queda registrado únicamente en la copia local.</p>
 <p><strong>Paso 5.</strong> Ejecutar <code>push</code>. El commit queda entonces disponible en GitHub para el resto del grupo.</p>
 <p>El mismo procedimiento puede ejecutarse desde la terminal integrada de Positron:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add practica/notas.md</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;docs: agrega nota de práctica de Roberto&quot;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Ambos métodos son equivalentes; el panel de Positron ofrece una interfaz gráfica sobre estos mismos comandos.</p>
 <div class="exercise">
 <p><strong>Ejercicio 2 — Pull, editar, commit, push</strong></p>
@@ -901,7 +874,7 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <h2 id="conflictos-dos-personas-un-mismo-archivo" class="anchored">Conflictos: dos personas, un mismo archivo</h2>
 <p>Ejecutar <code>pull</code> antes de trabajar evita la mayoría de los conflictos, aunque no todos. Si dos personas modifican la misma línea de un archivo en un intervalo breve, se produce un conflicto — un resultado esperado del funcionamiento de Git, no un error.</p>
 <p>Para observarlo en la práctica: en parejas, ambas personas parten del mismo commit en <code>practica/ejemplo_analisis.R</code> y modifican la misma línea de la función <code>diversidad_dominios()</code> sin ejecutar <code>pull</code> entre ambas ediciones. La primera persona en hacer <code>push</code> no encuentra problemas; la segunda recibe un rechazo, y al ejecutar <code>pull</code>, Git marca el archivo de la siguiente manera:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>diversidad_dominios <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>diversidad_dominios <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(id, dominio) <span class="sc">%&gt;%</span></span>
@@ -910,7 +883,7 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n_dominios =</span> <span class="fu">n_distinct</span>(dominio), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span><span class="er">&gt;&gt;&gt;&gt;&gt;&gt;</span> origin<span class="sc">/</span>main</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Positron presenta este mismo bloque con opciones — <em>Accept Current</em>, <em>Accept Incoming</em>, <em>Accept Both</em> — para seleccionar la versión que corresponde, o combinar ambas manualmente. Una vez resuelto el conflicto, se eliminan las marcas (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>), se guarda el archivo, se ejecuta <code>add</code> y <code>commit</code> para cerrar el conflicto, y finalmente <code>push</code>.</p>
 <p>La frecuencia de estos conflictos se reduce mediante hábitos de trabajo, no mediante herramientas: trabajar en una rama propia en lugar de directamente sobre <code>main</code>; notificar al equipo antes de modificar un script utilizado por varias personas; y realizar commits pequeños y frecuentes en lugar de uno extenso al final de la jornada. Una regla sin excepciones: no debe ejecutarse <code>push --force</code> sobre una rama utilizada por otras personas, ya que reescribe la historia y puede eliminar commits ajenos sin advertencia.</p>
 <div class="exercise">
@@ -1007,240 +980,247 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <p>El repositorio <code>taller-git-positron-codex</code> permanece disponible después del taller para continuar practicando cualquiera de estos escenarios sin riesgo para el trabajo del grupo.</p>
 
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-  tabsets.forEach(function(tabset) {
-    const tabby = new Tabby('#' + tabset.id);
-  });
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+    tabsets.forEach(function(tabset) {
+      const tabby = new Tabby('#' + tabset.id);
+    });
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiado");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copiado");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'light-border',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1248,185 +1228,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <script>
 document.querySelectorAll('.task-list input[type="checkbox"]').forEach(function (cb) {
   cb.disabled = false;
