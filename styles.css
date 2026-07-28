@@ -1,14 +1,14 @@
 /* Hoja de estilos autocontenida — sin dependencias externas */
 
 :root {
-  --ink: #232019;
-  --ink-soft: #57534a;
-  --page-bg: #eeebe3;
-  --paper: #fffdfa;
-  --panel: #f2efe7;
-  --rule: #ded7c8;
-  --accent: #8a3b2f;
-  --accent-soft: #f2e6de;
+  --ink: #1f2328;
+  --ink-soft: #57606a;
+  --page-bg: #ffffff;
+  --paper: #ffffff;
+  --panel: #f6f8fa;
+  --rule: #d8dee4;
+  --accent: #0969da;
+  --accent-soft: #ddf0ff;
 }
 
 * {
@@ -53,9 +53,7 @@ body {
 
 main.content {
   background: var(--paper);
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  padding: 3rem 3.5rem 3.5rem;
+  padding: 0;
 }
 
 @media (max-width: 900px) {
@@ -120,10 +118,10 @@ header#title-block-header {
 /* tabla de contenidos — barra lateral fija */
 
 nav#TOC {
-  background: transparent;
-  border: none;
-  border-left: 2px solid var(--rule);
-  padding: 0 0 0 1.1rem;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.2rem 1.3rem;
   margin: 0;
   max-height: calc(100vh - 4rem);
   overflow-y: auto;
@@ -206,7 +204,7 @@ li {
 }
 
 pre {
-  background: #f4f1ea;
+  background: var(--panel);
   border: 1px solid var(--rule);
   border-radius: 4px;
   padding: 0.9rem 1.1rem;
