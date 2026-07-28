@@ -1,77 +1,179 @@
-/* Estilo elegante para el taller */
+/* Tipografía editorial, no plantilla */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --brand: #2563eb;
-  --brand-dark: #1e3a8a;
-  --ink: #1f2937;
-  --muted: #6b7280;
-  --bg-soft: #f8fafc;
+  --ink: #232019;
+  --ink-soft: #57534a;
+  --paper: #fbf9f5;
+  --rule: #ded7c8;
+  --accent: #8a3b2f;
+  --accent-soft: #f2e6de;
+}
+
+html {
+  background: var(--paper);
 }
 
 body {
+  background: var(--paper);
   color: var(--ink);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.65;
+  font-family: "Inter", -apple-system, "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 780px;
 }
 
-#title-block-header {
-  padding: 2.5rem 0 1.5rem 0;
-  border-bottom: 3px solid var(--brand);
-  margin-bottom: 2rem;
+.quarto-title-block {
+  border-bottom: none;
+  padding: 3rem 0 2rem 0;
+  margin-bottom: 1rem;
 }
 
 #title-block-header .title {
+  font-family: "Source Serif 4", Georgia, serif;
   font-weight: 700;
-  color: var(--brand-dark);
+  font-size: 2.4rem;
+  color: var(--ink);
   letter-spacing: -0.01em;
+  line-height: 1.15;
 }
 
 #title-block-header .subtitle {
-  color: var(--muted);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-style: italic;
+  color: var(--ink-soft);
   font-weight: 400;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
+  margin-top: 0.4rem;
 }
 
-h1, h2, h3 {
-  color: var(--brand-dark);
-  font-weight: 650;
+#title-block-header .author,
+#title-block-header .date {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Source Serif 4", Georgia, serif;
+  color: var(--ink);
+  font-weight: 600;
 }
 
 h2 {
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 0.4rem;
-  margin-top: 2.5rem;
+  font-size: 1.55rem;
+  margin-top: 3.2rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule);
 }
 
-.toc-title {
-  color: var(--brand-dark);
-  font-weight: 700;
+h3 {
+  font-size: 1.15rem;
+  margin-top: 2rem;
+  color: var(--accent);
+}
+
+p {
+  margin-bottom: 1.1rem;
+}
+
+strong {
+  color: var(--ink);
+  font-weight: 600;
 }
 
 #TOC {
-  background: var(--bg-soft);
-  border-radius: 10px;
-  padding: 1rem 1.2rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  background: transparent;
+  border-right: 1px solid var(--rule);
+  padding-right: 1.2rem;
 }
 
-pre.sourceCode {
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+#TOC .toc-title,
+.sidebar-title {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  font-weight: 600;
 }
 
-.callout {
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+#TOC a {
+  color: var(--ink-soft);
+}
+
+#TOC a:hover,
+#TOC a.active {
+  color: var(--accent);
+}
+
+pre.sourceCode, div.sourceCode {
+  background: #f4f1ea;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-size: 0.88rem;
 }
 
 code {
-  color: var(--brand-dark);
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 3px;
+  padding: 0.05em 0.35em;
+  font-size: 0.9em;
+}
+
+pre code {
+  background: transparent;
+  color: var(--ink);
+  padding: 0;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.1rem;
+  margin-left: 0;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+table {
+  font-size: 0.92rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  border-bottom: 2px solid var(--ink);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+}
+
+table td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.55rem 0.7rem;
+  vertical-align: top;
 }
 
 a {
+  color: var(--accent);
   text-decoration: none;
+  border-bottom: 1px solid var(--accent-soft);
 }
 
 a:hover {
-  text-decoration: underline;
+  border-bottom-color: var(--accent);
+}
+
+hr {
+  border-color: var(--rule);
 }

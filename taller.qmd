@@ -1,201 +1,127 @@
 ---
 title: "Git y GitHub desde Positron"
-subtitle: "Flujo de trabajo colaborativo + generación de código con Codex — Mobility Frontiers"
-author: "Taller práctico · 60 minutos"
+subtitle: "Un taller de una hora para dejar de tener miedo a hacer push"
+author: "Mobility Frontiers"
 date: today
 date-format: "D [de] MMMM, YYYY"
 lang: es
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
     toc: true
     toc-location: left
-    toc-title: "Contenido"
-    number-sections: true
+    toc-title: "En este taller"
+    number-sections: false
     code-copy: true
-    code-block-bg: true
-    highlight-style: github
+    highlight-style: printing
     embed-resources: true
     smooth-scroll: true
     fig-align: center
-    linkcolor: "#2563eb"
+    linkcolor: "#8a3b2f"
 execute:
   echo: false
   eval: false
 ---
 
-::: {.callout-note appearance="simple"}
-Este documento es la guía del taller. Los ejercicios se practican en el repositorio **`taller-git-positron-codex`**, creado especialmente para este propósito — nadie escribe directamente sobre `sfb-mobility-networks` ni otros repos reales del grupo.
-:::
+Casi nadie en un grupo de investigación aprendió Git porque quiso: lo aprendió porque un día alguien sobrescribió tres días de trabajo de otra persona, o porque un script dejó de correr después de un `push` y nadie sabía a qué versión volver. Esta guía es la versión corta de ese aprendizaje, pensada para el flujo real del grupo — repos en R, análisis que se van construyendo de a poco, y varias personas tocando el mismo pipeline en semanas distintas.
 
-## Objetivos
+Todo lo que sigue se practica sobre `taller-git-positron-codex`, un repositorio hecho exclusivamente para este taller. Nada de lo que hagamos hoy toca `sfb-mobility-networks` ni ningún otro repo real del grupo — para eso existe este.
 
-Al terminar este taller, cada participante debería poder:
+**Antes de sentarse:** Positron abierto, Git instalado y configurado con nombre y correo (`git config --global user.name` / `user.email`), y este repositorio ya clonado. Si algo de eso falta, es más rápido resolverlo ahora que a mitad de la demo.
 
-1. Clonar un repositorio y mantenerlo sincronizado (`pull`) antes de trabajar.
-2. Usar el panel de control de código fuente de Positron para revisar cambios, hacer *stage*, `commit` y `push`.
-3. Reconocer por qué y cuándo trabajar en ramas en vez de sobre `main`, y resolver un conflicto simple.
-4. Abrir y revisar un *pull request* (PR) en GitHub.
-5. Usar Codex desde Positron para generar y revisar código, integrándolo al mismo flujo de control de versiones.
+## Cómo se mueven los archivos en Git
 
-## Setup previo
-
-::: {.callout-important}
-## Antes de empezar, cada persona necesita:
-
-- Positron instalado y abierto.
-- Git configurado localmente:
-
-```bash
-git config --global user.name "Tu Nombre"
-git config --global user.email "tu_correo@ejemplo.com"
-```
-
-- Una cuenta de GitHub con acceso al repositorio de práctica que se creará para este taller.
-- El repositorio de práctica clonado localmente (se entrega el link al inicio del taller).
-:::
-
-## El modelo mental: tres estados
-
-Git mueve los archivos por tres zonas antes de que un cambio quede registrado en el historial:
+Vale la pena entender esto una vez bien, porque el resto son variaciones sobre lo mismo. Un archivo pasa por tres estados antes de quedar registrado en la historia del proyecto:
 
 ```
-Working Directory  →  Staging Area  →  Repositorio (commit)
-   (editas)              (git add)         (git commit)
+lo editas          lo marcas           queda en el historial
+(working dir)  →   (staging, git add)  →   (commit)
 ```
 
-Y el repositorio local se sincroniza con GitHub (`origin`) en dos direcciones:
+`git add` no sube nada a ningún lado — solo le dice a Git "esto es lo que quiero incluir en el próximo commit". El commit en sí es una fotografía local. Nada de esto llega a GitHub hasta que hay un `push`. Y en la dirección contraria, `pull` trae lo que otras personas ya subieron:
 
 ```
-origin (GitHub)  --pull-->  repositorio local
-repositorio local  --push-->  origin (GitHub)
+GitHub (origin)  --pull-->   tu copia local
+tu copia local   --push-->   GitHub (origin)
 ```
 
-::: {.callout-tip}
-## Regla de oro
+De acá sale la única regla que realmente importa memorizar: si vas a trabajar, primero `pull`. No porque sea buena costumbre, sino porque si alguien más subió algo entre tu último `pull` y tu próximo `push`, Git te va a obligar a resolverlo — mejor hacerlo al empezar, con la cabeza fresca, que al final, apurado.
 
-**`pull` antes de empezar a trabajar, siempre.** Si alguien más subió cambios y tú no los tienes, tu próximo `push` puede pisar su trabajo o generar un conflicto innecesario.
-:::
+## La demo: pull, editar, commit, push
 
-## Demo guiada: pull → editar → commit → push
+Con `taller-git-positron-codex` abierto en Positron, el panel de control de código fuente (el ícono de rama en la barra lateral izquierda) es donde va a pasar casi todo.
 
-Se trabaja sobre el repositorio de práctica `taller-git-positron-codex`, abierto en Positron.
+Primero, sincronizar antes de tocar nada — botón de sync o "Pull" en ese panel. Si dice que ya está al día, perfecto, seguimos. Si trae cambios nuevos, mejor: es la prueba de que el mecanismo funciona.
 
-### Paso 1 — Sincronizar antes de tocar nada
+Después, abrir `practica/notas.md` y agregar una línea con nombre y fecha. Al guardar, el archivo aparece listado en el panel de Source Control como modificado. Antes de hacer nada más, vale la pena hacer clic sobre él y mirar el diff — la vista lado a lado con líneas en rojo (lo que se quita) y verde (lo que se agrega). Es el momento de notar si, sin querer, se cambió algo de más.
 
-En el panel **Source Control** de Positron (ícono de rama en la barra lateral), presionar **Sync / Pull**. Confirmar que el mensaje indica "up to date" antes de continuar.
+Con el diff revisado: el `+` junto al archivo lo pasa a *staged* (el equivalente visual de `git add`), se escribe un mensaje de commit que diga qué se hizo y no "cambios" o "fix" — algo como `docs: agrega nota de práctica de Roberto` — y se confirma. Ese commit vive solo en la copia local hasta que se presiona **Push**.
 
-### Paso 2 — Editar un archivo
-
-Abrir `practica/notas.md` y agregar una línea con tu nombre y la fecha. Guardar el archivo.
-
-### Paso 3 — Revisar el diff
-
-En el panel Source Control aparece el archivo modificado. Al hacer clic se abre una vista de diff línea por línea (rojo = eliminado, verde = agregado). **Revisar siempre el diff antes de hacer commit** — es la forma de detectar cambios no intencionales.
-
-### Paso 4 — Stage y commit
-
-- Clic en el `+` junto al archivo (equivalente a `git add`).
-- Escribir un mensaje de commit descriptivo, por ejemplo: `docs: agrega nota de práctica de [nombre]`.
-- Confirmar el commit (`Ctrl/Cmd + Enter` o el botón ✓).
-
-### Paso 5 — Push
-
-Presionar **Push** (o el botón de sync, que hace pull + push). Verificar en GitHub.com que el commit aparece en el historial del repositorio.
-
-::: {.callout-note}
-## Equivalente en terminal
-
-Todo lo anterior, para quienes prefieren la línea de comandos:
+Quien prefiera la terminal integrada de Positron puede escribir exactamente lo mismo:
 
 ```bash
 git pull
 git add practica/notas.md
-git commit -m "docs: agrega nota de práctica de [nombre]"
+git commit -m "docs: agrega nota de práctica de Roberto"
 git push
 ```
 
-Positron integra ambos mundos: la terminal integrada corre estos mismos comandos si se prefiere escribirlos.
-:::
+Ambos caminos terminan en el mismo lugar — Positron simplemente le pone una interfaz gráfica a estos cuatro comandos.
 
-## Uso responsable: cómo no sobrescribir el trabajo de otros
+## Lo que rompe cosas: dos personas, el mismo archivo
 
-`pull` antes de `push` reduce el riesgo, pero no lo elimina si dos personas editan lo mismo al mismo tiempo. Algunas prácticas que lo previenen:
+`pull` antes de trabajar evita la mayoría de los problemas, pero no todos. Si dos personas editan la misma línea de un archivo casi al mismo tiempo, alguien va a toparse con un conflicto — y eso está bien, es Git haciendo su trabajo, no un error.
 
-::: {.callout-warning}
-## Reglas prácticas para trabajo en equipo
+Para verlo en vivo: en parejas, ambas personas parten del mismo commit en `practica/ejemplo_analisis.R`, y cada una modifica la misma línea de la función `diversidad_dominios()` sin volver a hacer `pull`. La primera persona en hacer `push` no tiene problema. La segunda recibe un rechazo — y al hacer `pull`, Git marca el archivo así:
 
-- **No trabajar directo sobre `main`** para cambios propios: crear una rama (`git checkout -b nombre-rama`).
-- **Commits pequeños y frecuentes**, con mensajes claros — más fácil de revisar y de revertir si algo sale mal.
-- **Nunca usar `push --force`** sobre ramas compartidas: reescribe el historial y puede borrar commits de otras personas.
-- **Avisar en el canal del equipo** cuando se va a tocar un archivo que varias personas editan (ej. un script de limpieza de datos compartido).
-:::
+```r
+diversidad_dominios <- function(df) {
+  df %>%
+<<<<<<< HEAD
+    group_by(id, dominio) %>%
+    summarise(n = n(), .groups = "drop")
+=======
+    group_by(id) %>%
+    summarise(n_dominios = n_distinct(dominio), .groups = "drop")
+>>>>>>> origin/main
+}
+```
 
-### Simulación de un conflicto
+Positron muestra este mismo bloque con botones sobre cada sección — *Accept Current*, *Accept Incoming*, *Accept Both* — para elegir qué versión queda, o combinar ambas a mano. Una vez resuelto, se borran las marcas (`<<<<<<<`, `=======`, `>>>>>>>`), se guarda, se hace `add` y `commit` para cerrar el conflicto, y recién ahí `push`.
 
-Ejercicio en parejas: ambas personas clonan el mismo archivo, editan la **misma línea** sin hacer `pull` entre medio, y ambas intentan `push`. La segunda persona verá un conflicto. En Positron:
-
-1. El editor marca las secciones en conflicto (`<<<<<<<`, `=======`, `>>>>>>>`).
-2. Positron ofrece botones "Accept Current / Incoming / Both".
-3. Se elige la resolución correcta, se guarda, se hace `add` + `commit` para cerrar el conflicto, y luego `push`.
+Lo que evita llegar a esta situación con frecuencia no es ninguna herramienta, son hábitos: trabajar en una rama propia en vez de directo sobre `main`, avisar en el canal del equipo antes de tocar un script que varias personas usan, hacer commits chicos y seguidos en vez de uno enorme al final del día. Y una regla sin excepciones: nunca `push --force` sobre una rama que alguien más también usa — reescribe la historia y puede borrar commits ajenos sin aviso.
 
 ## Ramas y pull requests
 
-Un *pull request* (PR) es una propuesta de cambio: "aquí está lo que hice en mi rama, revísenlo antes de integrarlo a `main`".
+Una rama es simplemente una copia paralela del proyecto donde se puede experimentar sin afectar `main`. Se crea con `git checkout -b nombre-de-la-rama`, y desde ahí el ciclo de commit y push es idéntico al de antes — la diferencia es que los cambios quedan aislados hasta que alguien decide integrarlos.
 
-### Flujo con PR
+Esa integración se pide con un *pull request*: "esto es lo que hice en mi rama, revísenlo antes de mezclarlo con `main`". En GitHub, después de publicar la rama desde Positron (la primera vez ofrece un botón "Publish Branch"), se abre un PR desde la página del repositorio. Ahí queda visible el diff completo, se pueden dejar comentarios línea por línea, y solo después de una aprobación se hace el merge. La rama, ya integrada, se puede borrar sin perder nada — su historia queda en `main`.
 
-1. Crear una rama: `git checkout -b feature/mi-cambio`
-2. Editar, hacer commit(s) en la rama.
-3. `push` de la rama (Positron ofrece "Publish Branch" la primera vez).
-4. En GitHub.com, abrir un **New Pull Request** desde esa rama hacia `main`.
-5. Revisar el diff del PR, agregar comentarios si algo no está claro.
-6. Aprobar y hacer **Merge** — recién ahí el cambio pasa a `main`.
-7. Borrar la rama ya integrada (GitHub lo sugiere automáticamente).
+En un repo de investigación compartido esto cumple un rol específico: alguien más lee el cambio antes de que se mezcle con el análisis principal, lo que atrapa errores silenciosos — una columna mal nombrada, un filtro que se aplicó de más — antes de que terminen en un resultado.
 
-::: {.callout-tip}
-## Por qué importa para el grupo
+## El asistente de IA en Positron
 
-En un repo de investigación compartido (como los del grupo Mobility Frontiers), el PR es el punto donde alguien más revisa el código antes de que se mezcle con el análisis principal — reduce errores silenciosos en pipelines de datos.
-:::
+Positron trae un panel de asistente (se abre con *View: Show Posit Assistant* desde la paleta de comandos, `Cmd/Ctrl+Shift+P`) que conversa con el código del proyecto: puede explicar una función, proponer una nueva, o depurar un error pegando el mensaje de la consola. No es un solo modelo fijo — se conecta con la clave de API que cada quien configure, ya sea OpenAI, Anthropic, GitHub Copilot u otros proveedores, y el panel de configuración permite elegir cuál usar por defecto según la tarea (algo liviano para autocompletar, algo más capaz para explicar un pipeline completo).
 
-## Codex desde Positron
+Sobre `practica/ejemplo_analisis.R`, dos pedidos para probarlo:
 
-Positron integra un panel de asistente de código (Codex) que puede generar, explicar y refactorizar código directamente en el editor, con distintos modelos disponibles según la tarea (más rápidos para autocompletado, más capaces para tareas de razonamiento largo).
+> Explica qué hace `diversidad_dominios()` y qué pasaría si `dominio` tuviera valores `NA`.
 
-### Qué se puede pedir
+> Escribe una función que reciba un data.frame con columnas `id`, `dominio` y `fecha`, y devuelva el conteo de dominios distintos por `id` y por mes.
 
-- **Explicar código existente**: seleccionar una función y pedir un resumen de qué hace y por qué.
-- **Generar código nuevo**: describir la tarea en lenguaje natural (ej. "una función en R que calcule la diversidad funcional de contactos por dominio") y revisar la propuesta.
-- **Refactorizar o depurar**: pegar un error y pedir una corrección, o pedir que se simplifique una función larga.
+Lo que genere el asistente entra al mismo circuito que cualquier otro cambio: se lee el diff, se corre para confirmar que hace lo que dice, y si va a un repo compartido, pasa por PR como cualquier otra contribución. La IA acelera escribir el código; no reemplaza la parte de entender qué hace.
 
-### Ejercicio práctico
+## Cuando algo sale mal
 
-Sobre `practica/ejemplo_analisis.R` del repo de práctica, pedirle a Codex:
+Estos son los mensajes que con más frecuencia hacen que alguien cierre Positron y pida ayuda. Ninguno es grave.
 
-> "Explica qué hace esta función y sugiere un test simple para verificarla."
+| Mensaje | Qué significa | Qué hacer |
+|---|---|---|
+| `fatal: not a git repository` | Estás en una carpeta que no es el repo, o el repo no se clonó bien | Verificar que existe una carpeta `.git` adentro; si no, clonar de nuevo |
+| `Please tell me who you are` | Git nunca se configuró en esta máquina | Correr `git config --global user.name` y `user.email` |
+| `rejected — non-fast-forward` | Hay commits en GitHub que tu copia local no tiene | Hacer `pull` (o sync en Positron) antes de volver a intentar el `push` |
+| `Permission denied (publickey)` | GitHub no reconoce tu llave SSH, o falta configurarla | Usar HTTPS en vez de SSH para el remoto, o revisar la llave en GitHub → Settings → SSH Keys |
+| Conflicto con `<<<<<<<` en el archivo | Dos personas cambiaron la misma línea | Resolver a mano en Positron (ver sección anterior), guardar, commit, push |
 
-Y luego:
-
-> "Genera una función en R que reciba un data.frame con columnas `id`, `dominio`, `fecha` y devuelva el conteo de dominios distintos por `id`."
-
-::: {.callout-warning}
-## Regla de oro con código generado
-
-Todo código generado por Codex sigue el **mismo flujo de Git** que cualquier otro cambio: se revisa el diff, se prueba antes de hacer commit, y pasa por PR si va a integrarse a un repositorio compartido. Codex acelera la escritura, no reemplaza la revisión.
-:::
-
-## Cierre
-
-::: {.callout-note appearance="simple"}
-## Para recordar
-
-1. `pull` siempre antes de empezar a trabajar.
-2. Revisar el diff antes de cada commit.
-3. Ramas para cambios propios, `main` se toca vía PR.
-4. Nunca `push --force` sobre ramas compartidas.
-5. Código generado por Codex se revisa igual que código propio.
-:::
-
-Repositorio de práctica de este taller: **`taller-git-positron-codex`** — úsenlo libremente para seguir practicando después de la sesión.
+Este repositorio, `taller-git-positron-codex`, queda disponible después de hoy para seguir probando cualquiera de estos escenarios sin riesgo — es exactamente para eso que existe.
