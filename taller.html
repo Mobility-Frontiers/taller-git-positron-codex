@@ -3283,7 +3283,8 @@ border-color: var(--rule);
     <h2 id="toc-title">En este taller</h2>
    
   <ul>
-  <li><a href="#cómo-se-mueven-los-archivos-en-git" id="toc-cómo-se-mueven-los-archivos-en-git" class="nav-link active" data-scroll-target="#cómo-se-mueven-los-archivos-en-git">Cómo se mueven los archivos en Git</a></li>
+  <li><a href="#autenticarse-el-token-no-la-contraseña" id="toc-autenticarse-el-token-no-la-contraseña" class="nav-link active" data-scroll-target="#autenticarse-el-token-no-la-contraseña">Autenticarse: el token, no la contraseña</a></li>
+  <li><a href="#cómo-se-mueven-los-archivos-en-git" id="toc-cómo-se-mueven-los-archivos-en-git" class="nav-link" data-scroll-target="#cómo-se-mueven-los-archivos-en-git">Cómo se mueven los archivos en Git</a></li>
   <li><a href="#la-demo-pull-editar-commit-push" id="toc-la-demo-pull-editar-commit-push" class="nav-link" data-scroll-target="#la-demo-pull-editar-commit-push">La demo: pull, editar, commit, push</a></li>
   <li><a href="#lo-que-rompe-cosas-dos-personas-el-mismo-archivo" id="toc-lo-que-rompe-cosas-dos-personas-el-mismo-archivo" class="nav-link" data-scroll-target="#lo-que-rompe-cosas-dos-personas-el-mismo-archivo">Lo que rompe cosas: dos personas, el mismo archivo</a></li>
   <li><a href="#ramas-y-pull-requests" id="toc-ramas-y-pull-requests" class="nav-link" data-scroll-target="#ramas-y-pull-requests">Ramas y pull requests</a></li>
@@ -3330,7 +3331,40 @@ border-color: var(--rule);
 
 <p>Casi nadie en un grupo de investigación aprendió Git porque quiso: lo aprendió porque un día alguien sobrescribió tres días de trabajo de otra persona, o porque un script dejó de correr después de un <code>push</code> y nadie sabía a qué versión volver. Esta guía es la versión corta de ese aprendizaje, pensada para el flujo real del grupo — repos en R, análisis que se van construyendo de a poco, y varias personas tocando el mismo pipeline en semanas distintas.</p>
 <p>Todo lo que sigue se practica sobre <code>taller-git-positron-codex</code>, un repositorio hecho exclusivamente para este taller. Nada de lo que hagamos hoy toca <code>sfb-mobility-networks</code> ni ningún otro repo real del grupo — para eso existe este.</p>
-<p><strong>Antes de sentarse:</strong> Positron abierto, Git instalado y configurado con nombre y correo (<code>git config --global user.name</code> / <code>user.email</code>), y este repositorio ya clonado. Si algo de eso falta, es más rápido resolverlo ahora que a mitad de la demo.</p>
+<p><strong>Antes de sentarse:</strong> Positron abierto, Git instalado y configurado con nombre y correo (<code>git config --global user.name</code> / <code>user.email</code>), un token de acceso creado (siguiente sección) y este repositorio ya clonado. Si algo de eso falta, es más rápido resolverlo ahora que a mitad de la demo.</p>
+<section id="autenticarse-el-token-no-la-contraseña" class="level2">
+<h2 class="anchored" data-anchor-id="autenticarse-el-token-no-la-contraseña">Autenticarse: el token, no la contraseña</h2>
+<p>GitHub dejó de aceptar la contraseña de la cuenta para operaciones por HTTPS hace años — si Positron o la terminal piden usuario y contraseña al hacer <code>push</code> y se ingresa la contraseña real, va a fallar. Lo que reemplaza a la contraseña es un <strong>token de acceso personal</strong>, y conviene generarlo antes de la primera demo, no durante.</p>
+<p>Los pasos, desde github.com:</p>
+<ol type="1">
+<li>Ícono de perfil (arriba a la derecha) → <strong>Settings</strong>.</li>
+<li>Al final del menú izquierdo, <strong>Developer settings</strong>.</li>
+<li><strong>Personal access tokens</strong> → <strong>Fine-grained tokens</strong> → <strong>Generate new token</strong>.</li>
+<li>Nombre descriptivo (por ejemplo <code>positron-taller</code>) y una fecha de expiración razonable — 90 días alcanza para no dejarlo eterno ni tener que repetir esto cada semana.</li>
+<li>En <strong>Repository access</strong>, elegir <em>Only select repositories</em> y marcar <code>taller-git-positron-codex</code> (y cualquier otro repo del grupo donde se vaya a trabajar).</li>
+<li>En <strong>Permissions → Repository permissions</strong>, buscar <strong>Contents</strong> y ponerlo en <strong>Read and write</strong> — es el permiso que habilita <code>push</code>.</li>
+<li><strong>Generate token</strong>. GitHub lo muestra una única vez: copiarlo antes de cerrar la página. Si se pierde, no hay forma de recuperarlo — hay que generar uno nuevo.</li>
+</ol>
+<p>Con el token copiado, la primera vez que Positron (o <code>git push</code> desde la terminal) pida credenciales:</p>
+<ul>
+<li><strong>Usuario</strong>: el nombre de usuario de GitHub.</li>
+<li><strong>Contraseña</strong>: el token — se pega tal cual, aunque el campo diga “password”.</li>
+</ul>
+<p>Después de ese primer uso, el sistema operativo lo guarda (Keychain en macOS, Credential Manager en Windows, o el <em>credential helper</em> configurado en Linux) y no se vuelve a pedir hasta que el token expire.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El token es equivalente a una contraseña con permisos acotados: no se comparte por Slack ni se pega en ningún archivo del repo. Si se expone por error, se revoca de inmediato desde la misma página de <em>Personal access tokens</em> y se genera uno nuevo.</p>
+</div>
+</div>
+</section>
 <section id="cómo-se-mueven-los-archivos-en-git" class="level2">
 <h2 class="anchored" data-anchor-id="cómo-se-mueven-los-archivos-en-git">Cómo se mueven los archivos en Git</h2>
 <p>Vale la pena entender esto una vez bien, porque el resto son variaciones sobre lo mismo. Un archivo pasa por tres estados antes de quedar registrado en la historia del proyecto:</p>
@@ -3417,16 +3451,21 @@ tu copia local   --push--&gt;   GitHub (origin)</code></pre>
 <td>Correr <code>git config --global user.name</code> y <code>user.email</code></td>
 </tr>
 <tr class="odd">
+<td><code>could not read Username for &#39;https://github.com&#39;</code></td>
+<td>Git no tiene credenciales guardadas para el remoto</td>
+<td>Volver a intentar el push e ingresar usuario + token cuando lo pida (ver sección de token, arriba)</td>
+</tr>
+<tr class="even">
 <td><code>rejected — non-fast-forward</code></td>
 <td>Hay commits en GitHub que tu copia local no tiene</td>
 <td>Hacer <code>pull</code> (o sync en Positron) antes de volver a intentar el <code>push</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>Permission denied (publickey)</code></td>
 <td>GitHub no reconoce tu llave SSH, o falta configurarla</td>
 <td>Usar HTTPS en vez de SSH para el remoto, o revisar la llave en GitHub → Settings → SSH Keys</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Conflicto con <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> en el archivo</td>
 <td>Dos personas cambiaron la misma línea</td>
 <td>Resolver a mano en Positron (ver sección anterior), guardar, commit, push</td>

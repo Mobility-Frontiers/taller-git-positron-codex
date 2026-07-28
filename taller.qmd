@@ -28,7 +28,32 @@ Casi nadie en un grupo de investigación aprendió Git porque quiso: lo aprendi�
 
 Todo lo que sigue se practica sobre `taller-git-positron-codex`, un repositorio hecho exclusivamente para este taller. Nada de lo que hagamos hoy toca `sfb-mobility-networks` ni ningún otro repo real del grupo — para eso existe este.
 
-**Antes de sentarse:** Positron abierto, Git instalado y configurado con nombre y correo (`git config --global user.name` / `user.email`), y este repositorio ya clonado. Si algo de eso falta, es más rápido resolverlo ahora que a mitad de la demo.
+**Antes de sentarse:** Positron abierto, Git instalado y configurado con nombre y correo (`git config --global user.name` / `user.email`), un token de acceso creado (siguiente sección) y este repositorio ya clonado. Si algo de eso falta, es más rápido resolverlo ahora que a mitad de la demo.
+
+## Autenticarse: el token, no la contraseña
+
+GitHub dejó de aceptar la contraseña de la cuenta para operaciones por HTTPS hace años — si Positron o la terminal piden usuario y contraseña al hacer `push` y se ingresa la contraseña real, va a fallar. Lo que reemplaza a la contraseña es un **token de acceso personal**, y conviene generarlo antes de la primera demo, no durante.
+
+Los pasos, desde github.com:
+
+1. Ícono de perfil (arriba a la derecha) → **Settings**.
+2. Al final del menú izquierdo, **Developer settings**.
+3. **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
+4. Nombre descriptivo (por ejemplo `positron-taller`) y una fecha de expiración razonable — 90 días alcanza para no dejarlo eterno ni tener que repetir esto cada semana.
+5. En **Repository access**, elegir *Only select repositories* y marcar `taller-git-positron-codex` (y cualquier otro repo del grupo donde se vaya a trabajar).
+6. En **Permissions → Repository permissions**, buscar **Contents** y ponerlo en **Read and write** — es el permiso que habilita `push`.
+7. **Generate token**. GitHub lo muestra una única vez: copiarlo antes de cerrar la página. Si se pierde, no hay forma de recuperarlo — hay que generar uno nuevo.
+
+Con el token copiado, la primera vez que Positron (o `git push` desde la terminal) pida credenciales:
+
+- **Usuario**: el nombre de usuario de GitHub.
+- **Contraseña**: el token — se pega tal cual, aunque el campo diga "password".
+
+Después de ese primer uso, el sistema operativo lo guarda (Keychain en macOS, Credential Manager en Windows, o el *credential helper* configurado en Linux) y no se vuelve a pedir hasta que el token expire.
+
+::: {.callout-important}
+El token es equivalente a una contraseña con permisos acotados: no se comparte por Slack ni se pega en ningún archivo del repo. Si se expone por error, se revoca de inmediato desde la misma página de *Personal access tokens* y se genera uno nuevo.
+:::
 
 ## Cómo se mueven los archivos en Git
 
@@ -120,6 +145,7 @@ Estos son los mensajes que con más frecuencia hacen que alguien cierre Positron
 |---|---|---|
 | `fatal: not a git repository` | Estás en una carpeta que no es el repo, o el repo no se clonó bien | Verificar que existe una carpeta `.git` adentro; si no, clonar de nuevo |
 | `Please tell me who you are` | Git nunca se configuró en esta máquina | Correr `git config --global user.name` y `user.email` |
+| `could not read Username for 'https://github.com'` | Git no tiene credenciales guardadas para el remoto | Volver a intentar el push e ingresar usuario + token cuando lo pida (ver sección de token, arriba) |
 | `rejected — non-fast-forward` | Hay commits en GitHub que tu copia local no tiene | Hacer `pull` (o sync en Positron) antes de volver a intentar el `push` |
 | `Permission denied (publickey)` | GitHub no reconoce tu llave SSH, o falta configurarla | Usar HTTPS en vez de SSH para el remoto, o revisar la llave en GitHub → Settings → SSH Keys |
 | Conflicto con `<<<<<<<` en el archivo | Dos personas cambiaron la misma línea | Resolver a mano en Positron (ver sección anterior), guardar, commit, push |
