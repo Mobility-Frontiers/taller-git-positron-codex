@@ -193,12 +193,21 @@ La frecuencia de estos conflictos se reduce mediante hábitos de trabajo, no med
 
 Una rama es una copia paralela del proyecto que permite experimentar sin afectar `main`; los cambios permanecen aislados hasta que se decide integrarlos.
 
+### Convención del grupo: una rama por persona y por tarea
+
+A partir de este taller, el siguiente procedimiento queda establecido como estándar para los repositorios del grupo, no solo como recomendación:
+
+1. Nadie hace commit directo sobre `main`. Todo cambio, por pequeño que sea, se hace en una rama.
+2. El nombre de la rama sigue el formato `nombre/descripción-corta` — por ejemplo, `roberto/limpieza-datos-gps` o `camila/modelo-difusion-v2`. El nombre identifica de inmediato quién está trabajando en qué, algo especialmente útil cuando varias personas tienen ramas abiertas al mismo tiempo.
+3. Se abre una rama nueva por cada tarea o análisis distinto, no una única rama personal que se reutiliza indefinidamente — evita que una rama acumule cambios de temas no relacionados y facilita la revisión.
+4. La integración a `main` se hace exclusivamente mediante pull request, con revisión de al menos otra persona del grupo antes del merge.
+
 **Desde Positron (recomendado):** el nombre de la rama actual aparece en la esquina inferior izquierda de la ventana. Al hacer clic ahí, Positron ofrece la opción de crear una rama nueva a partir de un nombre. El ciclo de edición, commit y push se ejecuta después de manera idéntica al descrito en el ejercicio anterior; la única diferencia es que los cambios quedan aislados en esa rama.
 
 **Alternativa: terminal.**
 
 ```bash
-git checkout -b practica/tu-nombre
+git checkout -b tu-nombre/practica-taller
 ```
 
 Esa integración se solicita mediante un *pull request*: una propuesta formal de incorporar los cambios de una rama a `main`, sujeta a revisión previa. En GitHub, tras publicar la rama desde Positron (la primera vez se ofrece el botón "Publish Branch"), se abre un PR desde la página del repositorio. Allí se visualiza el diff completo, se pueden agregar comentarios línea por línea, y solo tras la aprobación correspondiente se ejecuta el merge. Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en `main`.
@@ -206,13 +215,14 @@ Esa integración se solicita mediante un *pull request*: una propuesta formal de
 En un repositorio de investigación compartido, el pull request cumple una función específica: permite que otra persona revise el cambio antes de que se integre al análisis principal, lo que permite detectar errores no evidentes — una columna mal nombrada, un filtro aplicado de manera incorrecta — antes de que afecten un resultado.
 
 ::: {.exercise}
-**Ejercicio 4 — Crear una rama y abrir un pull request**
+**Ejercicio 4 — Crear tu rama siguiendo la convención del grupo**
 
-- [ ] Crear una rama desde Positron (clic en el nombre de la rama, esquina inferior izquierda) o con `git checkout -b practica/tu-nombre`.
+- [ ] Crear una rama con el formato `tu-nombre/practica-taller`, desde Positron (clic en el nombre de la rama, esquina inferior izquierda) o con `git checkout -b tu-nombre/practica-taller`.
 - [ ] Editar `practica/notas.md` y hacer un commit en esa rama.
 - [ ] Publicar la rama (push) — Positron ofrece el botón "Publish Branch" la primera vez.
 - [ ] En GitHub.com, abrir un pull request desde esa rama hacia `main`.
 - [ ] Revisar el diff del PR y, con otra persona del grupo, aprobarlo y hacer merge.
+- [ ] Confirmar que, de aquí en adelante, cada tarea nueva en los repos del grupo comienza con este mismo procedimiento: rama con nombre `tu-nombre/descripción-corta`, nunca commits directos sobre `main`.
 :::
 
 ## El asistente de IA en Positron
