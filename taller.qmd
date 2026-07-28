@@ -163,7 +163,11 @@ diversidad_dominios <- function(df) {
 }
 ```
 
-**Desde Positron (recomendado):** el editor presenta este mismo bloque con opciones sobre cada sección en conflicto — *Accept Current*, *Accept Incoming*, *Accept Both* — para seleccionar la versión que corresponde, o combinar ambas manualmente. Una vez resuelto, se guarda el archivo, se marca (add) y se confirma el commit desde el panel de control de código fuente, tal como en el ejercicio anterior, y finalmente se ejecuta push.
+**Desde Positron (recomendado):** el editor presenta este mismo bloque con opciones sobre cada sección en conflicto — *Accept Current*, *Accept Incoming*, *Accept Both* — para seleccionar la versión que corresponde, o combinar ambas manualmente. La siguiente imagen reproduce cómo se ve exactamente este conflicto dentro del editor:
+
+![Conflicto de fusión en `ejemplo_analisis.R` tal como aparece en el editor de Positron, con los botones Accept Current Change, Accept Incoming Change, Accept Both Changes y Compare Changes sobre el bloque en conflicto.](practica/conflicto-positron.svg)
+
+Una vez resuelto, se guarda el archivo, se marca (add) y se confirma el commit desde el panel de control de código fuente, tal como en el ejercicio anterior, y finalmente se ejecuta push.
 
 **Alternativa: terminal.** Editar el archivo a mano para eliminar las marcas (`<<<<<<<`, `=======`, `>>>>>>>`) dejando el contenido correcto, y luego:
 

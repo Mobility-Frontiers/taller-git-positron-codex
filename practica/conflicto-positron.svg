@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="'SFMono-Regular', Consolas, Menlo, monospace" role="img">
+  <title>Ejemplo de un conflicto de fusión resuelto en el editor de Positron</title>
+  <desc>Captura ilustrativa del editor de Positron mostrando el archivo ejemplo_analisis.R con un conflicto de Git sin resolver, incluyendo los botones Accept Current Change, Accept Incoming Change, Accept Both Changes y Compare Changes sobre el bloque en conflicto.</desc>
+
+  <rect x="0" y="0" width="900" height="480" rx="8" fill="#1e1e1e"/>
+
+  <rect x="0" y="0" width="900" height="34" rx="8" fill="#252526"/>
+  <rect x="0" y="20" width="900" height="14" fill="#252526"/>
+  <rect x="16" y="8" width="180" height="20" rx="4" fill="#1e1e1e"/>
+  <circle cx="28" cy="18" r="4" fill="#e2c08d"/>
+  <text x="40" y="22" fill="#cccccc" font-size="12">ejemplo_analisis.R</text>
+  <text x="160" y="22" fill="#e2c08d" font-size="12">●</text>
+
+  <rect x="0" y="34" width="900" height="26" fill="#2d2d2d"/>
+  <text x="16" y="51" fill="#3794ff" font-size="12">Accept Current Change</text>
+  <text x="168" y="51" fill="#6a6a6a" font-size="12">|</text>
+  <text x="180" y="51" fill="#3794ff" font-size="12">Accept Incoming Change</text>
+  <text x="340" y="51" fill="#6a6a6a" font-size="12">|</text>
+  <text x="352" y="51" fill="#3794ff" font-size="12">Accept Both Changes</text>
+  <text x="494" y="51" fill="#6a6a6a" font-size="12">|</text>
+  <text x="506" y="51" fill="#3794ff" font-size="12">Compare Changes</text>
+
+  <g font-size="13">
+    <text x="16" y="86" fill="#5a5a5a" text-anchor="end">1</text>
+    <text x="34" y="86" fill="#569cd6">diversidad_dominios</text>
+    <text x="184" y="86" fill="#d4d4d4">&lt;- </text>
+    <text x="206" y="86" fill="#569cd6">function</text>
+    <text x="262" y="86" fill="#d4d4d4">(df) {</text>
+
+    <text x="16" y="108" fill="#5a5a5a" text-anchor="end">2</text>
+    <text x="34" y="108" fill="#d4d4d4">  df %&gt;%</text>
+
+    <rect x="0" y="116" width="900" height="20" fill="#4b5632"/>
+    <rect x="0" y="116" width="4" height="20" fill="#a7c080"/>
+    <text x="16" y="130" fill="#5a5a5a" text-anchor="end">3</text>
+    <text x="34" y="130" fill="#a7c080">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</text>
+
+    <rect x="0" y="136" width="900" height="40" fill="#3a4526"/>
+    <rect x="0" y="136" width="4" height="40" fill="#a7c080"/>
+    <text x="16" y="152" fill="#5a5a5a" text-anchor="end">4</text>
+    <text x="34" y="152" fill="#d4d4d4">    group_by</text>
+    <text x="114" y="152" fill="#d4d4d4">(id, dominio) %&gt;%</text>
+    <text x="16" y="172" fill="#5a5a5a" text-anchor="end">5</text>
+    <text x="34" y="172" fill="#d4d4d4">    summarise</text>
+    <text x="120" y="172" fill="#d4d4d4">(n = n(), .groups = </text>
+    <text x="320" y="172" fill="#ce9178">"drop"</text>
+    <text x="374" y="172" fill="#d4d4d4">)</text>
+
+    <rect x="0" y="176" width="900" height="20" fill="#4b5632"/>
+    <rect x="0" y="176" width="4" height="20" fill="#a7c080"/>
+    <text x="16" y="190" fill="#5a5a5a" text-anchor="end">6</text>
+    <text x="34" y="190" fill="#a7c080">=======</text>
+
+    <rect x="0" y="196" width="900" height="40" fill="#28374a"/>
+    <rect x="0" y="196" width="4" height="40" fill="#6ab0f3"/>
+    <text x="16" y="212" fill="#5a5a5a" text-anchor="end">7</text>
+    <text x="34" y="212" fill="#d4d4d4">    group_by</text>
+    <text x="114" y="212" fill="#d4d4d4">(id) %&gt;%</text>
+    <text x="16" y="232" fill="#5a5a5a" text-anchor="end">8</text>
+    <text x="34" y="232" fill="#d4d4d4">    summarise</text>
+    <text x="120" y="232" fill="#d4d4d4">(n_dominios = </text>
+    <text x="256" y="232" fill="#dcdcaa">n_distinct</text>
+    <text x="340" y="232" fill="#d4d4d4">(dominio), .groups = </text>
+    <text x="550" y="232" fill="#ce9178">"drop"</text>
+    <text x="604" y="232" fill="#d4d4d4">)</text>
+
+    <rect x="0" y="236" width="900" height="20" fill="#28374a"/>
+    <rect x="0" y="236" width="4" height="20" fill="#6ab0f3"/>
+    <text x="16" y="250" fill="#5a5a5a" text-anchor="end">9</text>
+    <text x="34" y="250" fill="#6ab0f3">&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main</text>
+
+    <text x="16" y="272" fill="#5a5a5a" text-anchor="end">10</text>
+    <text x="34" y="272" fill="#d4d4d4">}</text>
+  </g>
+
+  <rect x="0" y="290" width="900" height="1" fill="#3c3c3c"/>
+
+  <g font-size="12">
+    <rect x="16" y="308" width="10" height="10" fill="#a7c080"/>
+    <text x="34" y="317" fill="#cccccc">Current Change (HEAD) — tu versión local</text>
+    <rect x="16" y="332" width="10" height="10" fill="#6ab0f3"/>
+    <text x="34" y="341" fill="#cccccc">Incoming Change (origin/main) — la versión que trajo el pull</text>
+  </g>
+
+  <g font-size="12" fill="#8a8a8a">
+    <text x="16" y="372">Al hacer clic en un botón del CodeLens, Positron reemplaza todo el bloque</text>
+    <text x="16" y="390">(incluidas las marcas &lt;&lt;&lt;&lt;&lt;&lt;&lt; ======= &gt;&gt;&gt;&gt;&gt;&gt;&gt;) por la versión elegida.</text>
+    <text x="16" y="408">Después de resolver: guardar, marcar el archivo (add), confirmar el commit y hacer push.</text>
+  </g>
+
+  <rect x="0" y="440" width="900" height="40" fill="#007acc"/>
+  <text x="16" y="464" fill="#ffffff" font-size="12">⎇ practica/tu-nombre</text>
+  <text x="140" y="464" fill="#ffffff" font-size="12">⚠ 1 conflicto sin resolver</text>
+</svg>
