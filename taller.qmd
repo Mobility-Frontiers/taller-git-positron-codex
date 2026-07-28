@@ -1,89 +1,90 @@
 ---
 title: "Git y GitHub desde Positron"
-subtitle: "Un taller de una hora para dejar de tener miedo a hacer push"
+subtitle: "Taller de control de versiones para el grupo Mobility Frontiers"
 author: "Mobility Frontiers"
 date: today
 date-format: "D [de] MMMM, YYYY"
 lang: es
 format:
   html:
-    theme: flatly
+    theme: none
     css: styles.css
     toc: true
-    toc-location: left
-    toc-title: "En este taller"
+    toc-title: "Contenidos"
     number-sections: false
     code-copy: true
-    highlight-style: printing
+    highlight-style: tango
     embed-resources: true
-    smooth-scroll: true
     fig-align: center
-    linkcolor: "#8a3b2f"
 execute:
   echo: false
   eval: false
 ---
 
-Casi nadie en un grupo de investigación aprendió Git porque quiso: lo aprendió porque un día alguien sobrescribió tres días de trabajo de otra persona, o porque un script dejó de correr después de un `push` y nadie sabía a qué versión volver. Esta guía es la versión corta de ese aprendizaje, pensada para el flujo real del grupo — repos en R, análisis que se van construyendo de a poco, y varias personas tocando el mismo pipeline en semanas distintas.
+En un grupo de investigación, los problemas de control de versiones rara vez se anticipan: se descubren cuando una persona sobrescribe sin saberlo el trabajo de otra, o cuando un script deja de ejecutarse después de una actualización y no queda claro a qué versión anterior conviene volver. Este documento reúne los conceptos y procedimientos de Git y GitHub necesarios para evitar ese tipo de incidentes, aplicados al flujo de trabajo habitual del grupo: repositorios en R, análisis que se desarrollan de forma incremental, y colaboración simultánea de varias personas sobre un mismo pipeline.
 
-Todo lo que sigue se practica sobre `taller-git-positron-codex`, un repositorio hecho exclusivamente para este taller. Nada de lo que hagamos hoy toca `sfb-mobility-networks` ni ningún otro repo real del grupo — para eso existe este.
+Los ejercicios de este taller se realizan sobre el repositorio `taller-git-positron-codex`, creado específicamente para esta actividad. Ninguno de los ejercicios se realiza sobre `sfb-mobility-networks` ni sobre otro repositorio del grupo.
 
-**Antes de sentarse:** Positron abierto, Git instalado y configurado con nombre y correo (`git config --global user.name` / `user.email`), un token de acceso creado (siguiente sección) y este repositorio ya clonado. Si algo de eso falta, es más rápido resolverlo ahora que a mitad de la demo.
+**Requisitos previos:** Positron instalado; Git configurado con nombre de usuario y correo electrónico (`git config --global user.name` / `user.email`); un token de acceso personal generado (sección siguiente); y el repositorio de práctica clonado localmente.
 
-## Autenticarse: el token, no la contraseña
+## Autenticación: el token de acceso personal
 
-GitHub dejó de aceptar la contraseña de la cuenta para operaciones por HTTPS hace años — si Positron o la terminal piden usuario y contraseña al hacer `push` y se ingresa la contraseña real, va a fallar. Lo que reemplaza a la contraseña es un **token de acceso personal**, y conviene generarlo antes de la primera demo, no durante.
+Desde hace algunos años, GitHub no acepta la contraseña de la cuenta para operaciones por HTTPS. Si Positron o la terminal solicitan usuario y contraseña al ejecutar `push` y se ingresa la contraseña de la cuenta, la operación fallará. En su lugar, GitHub requiere un **token de acceso personal**, que reemplaza a la contraseña en este tipo de operaciones.
 
-Los pasos, desde github.com:
+Cada asistente debe generar su propio token, con su propia cuenta de GitHub, antes del inicio de la demo — no es un paso opcional ni compartible entre personas: sin este token, Positron no podrá ejecutar `commit` ni `push` hacia el repositorio durante el taller. El procedimiento toma menos de dos minutos.
 
-1. Ícono de perfil (arriba a la derecha) → **Settings**.
-2. Al final del menú izquierdo, **Developer settings**.
+Procedimiento, desde github.com:
+
+1. Ícono de perfil (esquina superior derecha) → **Settings**.
+2. Al final del menú lateral izquierdo, **Developer settings**.
 3. **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
-4. Nombre descriptivo (por ejemplo `positron-taller`) y una fecha de expiración razonable — 90 días alcanza para no dejarlo eterno ni tener que repetir esto cada semana.
-5. En **Repository access**, elegir *Only select repositories* y marcar `taller-git-positron-codex` (y cualquier otro repo del grupo donde se vaya a trabajar).
-6. En **Permissions → Repository permissions**, buscar **Contents** y ponerlo en **Read and write** — es el permiso que habilita `push`.
-7. **Generate token**. GitHub lo muestra una única vez: copiarlo antes de cerrar la página. Si se pierde, no hay forma de recuperarlo — hay que generar uno nuevo.
+4. Asignar un nombre descriptivo (por ejemplo, `positron-taller`) y una fecha de expiración razonable — 90 días es suficiente para no dejarlo indefinido ni tener que repetir el procedimiento con frecuencia.
+5. En **Repository access**, seleccionar *Only select repositories* y marcar `taller-git-positron-codex`, además de cualquier otro repositorio del grupo en el que se vaya a trabajar.
+6. En **Permissions → Repository permissions**, ubicar **Contents** y asignarle **Read and write** — este es el permiso que habilita `push`.
+7. **Generate token**. GitHub lo muestra una única vez: debe copiarse antes de cerrar la página, ya que no puede recuperarse posteriormente.
 
-Con el token copiado, la primera vez que Positron (o `git push` desde la terminal) pida credenciales:
+Con el token disponible, la primera vez que Positron o `git push` soliciten credenciales:
 
-- **Usuario**: el nombre de usuario de GitHub.
-- **Contraseña**: el token — se pega tal cual, aunque el campo diga "password".
+- **Usuario:** el nombre de usuario de GitHub.
+- **Contraseña:** el token, pegado tal cual, aunque el campo indique "password".
 
-Después de ese primer uso, el sistema operativo lo guarda (Keychain en macOS, Credential Manager en Windows, o el *credential helper* configurado en Linux) y no se vuelve a pedir hasta que el token expire.
+Tras el primer uso, el sistema operativo almacena la credencial (Keychain en macOS, Credential Manager en Windows, o el *credential helper* configurado en Linux), y no vuelve a solicitarse hasta que el token expire.
 
-::: {.callout-important}
-El token es equivalente a una contraseña con permisos acotados: no se comparte por Slack ni se pega en ningún archivo del repo. Si se expone por error, se revoca de inmediato desde la misma página de *Personal access tokens* y se genera uno nuevo.
-:::
+> El token equivale a una contraseña con permisos acotados: no debe compartirse por canales de mensajería ni incluirse en ningún archivo del repositorio. Si se expone por error, debe revocarse de inmediato desde la misma página de *Personal access tokens* y generarse uno nuevo.
 
-## Cómo se mueven los archivos en Git
+## El modelo de tres estados
 
-Vale la pena entender esto una vez bien, porque el resto son variaciones sobre lo mismo. Un archivo pasa por tres estados antes de quedar registrado en la historia del proyecto:
+Un archivo pasa por tres estados antes de quedar registrado en la historia del proyecto:
 
 ```
-lo editas          lo marcas           queda en el historial
-(working dir)  →   (staging, git add)  →   (commit)
+edición              marcado                      registro
+(working dir)   →    (staging, git add)   →      (commit)
 ```
 
-`git add` no sube nada a ningún lado — solo le dice a Git "esto es lo que quiero incluir en el próximo commit". El commit en sí es una fotografía local. Nada de esto llega a GitHub hasta que hay un `push`. Y en la dirección contraria, `pull` trae lo que otras personas ya subieron:
+`git add` no envía nada a GitHub — únicamente indica qué cambios se incluirán en el próximo commit. El commit en sí es una fotografía local del proyecto; nada de esto llega al repositorio remoto hasta que se ejecuta un `push`. En sentido inverso, `pull` incorpora los cambios que otras personas ya subieron:
 
 ```
-GitHub (origin)  --pull-->   tu copia local
-tu copia local   --push-->   GitHub (origin)
+GitHub (origin)   --pull-->   copia local
+copia local       --push-->   GitHub (origin)
 ```
 
-De acá sale la única regla que realmente importa memorizar: si vas a trabajar, primero `pull`. No porque sea buena costumbre, sino porque si alguien más subió algo entre tu último `pull` y tu próximo `push`, Git te va a obligar a resolverlo — mejor hacerlo al empezar, con la cabeza fresca, que al final, apurado.
+De este esquema se desprende la práctica más importante del taller: ejecutar `pull` antes de comenzar a trabajar. No se trata de una formalidad, sino de una necesidad — si otra persona subió cambios entre el último `pull` y el próximo `push`, Git exigirá resolver esa diferencia. Es preferible hacerlo al inicio de la sesión de trabajo que al final, bajo presión de tiempo.
 
-## La demo: pull, editar, commit, push
+## Procedimiento: pull, edición, commit, push
 
-Con `taller-git-positron-codex` abierto en Positron, el panel de control de código fuente (el ícono de rama en la barra lateral izquierda) es donde va a pasar casi todo.
+Con `taller-git-positron-codex` abierto en Positron, el panel de control de código fuente (ícono de rama en la barra lateral izquierda) concentra la mayor parte de las acciones.
 
-Primero, sincronizar antes de tocar nada — botón de sync o "Pull" en ese panel. Si dice que ya está al día, perfecto, seguimos. Si trae cambios nuevos, mejor: es la prueba de que el mecanismo funciona.
+**Paso 1.** Sincronizar antes de realizar cualquier modificación, mediante el botón de sincronización o "Pull" del panel. Si el repositorio ya está actualizado, se continúa; si trae cambios nuevos, se confirma que el mecanismo de sincronización funciona correctamente.
 
-Después, abrir `practica/notas.md` y agregar una línea con nombre y fecha. Al guardar, el archivo aparece listado en el panel de Source Control como modificado. Antes de hacer nada más, vale la pena hacer clic sobre él y mirar el diff — la vista lado a lado con líneas en rojo (lo que se quita) y verde (lo que se agrega). Es el momento de notar si, sin querer, se cambió algo de más.
+**Paso 2.** Abrir `practica/notas.md` y añadir una línea con nombre y fecha. Al guardar, el archivo aparece en el panel de control de código fuente como modificado.
 
-Con el diff revisado: el `+` junto al archivo lo pasa a *staged* (el equivalente visual de `git add`), se escribe un mensaje de commit que diga qué se hizo y no "cambios" o "fix" — algo como `docs: agrega nota de práctica de Roberto` — y se confirma. Ese commit vive solo en la copia local hasta que se presiona **Push**.
+**Paso 3.** Revisar el diff antes de continuar — la vista comparativa muestra en rojo el contenido eliminado y en verde el contenido añadido. Esta revisión permite detectar modificaciones no intencionadas antes de registrarlas.
 
-Quien prefiera la terminal integrada de Positron puede escribir exactamente lo mismo:
+**Paso 4.** Marcar el archivo (equivalente a `git add`) y confirmar el commit con un mensaje descriptivo — por ejemplo, `docs: agrega nota de práctica de Roberto`, no `cambios` o `fix`. El commit queda registrado únicamente en la copia local.
+
+**Paso 5.** Ejecutar `push`. El commit queda entonces disponible en GitHub para el resto del grupo.
+
+El mismo procedimiento puede ejecutarse desde la terminal integrada de Positron:
 
 ```bash
 git pull
@@ -92,13 +93,13 @@ git commit -m "docs: agrega nota de práctica de Roberto"
 git push
 ```
 
-Ambos caminos terminan en el mismo lugar — Positron simplemente le pone una interfaz gráfica a estos cuatro comandos.
+Ambos métodos son equivalentes; el panel de Positron ofrece una interfaz gráfica sobre estos mismos comandos.
 
-## Lo que rompe cosas: dos personas, el mismo archivo
+## Conflictos: dos personas, un mismo archivo
 
-`pull` antes de trabajar evita la mayoría de los problemas, pero no todos. Si dos personas editan la misma línea de un archivo casi al mismo tiempo, alguien va a toparse con un conflicto — y eso está bien, es Git haciendo su trabajo, no un error.
+Ejecutar `pull` antes de trabajar evita la mayoría de los conflictos, aunque no todos. Si dos personas modifican la misma línea de un archivo en un intervalo breve, se produce un conflicto — un resultado esperado del funcionamiento de Git, no un error.
 
-Para verlo en vivo: en parejas, ambas personas parten del mismo commit en `practica/ejemplo_analisis.R`, y cada una modifica la misma línea de la función `diversidad_dominios()` sin volver a hacer `pull`. La primera persona en hacer `push` no tiene problema. La segunda recibe un rechazo — y al hacer `pull`, Git marca el archivo así:
+Para observarlo en la práctica: en parejas, ambas personas parten del mismo commit en `practica/ejemplo_analisis.R` y modifican la misma línea de la función `diversidad_dominios()` sin ejecutar `pull` entre ambas ediciones. La primera persona en hacer `push` no encuentra problemas; la segunda recibe un rechazo, y al ejecutar `pull`, Git marca el archivo de la siguiente manera:
 
 ```r
 diversidad_dominios <- function(df) {
@@ -113,41 +114,41 @@ diversidad_dominios <- function(df) {
 }
 ```
 
-Positron muestra este mismo bloque con botones sobre cada sección — *Accept Current*, *Accept Incoming*, *Accept Both* — para elegir qué versión queda, o combinar ambas a mano. Una vez resuelto, se borran las marcas (`<<<<<<<`, `=======`, `>>>>>>>`), se guarda, se hace `add` y `commit` para cerrar el conflicto, y recién ahí `push`.
+Positron presenta este mismo bloque con opciones — *Accept Current*, *Accept Incoming*, *Accept Both* — para seleccionar la versión que corresponde, o combinar ambas manualmente. Una vez resuelto el conflicto, se eliminan las marcas (`<<<<<<<`, `=======`, `>>>>>>>`), se guarda el archivo, se ejecuta `add` y `commit` para cerrar el conflicto, y finalmente `push`.
 
-Lo que evita llegar a esta situación con frecuencia no es ninguna herramienta, son hábitos: trabajar en una rama propia en vez de directo sobre `main`, avisar en el canal del equipo antes de tocar un script que varias personas usan, hacer commits chicos y seguidos en vez de uno enorme al final del día. Y una regla sin excepciones: nunca `push --force` sobre una rama que alguien más también usa — reescribe la historia y puede borrar commits ajenos sin aviso.
+La frecuencia de estos conflictos se reduce mediante hábitos de trabajo, no mediante herramientas: trabajar en una rama propia en lugar de directamente sobre `main`; notificar al equipo antes de modificar un script utilizado por varias personas; y realizar commits pequeños y frecuentes en lugar de uno extenso al final de la jornada. Una regla sin excepciones: no debe ejecutarse `push --force` sobre una rama utilizada por otras personas, ya que reescribe la historia y puede eliminar commits ajenos sin advertencia.
 
 ## Ramas y pull requests
 
-Una rama es simplemente una copia paralela del proyecto donde se puede experimentar sin afectar `main`. Se crea con `git checkout -b nombre-de-la-rama`, y desde ahí el ciclo de commit y push es idéntico al de antes — la diferencia es que los cambios quedan aislados hasta que alguien decide integrarlos.
+Una rama es una copia paralela del proyecto que permite experimentar sin afectar `main`. Se crea con `git checkout -b nombre-de-la-rama`, y el ciclo de commit y push se ejecuta de manera idéntica al descrito anteriormente; la diferencia es que los cambios permanecen aislados hasta que se decide integrarlos.
 
-Esa integración se pide con un *pull request*: "esto es lo que hice en mi rama, revísenlo antes de mezclarlo con `main`". En GitHub, después de publicar la rama desde Positron (la primera vez ofrece un botón "Publish Branch"), se abre un PR desde la página del repositorio. Ahí queda visible el diff completo, se pueden dejar comentarios línea por línea, y solo después de una aprobación se hace el merge. La rama, ya integrada, se puede borrar sin perder nada — su historia queda en `main`.
+Esa integración se solicita mediante un *pull request*: una propuesta formal de incorporar los cambios de una rama a `main`, sujeta a revisión previa. En GitHub, tras publicar la rama desde Positron (la primera vez se ofrece el botón "Publish Branch"), se abre un PR desde la página del repositorio. Allí se visualiza el diff completo, se pueden agregar comentarios línea por línea, y solo tras la aprobación correspondiente se ejecuta el merge. Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en `main`.
 
-En un repo de investigación compartido esto cumple un rol específico: alguien más lee el cambio antes de que se mezcle con el análisis principal, lo que atrapa errores silenciosos — una columna mal nombrada, un filtro que se aplicó de más — antes de que terminen en un resultado.
+En un repositorio de investigación compartido, el pull request cumple una función específica: permite que otra persona revise el cambio antes de que se integre al análisis principal, lo que permite detectar errores no evidentes — una columna mal nombrada, un filtro aplicado de manera incorrecta — antes de que afecten un resultado.
 
 ## El asistente de IA en Positron
 
-Positron trae un panel de asistente (se abre con *View: Show Posit Assistant* desde la paleta de comandos, `Cmd/Ctrl+Shift+P`) que conversa con el código del proyecto: puede explicar una función, proponer una nueva, o depurar un error pegando el mensaje de la consola. No es un solo modelo fijo — se conecta con la clave de API que cada quien configure, ya sea OpenAI, Anthropic, GitHub Copilot u otros proveedores, y el panel de configuración permite elegir cuál usar por defecto según la tarea (algo liviano para autocompletar, algo más capaz para explicar un pipeline completo).
+Positron incorpora un panel de asistencia (se accede mediante *View: Show Posit Assistant* desde la paleta de comandos, `Cmd/Ctrl+Shift+P`) que opera sobre el contexto del proyecto abierto: puede explicar una función existente, proponer una nueva, o ayudar a depurar un error a partir del mensaje de la consola. El panel no está limitado a un modelo único — se conecta mediante la clave de API que cada persona configure, ya sea de OpenAI, Anthropic, GitHub Copilot u otros proveedores, y permite establecer preferencias de modelo según el tipo de tarea.
 
-Sobre `practica/ejemplo_analisis.R`, dos pedidos para probarlo:
+Sobre `practica/ejemplo_analisis.R`, dos solicitudes de prueba:
 
-> Explica qué hace `diversidad_dominios()` y qué pasaría si `dominio` tuviera valores `NA`.
+> Explica qué hace `diversidad_dominios()` y qué ocurriría si `dominio` contuviera valores `NA`.
 
 > Escribe una función que reciba un data.frame con columnas `id`, `dominio` y `fecha`, y devuelva el conteo de dominios distintos por `id` y por mes.
 
-Lo que genere el asistente entra al mismo circuito que cualquier otro cambio: se lee el diff, se corre para confirmar que hace lo que dice, y si va a un repo compartido, pasa por PR como cualquier otra contribución. La IA acelera escribir el código; no reemplaza la parte de entender qué hace.
+El código generado por el asistente sigue el mismo procedimiento que cualquier otra modificación: se revisa el diff, se ejecuta para confirmar que cumple lo esperado, y si se integra a un repositorio compartido, se somete a revisión mediante pull request. El asistente acelera la escritura del código; no sustituye la comprensión de su funcionamiento.
 
-## Cuando algo sale mal
+## Resolución de problemas frecuentes
 
-Estos son los mensajes que con más frecuencia hacen que alguien cierre Positron y pida ayuda. Ninguno es grave.
+La siguiente tabla reúne los mensajes de error más habituales en este tipo de flujo de trabajo.
 
-| Mensaje | Qué significa | Qué hacer |
+| Mensaje | Causa | Solución |
 |---|---|---|
-| `fatal: not a git repository` | Estás en una carpeta que no es el repo, o el repo no se clonó bien | Verificar que existe una carpeta `.git` adentro; si no, clonar de nuevo |
-| `Please tell me who you are` | Git nunca se configuró en esta máquina | Correr `git config --global user.name` y `user.email` |
-| `could not read Username for 'https://github.com'` | Git no tiene credenciales guardadas para el remoto | Volver a intentar el push e ingresar usuario + token cuando lo pida (ver sección de token, arriba) |
-| `rejected — non-fast-forward` | Hay commits en GitHub que tu copia local no tiene | Hacer `pull` (o sync en Positron) antes de volver a intentar el `push` |
-| `Permission denied (publickey)` | GitHub no reconoce tu llave SSH, o falta configurarla | Usar HTTPS en vez de SSH para el remoto, o revisar la llave en GitHub → Settings → SSH Keys |
-| Conflicto con `<<<<<<<` en el archivo | Dos personas cambiaron la misma línea | Resolver a mano en Positron (ver sección anterior), guardar, commit, push |
+| `fatal: not a git repository` | La carpeta actual no corresponde al repositorio, o este no se clonó correctamente | Verificar la existencia de una carpeta `.git`; en caso contrario, clonar nuevamente |
+| `Please tell me who you are` | Git no ha sido configurado en esta máquina | Ejecutar `git config --global user.name` y `user.email` |
+| `could not read Username for 'https://github.com'` | No hay credenciales almacenadas para el repositorio remoto | Reintentar el push e ingresar usuario y token cuando se solicite (ver sección de autenticación) |
+| `rejected — non-fast-forward` | Existen commits en GitHub que la copia local no posee | Ejecutar `pull` (o sincronizar en Positron) antes de reintentar el `push` |
+| `Permission denied (publickey)` | GitHub no reconoce la llave SSH configurada, o esta no existe | Utilizar HTTPS en lugar de SSH para el remoto, o revisar la configuración en GitHub → Settings → SSH Keys |
+| Marcas `<<<<<<<` en un archivo | Dos personas modificaron la misma línea | Resolver manualmente en Positron (ver sección de conflictos), guardar, commit, push |
 
-Este repositorio, `taller-git-positron-codex`, queda disponible después de hoy para seguir probando cualquiera de estos escenarios sin riesgo — es exactamente para eso que existe.
+El repositorio `taller-git-positron-codex` permanece disponible después del taller para continuar practicando cualquiera de estos escenarios sin riesgo para el trabajo del grupo.

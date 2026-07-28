@@ -1,83 +1,162 @@
-/* Tipografía editorial, no plantilla */
-
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap');
+/* Hoja de estilos autocontenida — sin dependencias externas */
 
 :root {
   --ink: #232019;
   --ink-soft: #57534a;
   --paper: #fbf9f5;
+  --panel: #f2efe7;
   --rule: #ded7c8;
   --accent: #8a3b2f;
   --accent-soft: #f2e6de;
 }
 
-html {
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
   background: var(--paper);
 }
 
 body {
-  background: var(--paper);
   color: var(--ink);
-  font-family: "Inter", -apple-system, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   font-size: 17px;
   line-height: 1.7;
-  max-width: 780px;
 }
 
-.quarto-title-block {
-  border-bottom: none;
+#quarto-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  display: block;
+}
+
+/* la barra lateral vacía de Quarto no se usa en este documento */
+#quarto-margin-sidebar {
+  display: none;
+}
+
+#quarto-sidebar-toc-left {
+  width: 100%;
+}
+
+main.content {
+  max-width: 100%;
+}
+
+/* encabezado */
+
+header#title-block-header {
   padding: 3rem 0 2rem 0;
   margin-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
 }
 
 #title-block-header .title {
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-weight: 700;
-  font-size: 2.4rem;
+  font-size: 2.3rem;
   color: var(--ink);
   letter-spacing: -0.01em;
   line-height: 1.15;
+  margin: 0 0 0.5rem;
 }
 
 #title-block-header .subtitle {
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-style: italic;
   color: var(--ink-soft);
   font-weight: 400;
-  font-size: 1.2rem;
-  margin-top: 0.4rem;
+  font-size: 1.15rem;
+  margin: 0 0 1.2rem;
 }
 
-#title-block-header .author,
-#title-block-header .date {
-  font-family: "Inter", sans-serif;
-  font-size: 0.85rem;
+.quarto-title-meta {
+  display: flex;
+  gap: 2.5rem;
+  font-size: 0.82rem;
+}
+
+.quarto-title-meta-heading {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--ink-soft);
+  font-size: 0.72rem;
+  margin-bottom: 0.15rem;
 }
 
+.quarto-title-meta-contents p {
+  margin: 0;
+}
+
+/* tabla de contenidos */
+
+nav#TOC {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.1rem 1.4rem;
+  margin: 2rem 0 3rem;
+}
+
+nav#TOC h2 {
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin: 0 0 0.7rem;
+  border: none;
+  padding: 0;
+}
+
+nav#TOC ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav#TOC li {
+  margin-bottom: 0.4rem;
+  font-size: 0.93rem;
+}
+
+nav#TOC a {
+  color: var(--ink-soft);
+  border-bottom: none;
+}
+
+nav#TOC a:hover {
+  color: var(--accent);
+}
+
+/* cuerpo del documento */
+
 h1, h2, h3, h4 {
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
   color: var(--ink);
   font-weight: 600;
 }
 
 h2 {
-  font-size: 1.55rem;
-  margin-top: 3.2rem;
+  font-size: 1.5rem;
+  margin-top: 3rem;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--rule);
 }
 
 h3 {
-  font-size: 1.15rem;
-  margin-top: 2rem;
+  font-size: 1.1rem;
+  margin-top: 1.8rem;
   color: var(--accent);
 }
 
 p {
-  margin-bottom: 1.1rem;
+  margin: 0 0 1.1rem;
 }
 
 strong {
@@ -85,38 +164,21 @@ strong {
   font-weight: 600;
 }
 
-#TOC {
-  font-family: "Inter", sans-serif;
-  font-size: 0.88rem;
-  background: transparent;
-  border-right: 1px solid var(--rule);
-  padding-right: 1.2rem;
+ol, ul {
+  padding-left: 1.4rem;
 }
 
-#TOC .toc-title,
-.sidebar-title {
-  font-family: "Inter", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.72rem;
-  color: var(--ink-soft);
-  font-weight: 600;
+li {
+  margin-bottom: 0.4rem;
 }
 
-#TOC a {
-  color: var(--ink-soft);
-}
-
-#TOC a:hover,
-#TOC a.active {
-  color: var(--accent);
-}
-
-pre.sourceCode, div.sourceCode {
+pre {
   background: #f4f1ea;
   border: 1px solid var(--rule);
   border-radius: 4px;
-  font-size: 0.88rem;
+  padding: 0.9rem 1.1rem;
+  overflow-x: auto;
+  font-size: 0.86rem;
 }
 
 code {
@@ -125,6 +187,7 @@ code {
   border-radius: 3px;
   padding: 0.05em 0.35em;
   font-size: 0.9em;
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
 }
 
 pre code {
@@ -135,22 +198,22 @@ pre code {
 
 blockquote {
   border-left: 3px solid var(--accent);
-  padding-left: 1.1rem;
-  margin-left: 0;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+  margin: 1.5rem 0;
   color: var(--ink-soft);
   font-style: italic;
 }
 
 table {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   border-collapse: collapse;
   width: 100%;
+  margin: 1.5rem 0;
 }
 
 table th {
-  font-family: "Inter", sans-serif;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.05em;
   color: var(--ink-soft);
   border-bottom: 2px solid var(--ink);
@@ -175,5 +238,7 @@ a:hover {
 }
 
 hr {
-  border-color: var(--rule);
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem 0;
 }
