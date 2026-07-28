@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="'SFMono-Regular', Consolas, Menlo, monospace" role="img">
+  <title>Panel de control de código fuente en Positron</title>
+  <desc>Captura ilustrativa del panel Source Control de Positron mostrando el botón Sync Changes para hacer pull, la caja de mensaje de commit, el archivo notas.md modificado con su ícono de diff, y el botón de stage.</desc>
+
+  <rect x="0" y="0" width="900" height="460" rx="8" fill="#252526"/>
+
+  <text x="20" y="28" fill="#bbbbbb" font-size="12" letter-spacing="1">SOURCE CONTROL</text>
+  <rect x="0" y="40" width="900" height="1" fill="#3c3c3c"/>
+
+  <text x="20" y="66" fill="#9d9d9d" font-size="12" letter-spacing="1">CHANGES</text>
+
+  <rect x="20" y="80" width="860" height="34" rx="4" fill="#3c3c3c"/>
+  <text x="32" y="102" fill="#7a7a7a" font-size="13">Message (Ctrl+Enter to commit on "roberto/practica-taller")</text>
+
+  <rect x="20" y="126" width="860" height="34" rx="4" fill="#0e639c"/>
+  <text x="450" y="148" fill="#ffffff" font-size="13" text-anchor="middle">↻ Sync Changes 1↓ · Pull antes de editar</text>
+
+  <text x="20" y="188" fill="#9d9d9d" font-size="12" letter-spacing="1">STAGED CHANGES</text>
+  <text x="850" y="188" fill="#6a6a6a" font-size="12" text-anchor="end">0</text>
+
+  <text x="20" y="222" fill="#9d9d9d" font-size="12" letter-spacing="1">CHANGES</text>
+  <text x="850" y="222" fill="#6a6a6a" font-size="12" text-anchor="end">1</text>
+
+  <rect x="16" y="232" width="868" height="34" rx="4" fill="#2a2d2e"/>
+  <text x="32" y="254" fill="#569cd6" font-size="13">M</text>
+  <text x="52" y="254" fill="#d4d4d4" font-size="13">practica/notas.md</text>
+  <text x="700" y="254" fill="#e2c08d" font-size="12">practica</text>
+  <circle cx="852" cy="249" r="9" fill="#3c3c3c"/>
+  <text x="852" y="253" fill="#cccccc" font-size="12" text-anchor="middle">+</text>
+
+  <rect x="0" y="290" width="900" height="1" fill="#3c3c3c"/>
+  <text x="20" y="316" fill="#8a8a8a" font-size="12">Al hacer clic sobre el archivo se abre esta vista de diff:</text>
+
+  <rect x="20" y="330" width="860" height="110" rx="4" fill="#1e1e1e" stroke="#3c3c3c"/>
+  <text x="36" y="352" fill="#7a7a7a" font-size="12">practica/notas.md</text>
+  <rect x="30" y="364" width="820" height="18" fill="#33412f"/>
+  <text x="40" y="377" fill="#89d185" font-size="12">+ - Roberto, 28 de julio de 2026</text>
+  <text x="40" y="400" fill="#d4d4d4" font-size="12"># Notas de práctica</text>
+  <text x="40" y="420" fill="#8a8a8a" font-size="11">verde = línea agregada · revisar antes de marcar (stage)</text>
+
+  <rect x="0" y="426" width="900" height="34" fill="#007acc"/>
+  <text x="16" y="448" fill="#ffffff" font-size="12">⎇ roberto/practica-taller</text>
+  <text x="220" y="448" fill="#ffffff" font-size="12" opacity="0.75">↻ Sincronizado</text>
+</svg>

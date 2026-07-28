@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" font-family="'SFMono-Regular', Consolas, Menlo, monospace" role="img">
+  <title>Publicar una rama nueva desde Positron</title>
+  <desc>Captura ilustrativa de Positron mostrando el aviso que aparece la primera vez que se hace push de una rama nueva, con el botón Publish Branch.</desc>
+
+  <rect x="0" y="0" width="900" height="220" rx="8" fill="#252526"/>
+
+  <text x="20" y="30" fill="#9d9d9d" font-size="12" letter-spacing="1">SOURCE CONTROL</text>
+  <rect x="0" y="40" width="900" height="1" fill="#3c3c3c"/>
+
+  <text x="20" y="70" fill="#d4d4d4" font-size="13">Esta rama no tiene una rama remota asociada todavía.</text>
+
+  <rect x="20" y="90" width="200" height="36" rx="4" fill="#0e639c"/>
+  <text x="120" y="113" fill="#ffffff" font-size="13" text-anchor="middle">Publish Branch</text>
+
+  <text x="20" y="152" fill="#8a8a8a" font-size="12">Al hacer clic, Positron crea la rama en GitHub y sube el commit local.</text>
+  <text x="20" y="172" fill="#8a8a8a" font-size="12">Después de este primer push, el botón vuelve a ser "Sync Changes" como siempre.</text>
+
+  <rect x="0" y="186" width="900" height="34" fill="#007acc"/>
+  <text x="16" y="208" fill="#ffffff" font-size="12">⎇ roberto/practica-taller ↑1</text>
+</svg>

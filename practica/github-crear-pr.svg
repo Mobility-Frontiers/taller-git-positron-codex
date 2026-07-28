@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img">
+  <title>Abrir un pull request en GitHub</title>
+  <desc>Captura ilustrativa de la página de GitHub para abrir un pull request, mostrando la comparación de ramas de roberto barra practica-taller hacia main, el título, la descripción y el botón Create pull request.</desc>
+
+  <rect x="0" y="0" width="900" height="440" fill="#ffffff" stroke="#d0d7de"/>
+
+  <rect x="0" y="0" width="900" height="46" fill="#f6f8fa"/>
+  <rect x="0" y="45" width="900" height="1" fill="#d0d7de"/>
+  <text x="20" y="28" fill="#24292f" font-size="15" font-weight="600">Comparar cambios</text>
+
+  <g font-size="13">
+    <rect x="20" y="64" width="220" height="30" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="32" y="84" fill="#24292f">base: main</text>
+
+    <text x="252" y="84" fill="#57606a">←</text>
+
+    <rect x="270" y="64" width="300" height="30" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="282" y="84" fill="#24292f">compare: roberto/practica-taller</text>
+  </g>
+
+  <rect x="20" y="112" width="860" height="30" fill="#dafbe1" stroke="#4ac26b"/>
+  <text x="32" y="132" fill="#116329" font-size="12">✓ Able to merge. These branches can be automatically merged.</text>
+
+  <rect x="20" y="160" width="860" height="1" fill="#d0d7de"/>
+
+  <rect x="20" y="178" width="860" height="34" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="32" y="200" fill="#57606a" font-size="13">docs: agrega nota de práctica de Roberto</text>
+
+  <rect x="20" y="222" width="860" height="80" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="32" y="244" fill="#8c959f" font-size="12">Add a description</text>
+  <text x="32" y="264" fill="#57606a" font-size="12">Agrega una línea a practica/notas.md siguiendo el ejercicio 2 del taller.</text>
+
+  <rect x="20" y="316" width="180" height="36" rx="6" fill="#1f883d"/>
+  <text x="110" y="339" fill="#ffffff" font-size="13" text-anchor="middle" font-weight="600">Create pull request</text>
+
+  <text x="20" y="380" fill="#8c959f" font-size="12">Revisores sugeridos: cualquier otra persona del grupo, siguiendo la</text>
+  <text x="20" y="398" fill="#8c959f" font-size="12">convención de "revisión de al menos otra persona antes del merge".</text>
+</svg>

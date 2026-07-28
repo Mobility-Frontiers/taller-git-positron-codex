@@ -77,6 +77,8 @@ Con el token disponible, la primera vez que Positron o `git push` soliciten cred
 - **Usuario:** el nombre de usuario de GitHub.
 - **Contraseña:** el token, pegado tal cual, aunque el campo indique "password".
 
+![El cuadro de credenciales que aparece la primera vez que se hace push: el token va en el campo de contraseña.](practica/positron-credenciales.svg)
+
 Tras el primer uso, el sistema operativo almacena la credencial (Keychain en macOS, Credential Manager en Windows, o el *credential helper* configurado en Linux), y no vuelve a solicitarse hasta que el token expire.
 
 > El token equivale a una contraseña con permisos acotados: no debe compartirse por canales de mensajería ni incluirse en ningún archivo del repositorio. Si se expone por error, debe revocarse de inmediato desde la misma página de *Personal access tokens* y generarse uno nuevo.
@@ -122,6 +124,10 @@ Con `taller-git-positron-codex` abierto en Positron, el panel de control de cód
 **Paso 4.** Marcar el archivo (equivalente a `git add`) y confirmar el commit con un mensaje descriptivo — por ejemplo, `docs: agrega nota de práctica de Roberto`, no `cambios` o `fix`. El commit queda registrado únicamente en la copia local.
 
 **Paso 5.** Ejecutar `push`. El commit queda entonces disponible en GitHub para el resto del grupo.
+
+El panel completo, con los cinco pasos anteriores en el mismo lugar, se ve así:
+
+![Panel de control de código fuente en Positron: el botón de sincronización (pull), el archivo modificado con su diff, y la caja de mensaje de commit.](practica/panel-source-control.svg)
 
 **Alternativa: terminal integrada de Positron.** El mismo procedimiento, escrito directamente en la terminal (`Terminal → New Terminal` en Positron):
 
@@ -229,7 +235,19 @@ La convención anterior depende de que cada persona la respete por su cuenta. Gi
 En un repositorio privado dentro de una organización de GitHub en el plan gratuito, esta regla queda configurada pero GitHub advierte que no se aplica técnicamente hasta actualizar la organización a **GitHub Team o Enterprise** — la página de configuración lo indica explícitamente. Mientras eso no ocurra, la regla funciona como una política declarada y visible para todo el grupo, pero el cumplimiento real sigue dependiendo de la convención acordada en esta sección, no de un bloqueo técnico.
 :::
 
-Esa integración se solicita mediante un *pull request*: una propuesta formal de incorporar los cambios de una rama a `main`, sujeta a revisión previa. En GitHub, tras publicar la rama desde Positron (la primera vez se ofrece el botón "Publish Branch"), se abre un PR desde la página del repositorio. Allí se visualiza el diff completo, se pueden agregar comentarios línea por línea, y solo tras la aprobación correspondiente se ejecuta el merge. Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en `main`.
+Esa integración se solicita mediante un *pull request*: una propuesta formal de incorporar los cambios de una rama a `main`, sujeta a revisión previa. La primera vez que se hace push de una rama nueva, Positron muestra este aviso:
+
+![Positron ofrece el botón "Publish Branch" la primera vez que se sube una rama nueva.](practica/publicar-rama-positron.svg)
+
+Con la rama publicada, se abre un PR desde la página del repositorio en GitHub — la comparación de ramas queda lista para revisar, con título, descripción y el botón para crearlo:
+
+![Página de GitHub para abrir un pull request: comparación de `main` contra la rama personal, título, descripción y el botón Create pull request.](practica/github-crear-pr.svg)
+
+Allí se visualiza el diff completo, se pueden agregar comentarios línea por línea, y solo tras la aprobación correspondiente se ejecuta el merge:
+
+![Revisión de un pull request en GitHub: el diff del archivo, un comentario de otra persona del grupo, la aprobación, y el botón Merge pull request habilitado.](practica/github-revisar-pr.svg)
+
+Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en `main`.
 
 En un repositorio de investigación compartido, el pull request cumple una función específica: permite que otra persona revise el cambio antes de que se integre al análisis principal, lo que permite detectar errores no evidentes — una columna mal nombrada, un filtro aplicado de manera incorrecta — antes de que afecten un resultado.
 

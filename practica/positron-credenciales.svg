@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 260" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img">
+  <title>Ingresar el token como contraseña en Positron</title>
+  <desc>Captura ilustrativa del cuadro de diálogo que muestra Positron la primera vez que se hace push, solicitando el nombre de usuario de GitHub y, como contraseña, el token de acceso personal.</desc>
+
+  <rect x="0" y="0" width="700" height="260" rx="10" fill="#f3f3f3" stroke="#c9c9c9"/>
+  <rect x="0" y="0" width="700" height="40" rx="10" fill="#e8e8e8"/>
+  <text x="20" y="26" fill="#3a3a3a" font-size="13" font-family="'SFMono-Regular', Consolas, monospace">git-credential — github.com</text>
+
+  <g font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="24" y="76" fill="#2b2b2b" font-size="13">Username for 'https://github.com':</text>
+    <rect x="24" y="86" width="650" height="34" rx="4" fill="#ffffff" stroke="#8a8a8a"/>
+    <text x="36" y="108" fill="#2b2b2b" font-size="13" font-family="'SFMono-Regular', Consolas, monospace">rcantillan</text>
+
+    <text x="24" y="150" fill="#2b2b2b" font-size="13">Password for 'https://rcantillan@github.com':</text>
+    <rect x="24" y="160" width="650" height="34" rx="4" fill="#ffffff" stroke="#8a8a8a"/>
+    <text x="36" y="182" fill="#2b2b2b" font-size="14" letter-spacing="2">••••••••••••••••••••••••••••••••••••••••</text>
+  </g>
+
+  <text x="24" y="216" fill="#6a6a6a" font-size="11">Aquí se pega el token de acceso personal generado en GitHub — no la contraseña de la cuenta.</text>
+
+  <rect x="530" y="228" width="140" height="26" rx="4" fill="#0e639c"/>
+  <text x="600" y="245" fill="#ffffff" font-size="12" text-anchor="middle">OK</text>
+</svg>
