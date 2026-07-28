@@ -831,7 +831,10 @@ text-decoration: line-through;
   <ul>
   <li><a href="#convención-del-grupo-una-rama-por-persona-y-por-tarea" id="toc-convención-del-grupo-una-rama-por-persona-y-por-tarea">Convención del grupo: una rama por persona y por tarea</a></li>
   </ul></li>
-  <li><a href="#el-asistente-de-ia-en-positron" id="toc-el-asistente-de-ia-en-positron">El asistente de IA en Positron</a></li>
+  <li><a href="#codex-en-positron-generación-y-corrección-de-código" id="toc-codex-en-positron-generación-y-corrección-de-código">Codex en Positron: generación y corrección de código</a>
+  <ul>
+  <li><a href="#qué-modelo-usar-según-la-tarea" id="toc-qué-modelo-usar-según-la-tarea">Qué modelo usar según la tarea</a></li>
+  </ul></li>
   <li><a href="#resolución-de-problemas-frecuentes" id="toc-resolución-de-problemas-frecuentes">Resolución de problemas frecuentes</a></li>
   </ul>
 </nav>
@@ -962,23 +965,30 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <li><label><input type="checkbox">Confirmar que, de aquí en adelante, cada tarea nueva en los repos del grupo comienza con este mismo procedimiento: rama con nombre <code>tu-nombre/descripción-corta</code>, nunca commits directos sobre <code>main</code>.</label></li>
 </ul>
 </div>
-<h2 id="el-asistente-de-ia-en-positron" class="anchored">El asistente de IA en Positron</h2>
-<p>Positron incorpora un panel de asistencia (se accede mediante <em>View: Show Posit Assistant</em> desde la paleta de comandos, <code>Cmd/Ctrl+Shift+P</code>) que opera sobre el contexto del proyecto abierto: puede explicar una función existente, proponer una nueva, o ayudar a depurar un error a partir del mensaje de la consola. El panel no está limitado a un modelo único — se conecta mediante la clave de API que cada persona configure, ya sea de OpenAI, Anthropic, GitHub Copilot u otros proveedores, y permite establecer preferencias de modelo según el tipo de tarea.</p>
-<p>Sobre <code>practica/ejemplo_analisis.R</code>, dos solicitudes de prueba:</p>
+<h2 id="codex-en-positron-generación-y-corrección-de-código" class="anchored">Codex en Positron: generación y corrección de código</h2>
+<p>Positron incorpora un panel dedicado a <strong>Codex</strong>, el agente de código de OpenAI, disponible como pestaña propia en el panel lateral derecho (junto a Session, Connections, History y Claude Code). A diferencia de pedirle algo a un asistente genérico, Codex opera directamente sobre los archivos del proyecto abierto: puede explicar una función existente, generar una nueva, corregir un error a partir del mensaje de la consola, y proponer los cambios como un diff editable antes de aplicarlos.</p>
+<h3 id="qué-modelo-usar-según-la-tarea" class="anchored">Qué modelo usar según la tarea</h3>
+<p>Codex no tiene un único modelo detrás — y la elección afecta tanto la calidad del resultado como el tiempo de respuesta y la cuota de uso disponible:</p>
+<ul>
+<li><strong>Para explorar y entender código, o pedir explicaciones simples:</strong> conviene un modelo liviano (por ejemplo, <code>gpt-5.4-mini</code>). Responde más rápido y consume menos cuota; es suficiente para tareas que no requieren razonamiento extenso, como leer una función y resumir qué hace.</li>
+<li><strong>Para generar código nuevo, refactorizar, o corregir un error no trivial:</strong> conviene el modelo especializado en programación (por ejemplo, <code>gpt-5.3-codex</code> o la versión más reciente disponible). Tiene mejor desempeño en tareas agénticas de código — seguir instrucciones de varios pasos, mantener consistencia con el resto del script — a costa de mayor tiempo de respuesta.</li>
+</ul>
+<p><strong>Regla práctica para un uso eficiente:</strong> empezar con el modelo liviano para explorar y entender el código, y escalar al modelo especializado solo cuando la tarea es efectivamente generar o corregir algo con cierta complejidad. Usar el modelo más potente para preguntas simples es un gasto de cuota innecesario; usar el liviano para generar código nuevo suele dar resultados menos confiables. El modelo se cambia desde el selector dentro del panel de Codex, y puede alternarse en cualquier momento de la sesión.</p>
+<p>Sobre <code>practica/ejemplo_analisis.R</code>, dos solicitudes de prueba, cada una con el modelo que le corresponde:</p>
 <blockquote>
-<p>Explica qué hace <code>diversidad_dominios()</code> y qué ocurriría si <code>dominio</code> contuviera valores <code>NA</code>.</p>
+<p><strong>Con el modelo liviano:</strong> Explica qué hace <code>diversidad_dominios()</code> y qué ocurriría si <code>dominio</code> contuviera valores <code>NA</code>.</p>
 </blockquote>
 <blockquote>
-<p>Escribe una función que reciba un data.frame con columnas <code>id</code>, <code>dominio</code> y <code>fecha</code>, y devuelva el conteo de dominios distintos por <code>id</code> y por mes.</p>
+<p><strong>Con el modelo especializado en código:</strong> Escribe una función que reciba un data.frame con columnas <code>id</code>, <code>dominio</code> y <code>fecha</code>, y devuelva el conteo de dominios distintos por <code>id</code> y por mes.</p>
 </blockquote>
-<p>El código generado por el asistente sigue el mismo procedimiento que cualquier otra modificación: se revisa el diff, se ejecuta para confirmar que cumple lo esperado, y si se integra a un repositorio compartido, se somete a revisión mediante pull request. El asistente acelera la escritura del código; no sustituye la comprensión de su funcionamiento.</p>
+<p>El código generado por Codex sigue el mismo procedimiento que cualquier otra modificación: se revisa el diff antes de aplicarlo, se ejecuta para confirmar que cumple lo esperado, y si se integra a un repositorio compartido, se somete a revisión mediante pull request, siguiendo la convención de ramas establecida en la sección anterior. Codex acelera la escritura del código; no sustituye la comprensión de su funcionamiento ni la revisión de lo que produce.</p>
 <div class="exercise">
-<p><strong>Ejercicio 5 — Usar el asistente sobre código real</strong></p>
+<p><strong>Ejercicio 5 — Usar Codex con el modelo adecuado para cada tarea</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox">Abrir el panel de asistencia (<em>View: Show Posit Assistant</em>) con <code>practica/ejemplo_analisis.R</code> activo.</label></li>
-<li><label><input type="checkbox">Pedir la explicación de <code>diversidad_dominios()</code> y el caso de valores <code>NA</code> en <code>dominio</code>.</label></li>
-<li><label><input type="checkbox">Pedir la función que agrupa por <code>id</code> y por mes.</label></li>
-<li><label><input type="checkbox">Revisar el diff de lo generado y ejecutarlo antes de hacer commit.</label></li>
+<li><label><input type="checkbox">Abrir la pestaña Codex en el panel lateral, con <code>practica/ejemplo_analisis.R</code> activo.</label></li>
+<li><label><input type="checkbox">Seleccionar el modelo liviano y pedir la explicación de <code>diversidad_dominios()</code> y el caso de valores <code>NA</code> en <code>dominio</code>.</label></li>
+<li><label><input type="checkbox">Cambiar al modelo especializado en código y pedir la función que agrupa por <code>id</code> y por mes.</label></li>
+<li><label><input type="checkbox">Revisar el diff de lo generado, ejecutarlo, y recién entonces hacer commit siguiendo la convención de ramas del taller.</label></li>
 </ul>
 </div>
 <h2 id="resolución-de-problemas-frecuentes" class="anchored">Resolución de problemas frecuentes</h2>
