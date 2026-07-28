@@ -23,9 +23,9 @@ html, body {
 
 body {
   color: var(--ink);
-  font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  font-size: 17px;
-  line-height: 1.7;
+  font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 /* contenedor general: sidebar de TOC + columna de contenido */
@@ -79,21 +79,19 @@ header#title-block-header {
 }
 
 #title-block-header .title {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 700;
-  font-size: 2.4rem;
+  font-weight: 600;
+  font-size: 2.1rem;
   color: var(--ink);
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  margin: 0 0 0.6rem;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
 }
 
 #title-block-header .subtitle {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
+  font-style: normal;
   color: var(--ink-soft);
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0 0 1.4rem;
 }
 
@@ -164,15 +162,15 @@ nav#TOC a.active {
 /* cuerpo del documento */
 
 h1, h2, h3, h4 {
-  font-family: Georgia, "Times New Roman", serif;
   color: var(--ink);
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   margin-top: 3rem;
-  padding-bottom: 0.3rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -181,9 +179,9 @@ h2:first-of-type {
 }
 
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   margin-top: 1.8rem;
-  color: var(--accent);
+  color: var(--ink);
 }
 
 p {
@@ -286,8 +284,10 @@ hr {
 
 .exercise > p:first-child {
   margin: 0 0 0.7rem;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.02rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--accent);
 }
 
