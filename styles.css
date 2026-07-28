@@ -1,0 +1,77 @@
+/* Estilo elegante para el taller */
+
+:root {
+  --brand: #2563eb;
+  --brand-dark: #1e3a8a;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --bg-soft: #f8fafc;
+}
+
+body {
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.65;
+}
+
+#title-block-header {
+  padding: 2.5rem 0 1.5rem 0;
+  border-bottom: 3px solid var(--brand);
+  margin-bottom: 2rem;
+}
+
+#title-block-header .title {
+  font-weight: 700;
+  color: var(--brand-dark);
+  letter-spacing: -0.01em;
+}
+
+#title-block-header .subtitle {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 1.15rem;
+}
+
+h1, h2, h3 {
+  color: var(--brand-dark);
+  font-weight: 650;
+}
+
+h2 {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.4rem;
+  margin-top: 2.5rem;
+}
+
+.toc-title {
+  color: var(--brand-dark);
+  font-weight: 700;
+}
+
+#TOC {
+  background: var(--bg-soft);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+
+pre.sourceCode {
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.callout {
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+code {
+  color: var(--brand-dark);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
