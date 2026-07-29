@@ -56,27 +56,40 @@ Los ejercicios se hacen sobre `taller-git-positron-codex`, un repositorio creado
 
 **Requisitos previos:** Positron instalado; Git configurado con nombre de usuario y correo electrónico (`git config --global user.name` / `user.email`); una cuenta de GitHub con acceso al repositorio de práctica.
 
+## Conectar tu cuenta de GitHub con Positron
+
+Lo primero, antes de clonar nada: Positron necesita saber con qué cuenta de GitHub va a trabajar. El ícono de cuenta está en la esquina inferior izquierda de la barra de actividad — al hacer clic ahí aparece la opción para iniciar sesión:
+
+![Ícono de cuenta en la barra de actividad de Positron, con la opción "Sign in with GitHub to use Git and GitHub features".](practica/positron-cuenta-github.svg)
+
+Al elegir esa opción, Positron pide confirmar en el navegador: se abre una pestaña nueva, se ingresa un código de un solo uso, y se autoriza el acceso. Desde ese momento, Positron queda conectado con esa cuenta para todo lo que sigue — clonar, hacer pull, push, y abrir pull requests sin tener que autenticarse de nuevo cada vez:
+
+![Aviso de Positron pidiendo iniciar sesión con GitHub, con el botón Allow y el código que se confirma en el navegador.](practica/positron-signin-github.svg)
+
+::: {.exercise}
+**Ejercicio 1 — Conectar tu cuenta de GitHub**
+
+- [ ] Abrir el ícono de cuenta en la esquina inferior izquierda de Positron.
+- [ ] Elegir "Sign in with GitHub" y confirmar en el navegador.
+- [ ] Verificar que el nombre de usuario de GitHub aparece en ese mismo panel.
+:::
+
 ## Clonar el repositorio de práctica
 
-Antes de generar el token, cada persona necesita su propia copia local del repositorio. Desde Positron:
+Con la cuenta ya conectada, cada persona necesita su propia copia local del repositorio. Desde Positron:
 
 1. Paleta de comandos (`Cmd/Ctrl+Shift+P`) → **Git: Clone**.
-2. Elegir **Clone from GitHub** (si ya hay sesión iniciada) o **Clone from URL** y pegar la dirección del repositorio.
+2. Elegir **Clone from GitHub** y buscar `taller-git-positron-codex`, o **Clone from URL** y pegar la dirección directamente.
 3. Elegir la carpeta local donde va a quedar guardado.
 
 ![Clonar el repositorio desde Positron: paleta de comandos, URL del repositorio, y selección de la carpeta local de destino.](practica/clonar-repo-positron.svg)
 
-Si es la primera vez que Positron accede a un repositorio del grupo, va a pedir autorización con la cuenta de GitHub — se abre el navegador, se confirma un código, y desde ahí Positron queda autenticado para esa cuenta:
-
-![Primera vez que Positron pide iniciar sesión con GitHub, con el código de verificación que se confirma en el navegador.](practica/positron-signin-github.svg)
-
-Al terminar de clonar, Positron pregunta si se quiere abrir la carpeta — elegir **Open**.
+Al terminar, Positron pregunta si se quiere abrir la carpeta — elegir **Open**.
 
 ::: {.exercise}
-**Ejercicio 1 — Clonar el repositorio de práctica**
+**Ejercicio 2 — Clonar el repositorio de práctica**
 
 - [ ] Clonar `taller-git-positron-codex` desde Positron (Git: Clone).
-- [ ] Autorizar el acceso con la cuenta de GitHub si se solicita.
 - [ ] Abrir la carpeta clonada en Positron.
 :::
 
@@ -108,7 +121,7 @@ Tras el primer uso, el sistema operativo almacena la credencial (Keychain en mac
 > El token equivale a una contraseña con permisos acotados: no debe compartirse por canales de mensajería ni incluirse en ningún archivo del repositorio. Si se expone por error, debe revocarse de inmediato desde la misma página de *Personal access tokens* y generarse uno nuevo.
 
 ::: {.exercise}
-**Ejercicio 2 — Generar el token**
+**Ejercicio 3 — Generar el token**
 
 - [ ] Generar el token siguiendo los siete pasos anteriores.
 - [ ] Copiarlo a un lugar temporal y seguro (no a un archivo del repositorio ni a un canal de mensajería).
@@ -165,7 +178,7 @@ git push
 Ambos métodos producen el mismo resultado; la terminal queda ahí para quien ya la use por costumbre.
 
 ::: {.exercise}
-**Ejercicio 3 — Pull, editar, commit, push**
+**Ejercicio 4 — Pull, editar, commit, push**
 
 - [ ] Sincronizar el repositorio (Pull) antes de editar cualquier archivo.
 - [ ] Abrir `practica/notas.md` y agregar una línea con nombre y fecha.
@@ -210,7 +223,7 @@ git push
 La frecuencia de estos conflictos se reduce mediante hábitos de trabajo, no mediante herramientas: trabajar en una rama propia en lugar de directamente sobre `main`; notificar al equipo antes de modificar un script utilizado por varias personas; y realizar commits pequeños y frecuentes en lugar de uno extenso al final de la jornada. Una regla sin excepciones: no debe ejecutarse `push --force` sobre una rama utilizada por otras personas, ya que reescribe la historia y puede eliminar commits ajenos sin advertencia.
 
 ::: {.exercise}
-**Ejercicio 4 — Provocar y resolver un conflicto (en parejas)**
+**Ejercicio 5 — Provocar y resolver un conflicto (en parejas)**
 
 - [ ] Ambas personas hacen `pull` para partir del mismo commit en `practica/ejemplo_analisis.R`.
 - [ ] Cada persona modifica la misma línea de la función `diversidad_dominios()`, sin volver a hacer `pull`.
@@ -276,7 +289,7 @@ Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que
 En un repositorio de investigación compartido, el pull request cumple una función concreta: otra persona revisa el cambio antes de que se mezcle con el análisis principal, y eso es lo que atrapa errores que de otro modo pasarían inadvertidos — una columna mal nombrada, un filtro aplicado de más — antes de que terminen en un resultado.
 
 ::: {.exercise}
-**Ejercicio 5 — Crear tu rama siguiendo la convención del grupo**
+**Ejercicio 6 — Crear tu rama siguiendo la convención del grupo**
 
 - [ ] Crear una rama con el formato `tu-nombre/practica-taller`, desde Positron (clic en el nombre de la rama, esquina inferior izquierda) o con `git checkout -b tu-nombre/practica-taller`.
 - [ ] Editar `practica/notas.md` y hacer un commit en esa rama.
@@ -308,7 +321,7 @@ Sobre `practica/ejemplo_analisis.R`, dos solicitudes de prueba, cada una con el 
 El código generado por Codex sigue el mismo procedimiento que cualquier otra modificación: se revisa el diff antes de aplicarlo, se ejecuta para confirmar que cumple lo esperado, y si se integra a un repositorio compartido, se somete a revisión mediante pull request, siguiendo la convención de ramas establecida en la sección anterior. Codex acelera la escritura del código; no sustituye la comprensión de su funcionamiento ni la revisión de lo que produce.
 
 ::: {.exercise}
-**Ejercicio 6 — Usar Codex con el modelo adecuado para cada tarea**
+**Ejercicio 7 — Usar Codex con el modelo adecuado para cada tarea**
 
 - [ ] Abrir la pestaña Codex en el panel lateral, con `practica/ejemplo_analisis.R` activo.
 - [ ] Seleccionar el modelo liviano y pedir la explicación de `diversidad_dominios()` y el caso de valores `NA` en `dominio`.

@@ -823,6 +823,7 @@ text-decoration: line-through;
     <h2 id="toc-title">Contenidos</h2>
    
   <ul>
+  <li><a href="#conectar-tu-cuenta-de-github-con-positron" id="toc-conectar-tu-cuenta-de-github-con-positron">Conectar tu cuenta de GitHub con Positron</a></li>
   <li><a href="#clonar-el-repositorio-de-práctica" id="toc-clonar-el-repositorio-de-práctica">Clonar el repositorio de práctica</a></li>
   <li><a href="#autenticación-el-token-de-acceso-personal" id="toc-autenticación-el-token-de-acceso-personal">Autenticación: el token de acceso personal</a></li>
   <li><a href="#el-modelo-de-tres-estados" id="toc-el-modelo-de-tres-estados">El modelo de tres estados</a></li>
@@ -843,11 +844,34 @@ text-decoration: line-through;
 <p>En un grupo de investigación, los problemas de control de versiones rara vez se anticipan: se descubren cuando una persona sobrescribe sin saberlo el trabajo de otra, o cuando un script deja de ejecutarse después de una actualización y no queda claro a qué versión anterior conviene volver. Este documento reúne los conceptos y procedimientos de Git y GitHub necesarios para evitar ese tipo de incidentes, aplicados al flujo de trabajo habitual del grupo: repositorios en R, análisis que se desarrollan de forma incremental, y colaboración simultánea de varias personas sobre un mismo pipeline.</p>
 <p>Los ejercicios se hacen sobre <code>taller-git-positron-codex</code>, un repositorio creado para esta actividad — no sobre <code>sfb-mobility-networks</code> ni ningún otro repo real del grupo.</p>
 <p><strong>Requisitos previos:</strong> Positron instalado; Git configurado con nombre de usuario y correo electrónico (<code>git config --global user.name</code> / <code>user.email</code>); una cuenta de GitHub con acceso al repositorio de práctica.</p>
+<h2 id="conectar-tu-cuenta-de-github-con-positron" class="anchored">Conectar tu cuenta de GitHub con Positron</h2>
+<p>Lo primero, antes de clonar nada: Positron necesita saber con qué cuenta de GitHub va a trabajar. El ícono de cuenta está en la esquina inferior izquierda de la barra de actividad — al hacer clic ahí aparece la opción para iniciar sesión:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img role="img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDIwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgJ1NlZ29lIFVJJywgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiIgcm9sZT0iaW1nIj4KICA8dGl0bGU+Q29uZWN0YXIgbGEgY3VlbnRhIGRlIEdpdEh1YiBkZXNkZSBQb3NpdHJvbjwvdGl0bGU+CiAgPGRlc2M+Q2FwdHVyYSBpbHVzdHJhdGl2YSBkZSBQb3NpdHJvbiBtb3N0cmFuZG8gbGEgYmFycmEgZGUgYWN0aXZpZGFkIGl6cXVpZXJkYSBjb24gZWwgw61jb25vIGRlIGN1ZW50YSBlbiBsYSBlc3F1aW5hIGluZmVyaW9yLCBlbCBtZW7DuiBkZXNwbGVnYWRvIGNvbiBsYSBvcGNpw7NuIFNpZ24gaW4gd2l0aCBHaXRIdWIgdG8gdXNlIEdpdCBhbmQgR2l0SHViIGZlYXR1cmVzLCB5IGVsIGJvdMOzbiBBbGxvdyBwYXJhIGF1dG9yaXphciBlbCBhY2Nlc28uPC9kZXNjPgoKICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQyMCIgcng9IjgiIGZpbGw9IiMxZTFlMWUiLz4KCiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQyMCIgZmlsbD0iIzMzMzMzMyIvPgogIDxyZWN0IHg9IjgiIHk9IjE2IiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjMGU2MzljIi8+CiAgPHJlY3QgeD0iOCIgeT0iNTYiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9IiMzYzNjM2MiLz4KICA8cmVjdCB4PSI4IiB5PSI5NiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzNjM2MzYyIvPgogIDxjaXJjbGUgY3g9IjI0IiBjeT0iMzg4IiByPSIxNSIgZmlsbD0iIzNjM2MzYyIgc3Ryb2tlPSIjNmE2YTZhIi8+CiAgPHRleHQgeD0iMjQiIHk9IjM5MyIgZmlsbD0iI2NjY2NjYyIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidTRk1vbm8tUmVndWxhcicsIENvbnNvbGFzLCBtb25vc3BhY2UiPuKXkDwvdGV4dD4KCiAgPHJlY3QgeD0iNDgiIHk9IjMzMCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSI4NiIgcng9IjYiIGZpbGw9IiMyZDJkMmQiIHN0cm9rZT0iIzQ1NDU0NSIvPgogIDx0ZXh0IHg9IjY0IiB5PSIzNTIiIGZpbGw9IiNlOGU4ZTgiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI2MDAiPlJvYmVydG88L3RleHQ+CiAgPHJlY3QgeD0iNDgiIHk9IjM2MCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIxIiBmaWxsPSIjNDU0NTQ1Ii8+CiAgPHRleHQgeD0iNjQiIHk9IjM4MiIgZmlsbD0iI2NjY2NjYyIgZm9udC1zaXplPSIxMiI+U2lnbiBpbiB3aXRoIEdpdEh1YiB0byB1c2UgR2l0IGFuZDwvdGV4dD4KICA8dGV4dCB4PSI2NCIgeT0iMzk4IiBmaWxsPSIjY2NjY2NjIiBmb250LXNpemU9IjEyIj5HaXRIdWIgZmVhdHVyZXM8L3RleHQ+CgogIDxyZWN0IHg9IjMzMCIgeT0iMCIgd2lkdGg9IjU3MCIgaGVpZ2h0PSI0MjAiIGZpbGw9IiMxZTFlMWUiLz4KICA8cmVjdCB4PSIzNjAiIHk9IjYwIiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjIwMCIgcng9IjgiIGZpbGw9IiMyNTI1MjYiIHN0cm9rZT0iIzNjM2MzYyIvPgoKICA8Y2lyY2xlIGN4PSI2MDAiIGN5PSIxMDYiIHI9IjIwIiBmaWxsPSIjM2MzYzNjIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIxMTMiIGZpbGw9IiNlOGU4ZTgiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInU0ZNb25vLVJlZ3VsYXInLCBDb25zb2xhcywgbW9ub3NwYWNlIj7ijoc8L3RleHQ+CgogIDx0ZXh0IHg9IjYwMCIgeT0iMTQ2IiBmaWxsPSIjZThlOGU4IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iNjAwIj5Qb3NpdHJvbiBxdWllcmUgaW5pY2lhciBzZXNpw7NuIGNvbiBHaXRIdWI8L3RleHQ+CiAgPHRleHQgeD0iNjAwIiB5PSIxNjYiIGZpbGw9IiM5ZDlkOWQiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVzdG8gY29uZWN0YSB0dSBjdWVudGEgcGVyc29uYWwgY29uIFBvc2l0cm9uIHBhcmE8L3RleHQ+CiAgPHRleHQgeD0iNjAwIiB5PSIxODIiIGZpbGw9IiM5ZDlkOWQiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNsb25hciB5IHNpbmNyb25pemFyIGxvcyByZXBvcyBkZWwgZ3J1cG8uPC90ZXh0PgoKICA8cmVjdCB4PSI0OTAiIHk9IjIwMiIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIzMCIgcng9IjQiIGZpbGw9IiMwZTYzOWMiLz4KICA8dGV4dCB4PSI2MDAiIHk9IjIyMiIgZmlsbD0iI2ZmZmZmZiIgZm9udC1zaXplPSIxMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QWxsb3c8L3RleHQ+CgogIDx0ZXh0IHg9IjM2MCIgeT0iMjg2IiBmaWxsPSIjNmE2YTZhIiBmb250LXNpemU9IjExIj5BbCBhY2VwdGFyLCBzZSBhYnJlIGVsIG5hdmVnYWRvciB5IHNlIGNvbmZpcm1hIHVuIGPDs2RpZ28gZGUgdW4gc29sbyB1c28uPC90ZXh0Pgo8L3N2Zz4K" class="img-fluid"></p>
+<figcaption>Ícono de cuenta en la barra de actividad de Positron, con la opción “Sign in with GitHub to use Git and GitHub features”.</figcaption>
+</figure>
+</div>
+<p>Al elegir esa opción, Positron pide confirmar en el navegador: se abre una pestaña nueva, se ingresa un código de un solo uso, y se autoriza el acceso. Desde ese momento, Positron queda conectado con esa cuenta para todo lo que sigue — clonar, hacer pull, push, y abrir pull requests sin tener que autenticarse de nuevo cada vez:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img role="img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgMzIwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgJ1NlZ29lIFVJJywgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiIgcm9sZT0iaW1nIj4KICA8dGl0bGU+SW5pY2lhciBzZXNpw7NuIGNvbiBHaXRIdWIgZW4gUG9zaXRyb248L3RpdGxlPgogIDxkZXNjPkNhcHR1cmEgaWx1c3RyYXRpdmEgZGVsIGF2aXNvIHF1ZSBtdWVzdHJhIFBvc2l0cm9uIGFsIGNsb25hciB1biByZXBvc2l0b3JpbyBkZWwgZ3J1cG8gcG9yIHByaW1lcmEgdmV6LCBwaWRpZW5kbyBpbmljaWFyIHNlc2nDs24gY29uIGxhIGN1ZW50YSBkZSBHaXRIdWIsIGNvbiBlbCBib3TDs24gQWxsb3cgeSBlbCBjw7NkaWdvIGRlIHZlcmlmaWNhY2nDs24gcXVlIHNlIGluZ3Jlc2EgZW4gZWwgbmF2ZWdhZG9yLjwvZGVzYz4KCiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwMCIgaGVpZ2h0PSIzMjAiIHJ4PSI4IiBmaWxsPSIjMWUxZTFlIi8+CgogIDxyZWN0IHg9IjIyMCIgeT0iMzAiIHdpZHRoPSI0NjAiIGhlaWdodD0iMjYwIiByeD0iOCIgZmlsbD0iIzI1MjUyNiIgc3Ryb2tlPSIjM2MzYzNjIi8+CgogIDxjaXJjbGUgY3g9IjQ1MCIgY3k9IjgwIiByPSIyMiIgZmlsbD0iIzNjM2MzYyIvPgogIDx0ZXh0IHg9IjQ1MCIgeT0iODgiIGZpbGw9IiNlOGU4ZTgiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInU0ZNb25vLVJlZ3VsYXInLCBDb25zb2xhcywgbW9ub3NwYWNlIj7ijoc8L3RleHQ+CgogIDx0ZXh0IHg9IjQ1MCIgeT0iMTI2IiBmaWxsPSIjZThlOGU4IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iNjAwIj5Qb3NpdHJvbiBxdWllcmUgaW5pY2lhciBzZXNpw7NuIGNvbiBHaXRIdWI8L3RleHQ+CiAgPHRleHQgeD0iNDUwIiB5PSIxNDgiIGZpbGw9IiM5ZDlkOWQiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVzdG8gcGVybWl0ZSBjbG9uYXIgeSBzaW5jcm9uaXphciBsb3MgcmVwb3NpdG9yaW9zPC90ZXh0PgogIDx0ZXh0IHg9IjQ1MCIgeT0iMTY0IiBmaWxsPSIjOWQ5ZDlkIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5wcml2YWRvcyBkZWwgZ3J1cG8gTW9iaWxpdHkgRnJvbnRpZXJzLjwvdGV4dD4KCiAgPHJlY3QgeD0iMjcwIiB5PSIxODQiIHdpZHRoPSIzNjAiIGhlaWdodD0iMzQiIHJ4PSI0IiBmaWxsPSIjMWUxZTFlIiBzdHJva2U9IiMzYzNjM2MiLz4KICA8dGV4dCB4PSI0NTAiIHk9IjIwNiIgZmlsbD0iI2U4ZThlOCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidTRk1vbm8tUmVndWxhcicsIENvbnNvbGFzLCBtb25vc3BhY2UiIGxldHRlci1zcGFjaW5nPSIyIj5BMUIyLUMzRDQ8L3RleHQ+CiAgPHRleHQgeD0iNDUwIiB5PSIyMjgiIGZpbGw9IiM4YThhOGEiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmPDs2RpZ28gcGFyYSBjb25maXJtYXIgZW4gZWwgbmF2ZWdhZG9yIHF1ZSBzZSBhYnJlIGF1dG9tw6F0aWNhbWVudGU8L3RleHQ+CgogIDxyZWN0IHg9IjI3MCIgeT0iMjQ0IiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzBlNjM5YyIvPgogIDx0ZXh0IHg9IjM1MCIgeT0iMjY1IiBmaWxsPSIjZmZmZmZmIiBmb250LXNpemU9IjEzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BbGxvdzwvdGV4dD4KCiAgPHJlY3QgeD0iNDQwIiB5PSIyNDQiIHdpZHRoPSIxNTAiIGhlaWdodD0iMzIiIHJ4PSI0IiBmaWxsPSIjM2MzYzNjIi8+CiAgPHRleHQgeD0iNTE1IiB5PSIyNjUiIGZpbGw9IiNjY2NjY2MiIGZvbnQtc2l6ZT0iMTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNhbmNlbDwvdGV4dD4KPC9zdmc+Cg==" class="img-fluid"></p>
+<figcaption>Aviso de Positron pidiendo iniciar sesión con GitHub, con el botón Allow y el código que se confirma en el navegador.</figcaption>
+</figure>
+</div>
+<div class="exercise">
+<p><strong>Ejercicio 1 — Conectar tu cuenta de GitHub</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Abrir el ícono de cuenta en la esquina inferior izquierda de Positron.</label></li>
+<li><label><input type="checkbox">Elegir “Sign in with GitHub” y confirmar en el navegador.</label></li>
+<li><label><input type="checkbox">Verificar que el nombre de usuario de GitHub aparece en ese mismo panel.</label></li>
+</ul>
+</div>
 <h2 id="clonar-el-repositorio-de-práctica" class="anchored">Clonar el repositorio de práctica</h2>
-<p>Antes de generar el token, cada persona necesita su propia copia local del repositorio. Desde Positron:</p>
+<p>Con la cuenta ya conectada, cada persona necesita su propia copia local del repositorio. Desde Positron:</p>
 <ol type="1">
 <li>Paleta de comandos (<code>Cmd/Ctrl+Shift+P</code>) → <strong>Git: Clone</strong>.</li>
-<li>Elegir <strong>Clone from GitHub</strong> (si ya hay sesión iniciada) o <strong>Clone from URL</strong> y pegar la dirección del repositorio.</li>
+<li>Elegir <strong>Clone from GitHub</strong> y buscar <code>taller-git-positron-codex</code>, o <strong>Clone from URL</strong> y pegar la dirección directamente.</li>
 <li>Elegir la carpeta local donde va a quedar guardado.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
@@ -856,19 +880,11 @@ text-decoration: line-through;
 <figcaption>Clonar el repositorio desde Positron: paleta de comandos, URL del repositorio, y selección de la carpeta local de destino.</figcaption>
 </figure>
 </div>
-<p>Si es la primera vez que Positron accede a un repositorio del grupo, va a pedir autorización con la cuenta de GitHub — se abre el navegador, se confirma un código, y desde ahí Positron queda autenticado para esa cuenta:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img role="img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgMzIwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgJ1NlZ29lIFVJJywgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiIgcm9sZT0iaW1nIj4KICA8dGl0bGU+SW5pY2lhciBzZXNpw7NuIGNvbiBHaXRIdWIgZW4gUG9zaXRyb248L3RpdGxlPgogIDxkZXNjPkNhcHR1cmEgaWx1c3RyYXRpdmEgZGVsIGF2aXNvIHF1ZSBtdWVzdHJhIFBvc2l0cm9uIGFsIGNsb25hciB1biByZXBvc2l0b3JpbyBkZWwgZ3J1cG8gcG9yIHByaW1lcmEgdmV6LCBwaWRpZW5kbyBpbmljaWFyIHNlc2nDs24gY29uIGxhIGN1ZW50YSBkZSBHaXRIdWIsIGNvbiBlbCBib3TDs24gQWxsb3cgeSBlbCBjw7NkaWdvIGRlIHZlcmlmaWNhY2nDs24gcXVlIHNlIGluZ3Jlc2EgZW4gZWwgbmF2ZWdhZG9yLjwvZGVzYz4KCiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjkwMCIgaGVpZ2h0PSIzMjAiIHJ4PSI4IiBmaWxsPSIjMWUxZTFlIi8+CgogIDxyZWN0IHg9IjIyMCIgeT0iMzAiIHdpZHRoPSI0NjAiIGhlaWdodD0iMjYwIiByeD0iOCIgZmlsbD0iIzI1MjUyNiIgc3Ryb2tlPSIjM2MzYzNjIi8+CgogIDxjaXJjbGUgY3g9IjQ1MCIgY3k9IjgwIiByPSIyMiIgZmlsbD0iIzNjM2MzYyIvPgogIDx0ZXh0IHg9IjQ1MCIgeT0iODgiIGZpbGw9IiNlOGU4ZTgiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInU0ZNb25vLVJlZ3VsYXInLCBDb25zb2xhcywgbW9ub3NwYWNlIj7ijoc8L3RleHQ+CgogIDx0ZXh0IHg9IjQ1MCIgeT0iMTI2IiBmaWxsPSIjZThlOGU4IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iNjAwIj5Qb3NpdHJvbiBxdWllcmUgaW5pY2lhciBzZXNpw7NuIGNvbiBHaXRIdWI8L3RleHQ+CiAgPHRleHQgeD0iNDUwIiB5PSIxNDgiIGZpbGw9IiM5ZDlkOWQiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVzdG8gcGVybWl0ZSBjbG9uYXIgeSBzaW5jcm9uaXphciBsb3MgcmVwb3NpdG9yaW9zPC90ZXh0PgogIDx0ZXh0IHg9IjQ1MCIgeT0iMTY0IiBmaWxsPSIjOWQ5ZDlkIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5wcml2YWRvcyBkZWwgZ3J1cG8gTW9iaWxpdHkgRnJvbnRpZXJzLjwvdGV4dD4KCiAgPHJlY3QgeD0iMjcwIiB5PSIxODQiIHdpZHRoPSIzNjAiIGhlaWdodD0iMzQiIHJ4PSI0IiBmaWxsPSIjMWUxZTFlIiBzdHJva2U9IiMzYzNjM2MiLz4KICA8dGV4dCB4PSI0NTAiIHk9IjIwNiIgZmlsbD0iI2U4ZThlOCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidTRk1vbm8tUmVndWxhcicsIENvbnNvbGFzLCBtb25vc3BhY2UiIGxldHRlci1zcGFjaW5nPSIyIj5BMUIyLUMzRDQ8L3RleHQ+CiAgPHRleHQgeD0iNDUwIiB5PSIyMjgiIGZpbGw9IiM4YThhOGEiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmPDs2RpZ28gcGFyYSBjb25maXJtYXIgZW4gZWwgbmF2ZWdhZG9yIHF1ZSBzZSBhYnJlIGF1dG9tw6F0aWNhbWVudGU8L3RleHQ+CgogIDxyZWN0IHg9IjI3MCIgeT0iMjQ0IiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzBlNjM5YyIvPgogIDx0ZXh0IHg9IjM1MCIgeT0iMjY1IiBmaWxsPSIjZmZmZmZmIiBmb250LXNpemU9IjEzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BbGxvdzwvdGV4dD4KCiAgPHJlY3QgeD0iNDQwIiB5PSIyNDQiIHdpZHRoPSIxNTAiIGhlaWdodD0iMzIiIHJ4PSI0IiBmaWxsPSIjM2MzYzNjIi8+CiAgPHRleHQgeD0iNTE1IiB5PSIyNjUiIGZpbGw9IiNjY2NjY2MiIGZvbnQtc2l6ZT0iMTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNhbmNlbDwvdGV4dD4KPC9zdmc+Cg==" class="img-fluid"></p>
-<figcaption>Primera vez que Positron pide iniciar sesión con GitHub, con el código de verificación que se confirma en el navegador.</figcaption>
-</figure>
-</div>
-<p>Al terminar de clonar, Positron pregunta si se quiere abrir la carpeta — elegir <strong>Open</strong>.</p>
+<p>Al terminar, Positron pregunta si se quiere abrir la carpeta — elegir <strong>Open</strong>.</p>
 <div class="exercise">
-<p><strong>Ejercicio 1 — Clonar el repositorio de práctica</strong></p>
+<p><strong>Ejercicio 2 — Clonar el repositorio de práctica</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox">Clonar <code>taller-git-positron-codex</code> desde Positron (Git: Clone).</label></li>
-<li><label><input type="checkbox">Autorizar el acceso con la cuenta de GitHub si se solicita.</label></li>
 <li><label><input type="checkbox">Abrir la carpeta clonada en Positron.</label></li>
 </ul>
 </div>
@@ -901,7 +917,7 @@ text-decoration: line-through;
 <p>El token equivale a una contraseña con permisos acotados: no debe compartirse por canales de mensajería ni incluirse en ningún archivo del repositorio. Si se expone por error, debe revocarse de inmediato desde la misma página de <em>Personal access tokens</em> y generarse uno nuevo.</p>
 </blockquote>
 <div class="exercise">
-<p><strong>Ejercicio 2 — Generar el token</strong></p>
+<p><strong>Ejercicio 3 — Generar el token</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox">Generar el token siguiendo los siete pasos anteriores.</label></li>
 <li><label><input type="checkbox">Copiarlo a un lugar temporal y seguro (no a un archivo del repositorio ni a un canal de mensajería).</label></li>
@@ -938,7 +954,7 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ambos métodos producen el mismo resultado; la terminal queda ahí para quien ya la use por costumbre.</p>
 <div class="exercise">
-<p><strong>Ejercicio 3 — Pull, editar, commit, push</strong></p>
+<p><strong>Ejercicio 4 — Pull, editar, commit, push</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox">Sincronizar el repositorio (Pull) antes de editar cualquier archivo.</label></li>
 <li><label><input type="checkbox">Abrir <code>practica/notas.md</code> y agregar una línea con nombre y fecha.</label></li>
@@ -974,7 +990,7 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>La frecuencia de estos conflictos se reduce mediante hábitos de trabajo, no mediante herramientas: trabajar en una rama propia en lugar de directamente sobre <code>main</code>; notificar al equipo antes de modificar un script utilizado por varias personas; y realizar commits pequeños y frecuentes en lugar de uno extenso al final de la jornada. Una regla sin excepciones: no debe ejecutarse <code>push --force</code> sobre una rama utilizada por otras personas, ya que reescribe la historia y puede eliminar commits ajenos sin advertencia.</p>
 <div class="exercise">
-<p><strong>Ejercicio 4 — Provocar y resolver un conflicto (en parejas)</strong></p>
+<p><strong>Ejercicio 5 — Provocar y resolver un conflicto (en parejas)</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox">Ambas personas hacen <code>pull</code> para partir del mismo commit en <code>practica/ejemplo_analisis.R</code>.</label></li>
 <li><label><input type="checkbox">Cada persona modifica la misma línea de la función <code>diversidad_dominios()</code>, sin volver a hacer <code>pull</code>.</label></li>
@@ -1043,7 +1059,7 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 <p>Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en <code>main</code>.</p>
 <p>En un repositorio de investigación compartido, el pull request cumple una función concreta: otra persona revisa el cambio antes de que se mezcle con el análisis principal, y eso es lo que atrapa errores que de otro modo pasarían inadvertidos — una columna mal nombrada, un filtro aplicado de más — antes de que terminen en un resultado.</p>
 <div class="exercise">
-<p><strong>Ejercicio 5 — Crear tu rama siguiendo la convención del grupo</strong></p>
+<p><strong>Ejercicio 6 — Crear tu rama siguiendo la convención del grupo</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox">Crear una rama con el formato <code>tu-nombre/practica-taller</code>, desde Positron (clic en el nombre de la rama, esquina inferior izquierda) o con <code>git checkout -b tu-nombre/practica-taller</code>.</label></li>
 <li><label><input type="checkbox">Editar <code>practica/notas.md</code> y hacer un commit en esa rama.</label></li>
@@ -1071,7 +1087,7 @@ copia local       --push--&gt;   GitHub (origin)</code></pre>
 </blockquote>
 <p>El código generado por Codex sigue el mismo procedimiento que cualquier otra modificación: se revisa el diff antes de aplicarlo, se ejecuta para confirmar que cumple lo esperado, y si se integra a un repositorio compartido, se somete a revisión mediante pull request, siguiendo la convención de ramas establecida en la sección anterior. Codex acelera la escritura del código; no sustituye la comprensión de su funcionamiento ni la revisión de lo que produce.</p>
 <div class="exercise">
-<p><strong>Ejercicio 6 — Usar Codex con el modelo adecuado para cada tarea</strong></p>
+<p><strong>Ejercicio 7 — Usar Codex con el modelo adecuado para cada tarea</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox">Abrir la pestaña Codex en el panel lateral, con <code>practica/ejemplo_analisis.R</code> activo.</label></li>
 <li><label><input type="checkbox">Seleccionar el modelo liviano y pedir la explicación de <code>diversidad_dominios()</code> y el caso de valores <code>NA</code> en <code>dominio</code>.</label></li>

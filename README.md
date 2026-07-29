@@ -10,14 +10,15 @@ Este repo existe para que el grupo practique `pull`, `commit`, `push`, ramas, co
 
 ## Procedimiento del taller
 
-1. **Clonar el repositorio** — Git: Clone desde Positron, autorización con GitHub si es la primera vez.
-2. **Autenticación** — generar un token de acceso personal en GitHub antes de empezar (sin esto, Positron no puede hacer `commit` ni `push`).
-3. **El modelo de tres estados** — cómo se mueve un archivo entre edición, staging y commit, y por qué `pull` va siempre antes de trabajar.
-4. **Pull, edición, commit, push** — el ciclo básico, desde Positron (recomendado) y como alternativa desde la terminal.
-5. **Conflictos** — cómo se ve un conflicto real y cómo resolverlo en el editor (Accept Current / Incoming / Both).
-6. **Ramas y pull requests** — convención del grupo (una rama por persona y por tarea, nombrada `tu-nombre/descripción-corta`), el flujo completo de PR en GitHub, y cómo proteger `main`.
-7. **Codex en Positron** — generación y corrección de código, y qué modelo usar según la tarea (liviano para explorar, especializado en código para generar o corregir).
-8. **Resolución de problemas frecuentes** — los errores más comunes del flujo y cómo resolverlos.
+1. **Conectar tu cuenta de GitHub con Positron** — sign in desde el ícono de cuenta, una sola vez.
+2. **Clonar el repositorio** — Git: Clone desde Positron.
+3. **Autenticación** — generar un token de acceso personal en GitHub antes de empezar (sin esto, Positron no puede hacer `commit` ni `push`).
+4. **El modelo de tres estados** — cómo se mueve un archivo entre edición, staging y commit, y por qué `pull` va siempre antes de trabajar.
+5. **Pull, edición, commit, push** — el ciclo básico, desde Positron (recomendado) y como alternativa desde la terminal.
+6. **Conflictos** — cómo se ve un conflicto real y cómo resolverlo en el editor (Accept Current / Incoming / Both).
+7. **Ramas y pull requests** — convención del grupo (una rama por persona y por tarea, nombrada `tu-nombre/descripción-corta`), el flujo completo de PR en GitHub, y cómo proteger `main`.
+8. **Codex en Positron** — generación y corrección de código, y qué modelo usar según la tarea (liviano para explorar, especializado en código para generar o corregir).
+9. **Resolución de problemas frecuentes** — los errores más comunes del flujo y cómo resolverlos.
 
 ## Contenido del repositorio
 
