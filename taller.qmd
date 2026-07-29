@@ -52,7 +52,7 @@ execute:
 
 En un grupo de investigación, los problemas de control de versiones rara vez se anticipan: se descubren cuando una persona sobrescribe sin saberlo el trabajo de otra, o cuando un script deja de ejecutarse después de una actualización y no queda claro a qué versión anterior conviene volver. Este documento reúne los conceptos y procedimientos de Git y GitHub necesarios para evitar ese tipo de incidentes, aplicados al flujo de trabajo habitual del grupo: repositorios en R, análisis que se desarrollan de forma incremental, y colaboración simultánea de varias personas sobre un mismo pipeline.
 
-Los ejercicios de este taller se realizan sobre el repositorio `taller-git-positron-codex`, creado específicamente para esta actividad. Ninguno de los ejercicios se realiza sobre `sfb-mobility-networks` ni sobre otro repositorio del grupo.
+Los ejercicios se hacen sobre `taller-git-positron-codex`, un repositorio creado para esta actividad — no sobre `sfb-mobility-networks` ni ningún otro repo real del grupo.
 
 **Requisitos previos:** Positron instalado; Git configurado con nombre de usuario y correo electrónico (`git config --global user.name` / `user.email`); una cuenta de GitHub con acceso al repositorio de práctica.
 
@@ -70,7 +70,7 @@ Si es la primera vez que Positron accede a un repositorio del grupo, va a pedir 
 
 ![Primera vez que Positron pide iniciar sesión con GitHub, con el código de verificación que se confirma en el navegador.](practica/positron-signin-github.svg)
 
-Al terminar de clonar, Positron pregunta si se quiere abrir la carpeta — elegir **Open**. Con eso, el repositorio de práctica queda listo para el resto del taller.
+Al terminar de clonar, Positron pregunta si se quiere abrir la carpeta — elegir **Open**.
 
 ::: {.exercise}
 **Ejercicio 1 — Clonar el repositorio de práctica**
@@ -84,7 +84,7 @@ Al terminar de clonar, Positron pregunta si se quiere abrir la carpeta — elegi
 
 Desde hace algunos años, GitHub no acepta la contraseña de la cuenta para operaciones por HTTPS. Si Positron o la terminal solicitan usuario y contraseña al ejecutar `push` y se ingresa la contraseña de la cuenta, la operación fallará. En su lugar, GitHub requiere un **token de acceso personal**, que reemplaza a la contraseña en este tipo de operaciones.
 
-Cada asistente debe generar su propio token, con su propia cuenta de GitHub, antes del inicio de la demo — no es un paso opcional ni compartible entre personas: sin este token, Positron no podrá ejecutar `commit` ni `push` hacia el repositorio durante el taller. El procedimiento toma menos de dos minutos.
+Cada persona genera su propio token, con su propia cuenta de GitHub, antes de la demo — no es algo que se pueda compartir entre personas, y sin él Positron no va a poder hacer `commit` ni `push` durante el taller.
 
 Procedimiento, desde github.com:
 
@@ -135,7 +135,7 @@ De este esquema se desprende la práctica más importante del taller: ejecutar `
 
 ## Procedimiento: pull, edición, commit, push
 
-Con `taller-git-positron-codex` abierto en Positron, el panel de control de código fuente (ícono de rama en la barra lateral izquierda) concentra la mayor parte de las acciones. Este es el método recomendado para el taller: reduce la posibilidad de error respecto a escribir los comandos manualmente, y permite ver el estado del repositorio en todo momento.
+Con `taller-git-positron-codex` abierto en Positron, el panel de control de código fuente (ícono de rama en la barra lateral izquierda) concentra la mayor parte de las acciones.
 
 **Desde Positron (recomendado):**
 
@@ -162,7 +162,7 @@ git commit -m "docs: agrega nota de práctica de Roberto"
 git push
 ```
 
-Ambos métodos producen exactamente el mismo resultado; el panel de Positron es una interfaz gráfica sobre estos mismos comandos. Para el taller se recomienda el panel gráfico, y se deja la terminal como referencia para quienes ya estén familiarizados con la línea de comandos.
+Ambos métodos producen el mismo resultado; la terminal queda ahí para quien ya la use por costumbre.
 
 ::: {.exercise}
 **Ejercicio 3 — Pull, editar, commit, push**
@@ -193,7 +193,7 @@ diversidad_dominios <- function(df) {
 }
 ```
 
-**Desde Positron (recomendado):** el editor presenta este mismo bloque con opciones sobre cada sección en conflicto — *Accept Current*, *Accept Incoming*, *Accept Both* — para seleccionar la versión que corresponde, o combinar ambas manualmente. La siguiente imagen reproduce cómo se ve exactamente este conflicto dentro del editor:
+**Desde Positron (recomendado):** el editor presenta este mismo bloque con opciones sobre cada sección en conflicto — *Accept Current*, *Accept Incoming*, *Accept Both* — para seleccionar la versión que corresponde, o combinar ambas manualmente. Así se ve dentro del editor:
 
 ![Conflicto de fusión en `ejemplo_analisis.R` tal como aparece en el editor de Positron, con los botones Accept Current Change, Accept Incoming Change, Accept Both Changes y Compare Changes sobre el bloque en conflicto.](practica/conflicto-positron.svg)
 
@@ -246,12 +246,12 @@ git checkout -b tu-nombre/practica-taller
 
 ### Mínimo del grupo: proteger `main` en GitHub
 
-La convención anterior depende de que cada persona la respete por su cuenta. GitHub permite además reforzarla técnicamente a nivel de repositorio, para que sea imposible saltársela por error. Esta configuración se hace una sola vez por repositorio, idealmente por quien lo administra:
+La convención anterior depende de que cada persona la respete por su cuenta. GitHub permite además declararla a nivel de repositorio, para que quede visible y no dependa solo de la memoria de cada quien. Esta configuración se hace una sola vez por repositorio, idealmente por quien lo administra:
 
 1. En el repositorio, ir a **Settings → Branches**.
 2. En **Branch protection rules**, **Add branch protection rule** (o **Add rule**).
 3. En **Branch name pattern**, escribir `main`.
-4. Marcar como mínimo **Require a pull request before merging** — con esto, GitHub rechaza cualquier intento de `push` directo a `main` y exige que el cambio llegue por PR.
+4. Marcar como mínimo **Require a pull request before merging** — esto es lo que le pide a GitHub que exija que todo cambio a `main` llegue por PR (con la salvedad que se explica abajo).
 5. Opcionalmente, **Require conversation resolution before merging**, para que ningún comentario de revisión quede sin responder antes del merge.
 6. Guardar (**Create** / **Save changes**).
 
@@ -273,7 +273,7 @@ Allí se visualiza el diff completo, se pueden agregar comentarios línea por l�
 
 Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en `main`.
 
-En un repositorio de investigación compartido, el pull request cumple una función específica: permite que otra persona revise el cambio antes de que se integre al análisis principal, lo que permite detectar errores no evidentes — una columna mal nombrada, un filtro aplicado de manera incorrecta — antes de que afecten un resultado.
+En un repositorio de investigación compartido, el pull request cumple una función concreta: otra persona revisa el cambio antes de que se mezcle con el análisis principal, y eso es lo que atrapa errores que de otro modo pasarían inadvertidos — una columna mal nombrada, un filtro aplicado de más — antes de que terminen en un resultado.
 
 ::: {.exercise}
 **Ejercicio 5 — Crear tu rama siguiendo la convención del grupo**
@@ -297,7 +297,7 @@ Codex no tiene un único modelo detrás — y la elección afecta tanto la calid
 - **Para explorar y entender código, o pedir explicaciones simples:** conviene un modelo liviano (por ejemplo, `gpt-5.4-mini`). Responde más rápido y consume menos cuota; es suficiente para tareas que no requieren razonamiento extenso, como leer una función y resumir qué hace.
 - **Para generar código nuevo, refactorizar, o corregir un error no trivial:** conviene el modelo especializado en programación (por ejemplo, `gpt-5.3-codex` o la versión más reciente disponible). Tiene mejor desempeño en tareas agénticas de código — seguir instrucciones de varios pasos, mantener consistencia con el resto del script — a costa de mayor tiempo de respuesta.
 
-**Regla práctica para un uso eficiente:** empezar con el modelo liviano para explorar y entender el código, y escalar al modelo especializado solo cuando la tarea es efectivamente generar o corregir algo con cierta complejidad. Usar el modelo más potente para preguntas simples es un gasto de cuota innecesario; usar el liviano para generar código nuevo suele dar resultados menos confiables. El modelo se cambia desde el selector dentro del panel de Codex, y puede alternarse en cualquier momento de la sesión.
+**Regla práctica para un uso eficiente:** empezar con el modelo liviano para explorar y entender el código, y escalar al modelo especializado solo cuando la tarea es efectivamente generar o corregir algo con cierta complejidad. Usar el modelo más potente para preguntas simples es un gasto de cuota innecesario; usar el liviano para generar código nuevo suele dar resultados menos confiables. El modelo se cambia desde el selector del panel, en cualquier momento de la sesión.
 
 Sobre `practica/ejemplo_analisis.R`, dos solicitudes de prueba, cada una con el modelo que le corresponde:
 
@@ -329,4 +329,4 @@ La siguiente tabla reúne los mensajes de error más habituales en este tipo de 
 | `Permission denied (publickey)` | GitHub no reconoce la llave SSH configurada, o esta no existe | Utilizar HTTPS en lugar de SSH para el remoto, o revisar la configuración en GitHub → Settings → SSH Keys |
 | Marcas `<<<<<<<` en un archivo | Dos personas modificaron la misma línea | Resolver manualmente en Positron (ver sección de conflictos), guardar, commit, push |
 
-El repositorio `taller-git-positron-codex` permanece disponible después del taller para continuar practicando cualquiera de estos escenarios sin riesgo para el trabajo del grupo.
+`taller-git-positron-codex` queda ahí después de hoy — sigue siendo el lugar para volver a probar cualquiera de estos escenarios cuando haga falta.
