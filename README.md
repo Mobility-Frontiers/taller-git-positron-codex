@@ -2,7 +2,7 @@
 
 Repositorio de práctica para el taller **"Git y GitHub desde Positron"** del grupo [Mobility Frontiers](https://github.com/Mobility-Frontiers).
 
-Este repo existe para que el grupo practique `pull`, `commit`, `push`, ramas, conflictos y pull requests **sin tocar repositorios reales** (como `sfb-mobility-networks`).
+Este repo existe para que el grupo practique `pull`, `commit`, `push`, ramas, conflictos y pull requests **sin tocar repositorios reales**.
 
 ## Guía del taller
 
