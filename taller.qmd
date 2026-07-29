@@ -58,7 +58,7 @@ Los ejercicios se hacen sobre `taller-git-positron-codex`, un repositorio creado
 
 ## Conectar tu cuenta de GitHub con Positron
 
-Lo primero, antes de clonar nada: Positron necesita saber con qué cuenta de GitHub va a trabajar. El ícono de cuenta está en la esquina inferior izquierda de la barra de actividad. Si todavía no hay sesión iniciada, ese menú muestra la opción **Sign in with GitHub to use Git and GitHub features**; una vez conectado, el mismo lugar pasa a mostrar el nombre de usuario:
+Lo primero, antes de clonar nada: Positron necesita saber con qué cuenta de GitHub va a trabajar. El ícono de cuenta está en la esquina inferior izquierda de la barra de actividad. Si todavía no hay sesión iniciada, ese menú ofrece iniciar sesión con GitHub — el texto exacto de la opción varía según qué la esté pidiendo (por ejemplo, **Sign in with GitHub to use GitHub Copilot** si es la extensión de Copilot); una vez conectado, el mismo lugar pasa a mostrar el nombre de usuario:
 
 ![Menú de cuenta en Positron una vez conectado: el nombre de usuario de GitHub, con acceso a Manage Trusted Extensions, Manage Trusted MCP Servers y Sign Out.](practica/positron-cuenta-github.svg)
 
