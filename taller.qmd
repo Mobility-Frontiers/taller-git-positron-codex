@@ -58,13 +58,11 @@ Los ejercicios se hacen sobre `taller-git-positron-codex`, un repositorio creado
 
 ## Conectar tu cuenta de GitHub con Positron
 
-Lo primero, antes de clonar nada: Positron necesita saber con qué cuenta de GitHub va a trabajar. El ícono de cuenta está en la esquina inferior izquierda de la barra de actividad — al hacer clic ahí aparece la opción para iniciar sesión:
+Lo primero, antes de clonar nada: Positron necesita saber con qué cuenta de GitHub va a trabajar. El ícono de cuenta está en la esquina inferior izquierda de la barra de actividad. Si todavía no hay sesión iniciada, ese menú muestra la opción **Sign in with GitHub to use Git and GitHub features**; una vez conectado, el mismo lugar pasa a mostrar el nombre de usuario:
 
-![Ícono de cuenta en la barra de actividad de Positron, con la opción "Sign in with GitHub to use Git and GitHub features".](practica/positron-cuenta-github.svg)
+![Menú de cuenta en Positron una vez conectado: el nombre de usuario de GitHub, con acceso a Manage Trusted Extensions, Manage Trusted MCP Servers y Sign Out.](practica/positron-cuenta-github.svg)
 
-Al elegir esa opción, Positron pide confirmar en el navegador: se abre una pestaña nueva, se ingresa un código de un solo uso, y se autoriza el acceso. Desde ese momento, Positron queda conectado con esa cuenta para todo lo que sigue — clonar, hacer pull, push, y abrir pull requests sin tener que autenticarse de nuevo cada vez:
-
-![Aviso de Positron pidiendo iniciar sesión con GitHub, con el botón Allow y el código que se confirma en el navegador.](practica/positron-signin-github.svg)
+Al elegir "Sign in with GitHub", Positron pide confirmar en el navegador: se abre una pestaña nueva, se ingresa un código de un solo uso, y se autoriza el acceso. Desde ese momento, Positron queda conectado con esa cuenta para todo lo que sigue — clonar, hacer pull, push, y abrir pull requests sin tener que autenticarse de nuevo cada vez.
 
 ::: {.exercise}
 **Ejercicio 1 — Conectar tu cuenta de GitHub**
@@ -76,21 +74,21 @@ Al elegir esa opción, Positron pide confirmar en el navegador: se abre una pest
 
 ## Clonar el repositorio de práctica
 
-Con la cuenta ya conectada, cada persona necesita su propia copia local del repositorio. Desde Positron:
+Con la cuenta ya conectada, cada persona necesita su propia copia local del repositorio. En Positron, el comando específico para esto es **Workspaces: New Folder from Git…** (es la variante propia de Positron del "Git: Clone" de VS Code — usa "carpeta" en vez de "folder abierto" porque así organiza los proyectos):
 
-1. Paleta de comandos (`Cmd/Ctrl+Shift+P`) → **Git: Clone**.
-2. Elegir **Clone from GitHub** y buscar `taller-git-positron-codex`, o **Clone from URL** y pegar la dirección directamente.
-3. Elegir la carpeta local donde va a quedar guardado.
+1. Paleta de comandos (`Cmd/Ctrl+Shift+P`) → **Workspaces: New Folder from Git…**.
+2. Elegir **Clone from GitHub** y buscar `taller-git-positron-codex`, o pegar la URL directamente si aparece esa opción.
+3. Elegir la carpeta local donde va a quedar guardada la copia.
 
-![Clonar el repositorio desde Positron: paleta de comandos, URL del repositorio, y selección de la carpeta local de destino.](practica/clonar-repo-positron.svg)
+![Clonar el repositorio desde Positron: comando Workspaces: New Folder from Git, URL del repositorio, y selección de la carpeta local de destino.](practica/clonar-repo-positron.svg)
 
-Al terminar, Positron pregunta si se quiere abrir la carpeta — elegir **Open**.
+Al terminar, Positron pregunta si se quiere abrir la carpeta — elegir **Open**. También va a pedir confirmar que se confía en el repositorio (Workspace Trust) — al ser un repositorio del propio grupo, se confirma.
 
 ::: {.exercise}
 **Ejercicio 2 — Clonar el repositorio de práctica**
 
-- [ ] Clonar `taller-git-positron-codex` desde Positron (Git: Clone).
-- [ ] Abrir la carpeta clonada en Positron.
+- [ ] Clonar `taller-git-positron-codex` desde Positron (Workspaces: New Folder from Git…).
+- [ ] Abrir la carpeta clonada en Positron y confirmar que se confía en el repositorio.
 :::
 
 ## Autenticación: el token de acceso personal
@@ -276,13 +274,13 @@ Esa integración se solicita mediante un *pull request*: una propuesta formal de
 
 ![Positron ofrece el botón "Publish Branch" la primera vez que se sube una rama nueva.](practica/publicar-rama-positron.svg)
 
-Con la rama publicada, se abre un PR desde la página del repositorio en GitHub — la comparación de ramas queda lista para revisar, con título, descripción y el botón para crearlo:
+El PR se crea sin salir de Positron: Positron incluye la extensión GitHub Pull Requests and Issues, con su propia vista **Pull Requests** en la barra de actividad. Ahí aparece el botón **Create Pull Request**, que abre un formulario dentro del editor con la rama base, la rama de comparación, el título y la descripción:
 
-![Página de GitHub para abrir un pull request: comparación de `main` contra la rama personal, título, descripción y el botón Create pull request.](practica/github-crear-pr.svg)
+![Vista Pull Requests de Positron: botón Create Pull Request y el formulario con rama base, rama de comparación, título y descripción.](practica/github-crear-pr.svg)
 
-Allí se visualiza el diff completo, se pueden agregar comentarios línea por línea, y solo tras la aprobación correspondiente se ejecuta el merge:
+Una vez creado, el PR se revisa desde esa misma vista — se visualiza el diff completo, se pueden agregar comentarios, y solo tras la aprobación correspondiente se habilita el merge:
 
-![Revisión de un pull request en GitHub: el diff del archivo, un comentario de otra persona del grupo, la aprobación, y el botón Merge pull request habilitado.](practica/github-revisar-pr.svg)
+![Revisión de un pull request dentro de Positron: el diff del archivo, un comentario de otra persona del grupo, la aprobación, y el botón Merge Pull Request.](practica/github-revisar-pr.svg)
 
 Una vez integrada, la rama puede eliminarse sin pérdida de información, ya que su historia permanece en `main`.
 
@@ -294,7 +292,7 @@ En un repositorio de investigación compartido, el pull request cumple una funci
 - [ ] Crear una rama con el formato `tu-nombre/practica-taller`, desde Positron (clic en el nombre de la rama, esquina inferior izquierda) o con `git checkout -b tu-nombre/practica-taller`.
 - [ ] Editar `practica/notas.md` y hacer un commit en esa rama.
 - [ ] Publicar la rama (push) — Positron ofrece el botón "Publish Branch" la primera vez.
-- [ ] En GitHub.com, abrir un pull request desde esa rama hacia `main`.
+- [ ] Desde la vista Pull Requests de Positron, crear el PR hacia `main` (botón Create Pull Request).
 - [ ] Revisar el diff del PR y, con otra persona del grupo, aprobarlo y hacer merge.
 - [ ] Confirmar que, de aquí en adelante, cada tarea nueva en los repos del grupo comienza con este mismo procedimiento: rama con nombre `tu-nombre/descripción-corta`, nunca commits directos sobre `main`.
 :::

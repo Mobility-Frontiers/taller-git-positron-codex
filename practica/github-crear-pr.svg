@@ -1,38 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img">
-  <title>Abrir un pull request en GitHub</title>
-  <desc>Captura ilustrativa de la página de GitHub para abrir un pull request, mostrando la comparación de ramas de roberto barra practica-taller hacia main, el título, la descripción y el botón Create pull request.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img">
+  <title>Crear un pull request desde la vista Pull Requests de Positron</title>
+  <desc>Captura ilustrativa de la vista Pull Requests de Positron, con el botón Create Pull Request, y la vista Create que se abre dentro del propio editor con el repositorio y rama base, la rama de comparación, el título y la descripción.</desc>
 
-  <rect x="0" y="0" width="900" height="440" fill="#ffffff" stroke="#d0d7de"/>
+  <rect x="0" y="0" width="900" height="460" rx="8" fill="#1e1e1e"/>
 
-  <rect x="0" y="0" width="900" height="46" fill="#f6f8fa"/>
-  <rect x="0" y="45" width="900" height="1" fill="#d0d7de"/>
-  <text x="20" y="28" fill="#24292f" font-size="15" font-weight="600">Comparar cambios</text>
+  <rect x="0" y="0" width="48" height="460" fill="#333333"/>
+  <rect x="8" y="16" width="32" height="32" rx="6" fill="#3c3c3c"/>
+  <rect x="8" y="56" width="32" height="32" rx="6" fill="#0e639c"/>
+  <rect x="8" y="96" width="32" height="32" rx="6" fill="#3c3c3c"/>
 
-  <g font-size="13">
-    <rect x="20" y="64" width="220" height="30" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
-    <text x="32" y="84" fill="#24292f">base: main</text>
+  <text x="66" y="28" fill="#9d9d9d" font-size="12" letter-spacing="1">GITHUB PULL REQUESTS</text>
+  <rect x="66" y="40" width="820" height="1" fill="#3c3c3c"/>
 
-    <text x="252" y="84" fill="#57606a">←</text>
+  <rect x="700" y="14" width="170" height="28" rx="4" fill="#238636"/>
+  <text x="785" y="32" fill="#ffffff" font-size="12" text-anchor="middle">Create Pull Request</text>
 
-    <rect x="270" y="64" width="300" height="30" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
-    <text x="282" y="84" fill="#24292f">compare: roberto/practica-taller</text>
-  </g>
+  <text x="66" y="66" fill="#8a8a8a" font-size="12">Local branch: roberto/practica-taller</text>
 
-  <rect x="20" y="112" width="860" height="30" fill="#dafbe1" stroke="#4ac26b"/>
-  <text x="32" y="132" fill="#116329" font-size="12">✓ Able to merge. These branches can be automatically merged.</text>
+  <rect x="60" y="86" width="800" height="1" fill="#3c3c3c"/>
 
-  <rect x="20" y="160" width="860" height="1" fill="#d0d7de"/>
+  <text x="66" y="112" fill="#e8e8e8" font-size="13" font-weight="600">Create</text>
 
-  <rect x="20" y="178" width="860" height="34" rx="6" fill="#ffffff" stroke="#d0d7de"/>
-  <text x="32" y="200" fill="#57606a" font-size="13">docs: agrega nota de práctica de Roberto</text>
+  <text x="66" y="140" fill="#9d9d9d" font-size="11">merge from</text>
+  <rect x="66" y="146" width="360" height="30" rx="4" fill="#2d2d2d" stroke="#454545"/>
+  <text x="78" y="166" fill="#e8e8e8" font-size="12">Mobility-Frontiers/taller-git-positron-codex : main</text>
 
-  <rect x="20" y="222" width="860" height="80" rx="6" fill="#ffffff" stroke="#d0d7de"/>
-  <text x="32" y="244" fill="#8c959f" font-size="12">Add a description</text>
-  <text x="32" y="264" fill="#57606a" font-size="12">Agrega una línea a practica/notas.md siguiendo el ejercicio 2 del taller.</text>
+  <text x="66" y="196" fill="#9d9d9d" font-size="11">into</text>
+  <rect x="66" y="202" width="360" height="30" rx="4" fill="#2d2d2d" stroke="#454545"/>
+  <text x="78" y="222" fill="#e8e8e8" font-size="12">roberto/practica-taller</text>
 
-  <rect x="20" y="316" width="180" height="36" rx="6" fill="#1f883d"/>
-  <text x="110" y="339" fill="#ffffff" font-size="13" text-anchor="middle" font-weight="600">Create pull request</text>
+  <rect x="66" y="246" width="734" height="30" rx="4" fill="#2d2d2d" stroke="#454545"/>
+  <text x="78" y="266" fill="#e8e8e8" font-size="12">docs: agrega nota de práctica de Roberto</text>
 
-  <text x="20" y="380" fill="#8c959f" font-size="12">Revisores sugeridos: cualquier otra persona del grupo, siguiendo la</text>
-  <text x="20" y="398" fill="#8c959f" font-size="12">convención de "revisión de al menos otra persona antes del merge".</text>
+  <rect x="66" y="286" width="734" height="70" rx="4" fill="#2d2d2d" stroke="#454545"/>
+  <text x="78" y="304" fill="#8a8a8a" font-size="11">Description</text>
+  <text x="78" y="324" fill="#cccccc" font-size="12">Agrega una línea a practica/notas.md siguiendo el ejercicio 4 del taller.</text>
+
+  <rect x="66" y="372" width="90" height="30" rx="4" fill="#238636"/>
+  <text x="111" y="392" fill="#ffffff" font-size="12" text-anchor="middle">Create</text>
+  <rect x="164" y="372" width="90" height="30" rx="4" fill="#3c3c3c"/>
+  <text x="209" y="392" fill="#cccccc" font-size="12" text-anchor="middle">Cancel</text>
+
+  <text x="66" y="424" fill="#8a8a8a" font-size="11">Al seleccionar Create, si la rama todavía no está publicada, Positron</text>
+  <text x="66" y="440" fill="#8a8a8a" font-size="11">ofrece publicarla primero — mismo paso que en el ejercicio anterior.</text>
 </svg>
