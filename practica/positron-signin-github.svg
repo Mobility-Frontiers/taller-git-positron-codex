@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img">
+  <title>Iniciar sesión con GitHub en Positron</title>
+  <desc>Captura ilustrativa del aviso que muestra Positron al clonar un repositorio del grupo por primera vez, pidiendo iniciar sesión con la cuenta de GitHub, con el botón Allow y el código de verificación que se ingresa en el navegador.</desc>
+
+  <rect x="0" y="0" width="900" height="320" rx="8" fill="#1e1e1e"/>
+
+  <rect x="220" y="30" width="460" height="260" rx="8" fill="#252526" stroke="#3c3c3c"/>
+
+  <circle cx="450" cy="80" r="22" fill="#3c3c3c"/>
+  <text x="450" y="88" fill="#e8e8e8" font-size="18" text-anchor="middle" font-family="'SFMono-Regular', Consolas, monospace">⎇</text>
+
+  <text x="450" y="126" fill="#e8e8e8" font-size="14" text-anchor="middle" font-weight="600">Positron quiere iniciar sesión con GitHub</text>
+  <text x="450" y="148" fill="#9d9d9d" font-size="12" text-anchor="middle">Esto permite clonar y sincronizar los repositorios</text>
+  <text x="450" y="164" fill="#9d9d9d" font-size="12" text-anchor="middle">privados del grupo Mobility Frontiers.</text>
+
+  <rect x="270" y="184" width="360" height="34" rx="4" fill="#1e1e1e" stroke="#3c3c3c"/>
+  <text x="450" y="206" fill="#e8e8e8" font-size="14" text-anchor="middle" font-family="'SFMono-Regular', Consolas, monospace" letter-spacing="2">A1B2-C3D4</text>
+  <text x="450" y="228" fill="#8a8a8a" font-size="11" text-anchor="middle">código para confirmar en el navegador que se abre automáticamente</text>
+
+  <rect x="270" y="244" width="160" height="32" rx="4" fill="#0e639c"/>
+  <text x="350" y="265" fill="#ffffff" font-size="13" text-anchor="middle">Allow</text>
+
+  <rect x="440" y="244" width="150" height="32" rx="4" fill="#3c3c3c"/>
+  <text x="515" y="265" fill="#cccccc" font-size="13" text-anchor="middle">Cancel</text>
+</svg>
