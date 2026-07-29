@@ -4,7 +4,7 @@ Repositorio de práctica para el taller **"Git y GitHub desde Positron"** del gr
 
 Este repo existe para que el grupo practique `pull`, `commit`, `push`, ramas, conflictos y pull requests **sin tocar repositorios reales**.
 
-## Guía del taller
+## Guía del taller (eli)
 
 **[Ver la guía completa del taller](https://mobility-frontiers.github.io/taller-git-positron-codex/taller.html)**
 
