@@ -15,6 +15,44 @@
   box-sizing: border-box;
 }
 
+.gtranslate-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--paper);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  padding: 0.45rem 1rem;
+  font-size: 0.8rem;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.gtranslate-btn:hover {
+  background: var(--accent-soft);
+}
+
+.goog-te-banner-frame,
+.skiptranslate > iframe {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
 html, body {
   margin: 0;
   padding: 0;

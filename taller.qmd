@@ -19,6 +19,8 @@ format:
     fig-align: center
     include-after-body:
       text: |
+        <button id="gtranslate-btn" class="gtranslate-btn" type="button">Translate to English</button>
+        <div id="google_translate_element" style="display:none"></div>
         <script>
         document.querySelectorAll('.task-list input[type="checkbox"]').forEach(function (cb) {
           cb.disabled = false;
@@ -44,6 +46,40 @@ format:
           container.appendChild(main);
           body.appendChild(container);
         })();
+
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement(
+            { pageLanguage: 'es', includedLanguages: 'en', autoDisplay: false },
+            'google_translate_element'
+          );
+        }
+        (function () {
+          var s = document.createElement('script');
+          s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+          s.async = true;
+          document.head.appendChild(s);
+        })();
+
+        function gtranslateToggle() {
+          var btn = document.getElementById('gtranslate-btn');
+          var alreadyTranslated = document.documentElement.classList.contains('translated-ltr');
+          if (alreadyTranslated) {
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+            location.reload();
+            return;
+          }
+          var combo = document.querySelector('.goog-te-combo');
+          if (combo) {
+            combo.value = 'en';
+            combo.dispatchEvent(new Event('change'));
+            btn.textContent = 'Ver en español';
+          } else {
+            btn.textContent = 'Cargando traductor…';
+            setTimeout(gtranslateToggle, 600);
+          }
+        }
+        document.getElementById('gtranslate-btn').addEventListener('click', gtranslateToggle);
         </script>
 execute:
   echo: false
@@ -52,13 +88,7 @@ execute:
 
 En un grupo de investigación, los problemas de control de versiones rara vez se anticipan: se descubren cuando una persona sobrescribe sin saberlo el trabajo de otra, o cuando un script deja de ejecutarse después de una actualización y no queda claro a qué versión anterior conviene volver. Este documento reúne los conceptos y procedimientos de Git y GitHub necesarios para evitar ese tipo de incidentes, aplicados al flujo de trabajo habitual del grupo: repositorios en R, análisis que se desarrollan de forma incremental, y colaboración simultánea de varias personas sobre un mismo pipeline.
 
-```{r}
-
-```{r}
-
-```
-```
-Los ejercicios se hacen sobre `taller-git-positron-codex`.
+Los ejercicios se hacen sobre `taller-git-positron-codex`, un repositorio creado para esta actividad — no sobre `sfb-mobility-networks` ni ningún otro repo real del grupo.
 
 **Requisitos previos:** Positron instalado; Git configurado con nombre de usuario y correo electrónico (`git config --global user.name` / `user.email`); una cuenta de GitHub con acceso al repositorio de práctica.
 
@@ -274,7 +304,7 @@ La convención anterior depende de que cada persona la respete por su cuenta. Gi
 5. Opcionalmente, **Require conversation resolution before merging**, para que ningún comentario de revisión quede sin responder antes del merge.
 6. Guardar (**Create** / **Save changes**).
 
-::: {.callout-importante}
+::: {.callout-important}
 En un repositorio privado dentro de una organización de GitHub en el plan gratuito, esta regla queda configurada pero GitHub advierte que no se aplica técnicamente hasta actualizar la organización a **GitHub Team o Enterprise** — la página de configuración lo indica explícitamente. Mientras eso no ocurra, la regla funciona como una política declarada y visible para todo el grupo, pero el cumplimiento real sigue dependiendo de la convención acordada en esta sección, no de un bloqueo técnico.
 :::
 
