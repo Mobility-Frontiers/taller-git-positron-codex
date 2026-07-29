@@ -52,6 +52,12 @@ execute:
 
 En un grupo de investigación, los problemas de control de versiones rara vez se anticipan: se descubren cuando una persona sobrescribe sin saberlo el trabajo de otra, o cuando un script deja de ejecutarse después de una actualización y no queda claro a qué versión anterior conviene volver. Este documento reúne los conceptos y procedimientos de Git y GitHub necesarios para evitar ese tipo de incidentes, aplicados al flujo de trabajo habitual del grupo: repositorios en R, análisis que se desarrollan de forma incremental, y colaboración simultánea de varias personas sobre un mismo pipeline.
 
+```{r}
+
+```{r}
+
+```
+```
 Los ejercicios se hacen sobre `taller-git-positron-codex`.
 
 **Requisitos previos:** Positron instalado; Git configurado con nombre de usuario y correo electrónico (`git config --global user.name` / `user.email`); una cuenta de GitHub con acceso al repositorio de práctica.
