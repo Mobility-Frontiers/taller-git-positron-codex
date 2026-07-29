@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 410" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img">
   <title>Crear un pull request desde la vista Pull Requests de Positron</title>
   <desc>Captura ilustrativa de la vista Pull Requests de Positron, con el botón Create Pull Request, y la vista Create que se abre dentro del propio editor con el repositorio y rama base, la rama de comparación, el título y la descripción.</desc>
 
-  <rect x="0" y="0" width="900" height="460" rx="8" fill="#1e1e1e"/>
+  <rect x="0" y="0" width="900" height="410" rx="8" fill="#1e1e1e"/>
 
-  <rect x="0" y="0" width="48" height="460" fill="#333333"/>
+  <rect x="0" y="0" width="48" height="410" fill="#333333"/>
   <rect x="8" y="16" width="32" height="32" rx="6" fill="#3c3c3c"/>
   <rect x="8" y="56" width="32" height="32" rx="6" fill="#0e639c"/>
   <rect x="8" y="96" width="32" height="32" rx="6" fill="#3c3c3c"/>
@@ -21,26 +21,26 @@
 
   <text x="66" y="112" fill="#e8e8e8" font-size="13" font-weight="600">Create</text>
 
-  <text x="66" y="140" fill="#9d9d9d" font-size="11">Base repository / branch</text>
-  <rect x="66" y="146" width="360" height="30" rx="4" fill="#2d2d2d" stroke="#454545"/>
-  <text x="78" y="166" fill="#e8e8e8" font-size="12">Mobility-Frontiers/taller-git-positron-codex : main</text>
+  <rect x="66" y="140" width="360" height="30" rx="4" fill="#2d2d2d" stroke="#454545"/>
+  <text x="78" y="160" fill="#e8e8e8" font-size="12">Mobility-Frontiers/taller-git-positron-codex : main</text>
 
-  <text x="66" y="196" fill="#9d9d9d" font-size="11">Compare branch</text>
-  <rect x="66" y="202" width="360" height="30" rx="4" fill="#2d2d2d" stroke="#454545"/>
-  <text x="78" y="222" fill="#e8e8e8" font-size="12">roberto/practica-taller</text>
+  <text x="436" y="160" fill="#6a6a6a" font-size="14" text-anchor="middle">←</text>
 
-  <rect x="66" y="246" width="734" height="30" rx="4" fill="#2d2d2d" stroke="#454545"/>
-  <text x="78" y="266" fill="#e8e8e8" font-size="12">docs: agrega nota de práctica de Roberto</text>
+  <rect x="446" y="140" width="354" height="30" rx="4" fill="#2d2d2d" stroke="#454545"/>
+  <text x="458" y="160" fill="#e8e8e8" font-size="12">roberto/practica-taller</text>
 
-  <rect x="66" y="286" width="734" height="70" rx="4" fill="#2d2d2d" stroke="#454545"/>
-  <text x="78" y="304" fill="#8a8a8a" font-size="11">Description</text>
-  <text x="78" y="324" fill="#cccccc" font-size="12">Agrega una línea a practica/notas.md siguiendo el ejercicio 4 del taller.</text>
+  <rect x="66" y="190" width="734" height="30" rx="4" fill="#2d2d2d" stroke="#454545"/>
+  <text x="78" y="210" fill="#e8e8e8" font-size="12">docs: agrega nota de práctica de Roberto</text>
 
-  <rect x="66" y="372" width="90" height="30" rx="4" fill="#238636"/>
-  <text x="111" y="392" fill="#ffffff" font-size="12" text-anchor="middle">Create</text>
-  <rect x="164" y="372" width="90" height="30" rx="4" fill="#3c3c3c"/>
-  <text x="209" y="392" fill="#cccccc" font-size="12" text-anchor="middle">Cancel</text>
+  <rect x="66" y="230" width="734" height="70" rx="4" fill="#2d2d2d" stroke="#454545"/>
+  <text x="78" y="248" fill="#8a8a8a" font-size="11">Description</text>
+  <text x="78" y="268" fill="#cccccc" font-size="12">Agrega una línea a practica/notas.md siguiendo el ejercicio 4 del taller.</text>
 
-  <text x="66" y="424" fill="#8a8a8a" font-size="11">Al seleccionar Create, si la rama todavía no está publicada, Positron</text>
-  <text x="66" y="440" fill="#8a8a8a" font-size="11">ofrece publicarla primero — mismo paso que en el ejercicio anterior.</text>
+  <rect x="66" y="316" width="90" height="30" rx="4" fill="#238636"/>
+  <text x="111" y="336" fill="#ffffff" font-size="12" text-anchor="middle">Create</text>
+  <rect x="164" y="316" width="90" height="30" rx="4" fill="#3c3c3c"/>
+  <text x="209" y="336" fill="#cccccc" font-size="12" text-anchor="middle">Cancel</text>
+
+  <text x="66" y="368" fill="#8a8a8a" font-size="11">Al seleccionar Create, si la rama todavía no está publicada, Positron</text>
+  <text x="66" y="384" fill="#8a8a8a" font-size="11">ofrece publicarla primero — mismo paso que en el ejercicio anterior.</text>
 </svg>
