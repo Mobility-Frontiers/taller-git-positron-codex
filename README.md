@@ -8,7 +8,7 @@ Este repo existe para que el grupo practique `pull`, `commit`, `push`, ramas, co
 
 **[Ver la guía completa del taller](https://mobility-frontiers.github.io/taller-git-positron-codex/taller.html)**
 
-## Procedimiento del taller (cualquier)
+## Procedimiento del taller (cualquier) -
 
 1. **Conectar tu cuenta de GitHub con Positron** — sign in desde el ícono de cuenta, una sola vez.
 2. **Clonar el repositorio** — Git: Clone desde Positron.

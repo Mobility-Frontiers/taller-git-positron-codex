@@ -70,6 +70,7 @@ Al elegir "Sign in with GitHub", Positron pide confirmar en el navegador: se abr
 - [ ] Abrir el ícono de cuenta en la esquina inferior izquierda de Positron.
 - [ ] Elegir "Sign in with GitHub" y confirmar en el navegador.
 - [ ] Verificar que el nombre de usuario de GitHub aparece en ese mismo panel.
+- [ ] terminar
 :::
 
 ## Clonar el repositorio de práctica
