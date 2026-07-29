@@ -93,9 +93,11 @@ Al terminar, Positron pregunta si se quiere abrir la carpeta — elegir **Open**
 
 ## Autenticación: el token de acceso personal
 
-Desde hace algunos años, GitHub no acepta la contraseña de la cuenta para operaciones por HTTPS. Si Positron o la terminal solicitan usuario y contraseña al ejecutar `push` y se ingresa la contraseña de la cuenta, la operación fallará. En su lugar, GitHub requiere un **token de acceso personal**, que reemplaza a la contraseña en este tipo de operaciones.
+Aquí conviene aclarar algo antes de seguir: si ya conectaste tu cuenta en el ejercicio anterior y vas a trabajar desde el panel de Positron (el camino recomendado en este taller), la autenticación para `push` y `pull` ya quedó resuelta — Positron la maneja con esa misma sesión, sin pedir nada adicional. Este token hace falta en un caso distinto: cuando se usa la terminal directamente, ya que ahí Git no tiene forma de aprovechar la sesión de Positron y va a pedir credenciales por su cuenta.
 
-Cada persona genera su propio token, con su propia cuenta de GitHub, antes de la demo — no es algo que se pueda compartir entre personas, y sin él Positron no va a poder hacer `commit` ni `push` durante el taller.
+Desde hace algunos años, GitHub no acepta la contraseña de la cuenta para operaciones por HTTPS. Si la terminal solicita usuario y contraseña al ejecutar `push` y se ingresa la contraseña de la cuenta, la operación fallará. En su lugar, GitHub requiere un **token de acceso personal**, que reemplaza a la contraseña en este tipo de operaciones.
+
+Vale la pena tener uno igual, incluso trabajando siempre desde el panel: sirve como respaldo si por algún motivo la sesión de la cuenta se cae, y es lo que se necesita apenas se quiera usar la terminal para algo puntual.
 
 Procedimiento, desde github.com:
 
@@ -107,7 +109,7 @@ Procedimiento, desde github.com:
 6. En **Permissions → Repository permissions**, ubicar **Contents** y asignarle **Read and write** — este es el permiso que habilita `push`.
 7. **Generate token**. GitHub lo muestra una única vez: debe copiarse antes de cerrar la página, ya que no puede recuperarse posteriormente.
 
-Con el token disponible, la primera vez que Positron o `git push` soliciten credenciales:
+Con el token disponible, la primera vez que la terminal pida credenciales al ejecutar `git push`:
 
 - **Usuario:** el nombre de usuario de GitHub.
 - **Contraseña:** el token, pegado tal cual, aunque el campo indique "password".
@@ -123,7 +125,7 @@ Tras el primer uso, el sistema operativo almacena la credencial (Keychain en mac
 
 - [ ] Generar el token siguiendo los siete pasos anteriores.
 - [ ] Copiarlo a un lugar temporal y seguro (no a un archivo del repositorio ni a un canal de mensajería).
-- [ ] Tenerlo a mano para el ejercicio siguiente, donde Positron lo va a solicitar como contraseña.
+- [ ] Tenerlo a mano por si la terminal lo pide como contraseña más adelante.
 :::
 
 ## El modelo de tres estados
