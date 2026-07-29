@@ -268,7 +268,7 @@ La convención anterior depende de que cada persona la respete por su cuenta. Gi
 5. Opcionalmente, **Require conversation resolution before merging**, para que ningún comentario de revisión quede sin responder antes del merge.
 6. Guardar (**Create** / **Save changes**).
 
-::: {.callout-important}
+::: {.callout-importante}
 En un repositorio privado dentro de una organización de GitHub en el plan gratuito, esta regla queda configurada pero GitHub advierte que no se aplica técnicamente hasta actualizar la organización a **GitHub Team o Enterprise** — la página de configuración lo indica explícitamente. Mientras eso no ocurra, la regla funciona como una política declarada y visible para todo el grupo, pero el cumplimiento real sigue dependiendo de la convención acordada en esta sección, no de un bloqueo técnico.
 :::
 
